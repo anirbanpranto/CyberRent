@@ -6,29 +6,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.PublicModel;
 
 /**
  * Provide the slot information of board
- * 
+ *
  * @author Anirban Bala Pranto
  */
 public class Base2Controller {
-  private String x = "Bruh";
-  
   public void down(ActionEvent event){
-    Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    Stage mainStage = PublicModel.getInstance().getStage();
     try
     {
         Parent root = FXMLLoader.load(getClass().getResource("../view/Base.fxml"));
-        stageTheEventSourceNodeBelongs.setScene(new Scene(root));
+        mainStage.setScene(new Scene(root));
     }
     catch (java.io.IOException ioe)
     {
         ioe.printStackTrace();
     }
   }
-
-  public String getX(){
-    return this.x;
-  } 
 }

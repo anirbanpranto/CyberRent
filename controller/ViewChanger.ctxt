@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=ViewChanger
-comment0.text=\n\ Provide\ the\ slot\ information\ of\ board\n\ \n\ @author\ Anirban\ Bala\ Pranto\n
-comment1.params=event
-comment1.target=void\ down(javafx.event.ActionEvent)
-comment2.params=
-comment2.target=java.lang.String\ getX()
-numComments=3
