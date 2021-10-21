@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  * 
  * @author Anirban Bala Pranto
  */
-public class ViewChanger {
+public class Base2Controller {
   private String x = "Bruh";
   
   public void down(ActionEvent event){
