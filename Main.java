@@ -1,19 +1,21 @@
-/**
- * @author Anirban Bala
- */
-public class Main {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
-  public static void main(String[] args) {
-
-    Program program = Program.getInstance();
-    try {
-      program.run();
-    } catch (Exception e) {
-      e.printStackTrace();
-      System.exit(1);
-      return;
-    }
-    
+public class Main extends Application{
+  @Override
+  public void start(Stage primaryStage) throws Exception{
+      Parent root = FXMLLoader.load(getClass().getResource("view/Base.fxml"));
+      primaryStage.setTitle("Login");
+      primaryStage.setScene(new Scene(root, 500, 500, Color.BLACK));
+      primaryStage.show();
   }
 
+  public static void main(String[] args){
+      System.out.println("Hello");
+      launch(args);
+  }
 }

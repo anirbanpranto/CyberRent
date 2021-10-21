@@ -7,6 +7,6 @@ import java.util.List;
  * 
  * @author User
  */
-public abstract class Piece {
+public abstract class Base {
   private int x;
 }
