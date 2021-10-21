@@ -12,15 +12,14 @@ import javafx.stage.Stage;
  * 
  * @author Anirban Bala Pranto
  */
-public class BaseController {
+public class ViewChanger {
   private String x = "Bruh";
   
-  public void up(ActionEvent event){
-    System.out.println("Base Interaction");
+  public void down(ActionEvent event){
     Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
     try
     {
-        Parent root = FXMLLoader.load(getClass().getResource("../view/Base2.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../view/Base.fxml"));
         stageTheEventSourceNodeBelongs.setScene(new Scene(root));
     }
     catch (java.io.IOException ioe)
