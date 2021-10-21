@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=User
-comment0.text=\n\ Abstract\ class\ User\ -\ write\ a\ description\ of\ the\ class\ here\n\n\ @author\ (your\ name\ here)\n\ @version\ (version\ number\ or\ date\ here)\n
-comment1.params=name
-comment1.target=void\ setName(java.lang.String)
-comment2.params=
-comment2.target=java.lang.String\ getName()
-numComments=3

@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=API
+comment0.text=\n\ This\ links\ the\ model\ and\ view\ together\n\ \n\ @author\ Anirban\ Bala\n
+comment1.params=
+comment1.target=API\ getInstance()
+comment1.text=\n\ Singleton\ design\ pattern\n\ Get\ instance\ of\ the\ APIs\n
+numComments=2
