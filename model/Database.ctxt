@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Database
+comment1.params=tableName\ Entry
+comment1.target=void\ writeData(java.lang.String,\ java.util.List)
+comment2.params=tableName
+comment2.target=java.util.List\ readData(java.lang.String)
+numComments=3

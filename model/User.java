@@ -1,5 +1,5 @@
 package model;
-import java.util.UUID;
+import java.util.*;
 // import javafx.fxml.FXMLLoader;
 // import javafx.scene.Node;
 // import javafx.scene.Parent;
@@ -7,7 +7,7 @@ import java.util.UUID;
 // import javafx.stage.Stage;
 
 public abstract class User {
-    private UUID id;
+    private int Id;
     private String fullName;
     private String userName;
     private String password;
@@ -16,23 +16,45 @@ public abstract class User {
     private String role;
     private String phoneNumber;
 
-    public User(UUID id, String fullName, String userName, String password, String email, String status, String role, String phoneNumber){
-      this.id = uuid;
-      this.fullName = fullName;
-      this.password = password;
-      this.status = status;
-      this.role = role;
-      this.phoneNumber = phoneNumber;
+    public User(int Id, String fullName, String userName, String password, String email, String status, String role, String phoneNumber){
+        this.Id = Id;
+        this.fullName = fullName;
+        this.password = password;
+        this.status = status;
+        this.role = role;
+        this.phoneNumber = phoneNumber;
     }
 
-    public static User createUser(String fullName, String userName, String password, String email, String status, String role, String phoneNumber){
-      UUID uuid=UUID.randomUUID();
-      //create a user in database
-      return new User(uuid, fullName, userName, password, email, status, role, phoneNumber);
+    public int getId(){
+        return this.Id;
     }
-
-    public UUID getId(){
-      return this.id;
+    
+    public String getName(){
+        return this.fullName;
+    }
+    
+    public String getUserName(){
+        return this.userName;
+    }
+    
+    public String getPassword(){
+        return this.password;
+    }
+    
+    public String getEmail(){
+        return this.email;
+    }
+    
+    public String getStatus(){
+        return this.status;
+    }
+    
+    public String getRole(){
+        return this.role;
+    }
+    
+    public String getPhone(){
+        return this.phoneNumber;
     }
     //this model will have all the public data performed without login
 }
