@@ -23,7 +23,7 @@ public class BaseController {
     try
     {
         Parent root = FXMLLoader.load(getClass().getResource("../view/Base2.fxml"));
-        mainStage.setScene(new Scene(root));
+        mainStage.setScene(new Scene(root, 1280, 720));
     }
     catch (java.io.IOException ioe)
     {
