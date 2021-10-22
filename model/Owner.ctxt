@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Owner
+comment1.params=Id\ fullName\ userName\ password\ email\ phoneNumber
+comment1.target=Owner(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=fullName\ userName\ password\ email\ phoneNumber
+comment2.target=Owner\ createOwner(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+numComments=3

@@ -52,6 +52,29 @@ public class Database{
     }
   }
 
+  public static void writeUpdate(String tableName, List<String> Entry){
+    String fileName = tableName + "Id" + ".csv";
+    String filePath = "./Database/"+fileName;
+    File csvFile = new File(filePath);
+    try{
+          FileWriter pw = new FileWriter(filePath);
+          for(int i = 0; i < Entry.size(); i++){
+                pw.append(Entry.get(i));
+                if(i == Entry.size() - 1){
+                  pw.append("\n");
+                }
+                else{
+                  pw.append(",");
+                }
+          }
+          pw.flush();
+          pw.close();
+    }
+    catch(Exception e){
+        e.printStackTrace();
+    }
+  }
+
   public static List<List<String>> readData(String tableName){
     String fileName = tableName + ".csv";
     String filePath = "./Database/"+fileName;
