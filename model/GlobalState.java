@@ -5,11 +5,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.util.*;
 
-public class PublicModel {
+public class GlobalState {
     private Stage publicStage;
+    private boolean isLoggedIn = false; //this becomes true when someone logs in
+    private Map<int, String> session; //this will store the email and the role
 
-    public PublicModel(){
+    public GlobalState(){
 
     }
 
@@ -18,9 +21,9 @@ public class PublicModel {
     }
 
     //Singleton Design Pattern
-    public static PublicModel getInstance(){
+    public static GlobalState getInstance(){
         if(instance==null){
-            instance = new PublicModel();
+            instance = new GlobalState();
         }
         return instance;
     }
@@ -29,7 +32,7 @@ public class PublicModel {
         return this.publicStage;
     }
 
-    private static PublicModel instance;
+    private static GlobalState instance;
 
     //this model will have all the public data performed without login
 }

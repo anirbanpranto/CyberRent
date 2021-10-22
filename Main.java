@@ -7,13 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import model.PublicModel;
+import model.GlobalState;
 
 public class Main extends Application{
   @Override
   public void start(Stage primaryStage) throws Exception{
       //singleton design pattern
-      PublicModel mainScreen = PublicModel.getInstance();
+      GlobalState mainScreen = GlobalState.getInstance();
       mainScreen.saveStage(primaryStage);
       Parent root = FXMLLoader.load(getClass().getResource("view/Base.fxml"));
       primaryStage.setTitle("Login");
