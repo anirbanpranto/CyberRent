@@ -29,7 +29,7 @@ public class Owner extends User{
         ArrayList<Property> ownerList = new ArrayList<Property>();
     
         for(int i = 0; i < allProperty.size(); i++){
-            if(allProperty.get(i).getListerID() == this.getId() && allProperty.get(i).getListerType() == "Owner"){
+            if(allProperty.get(i).listerID() == this.getId() && allProperty.get(i).getListerType() == "Owner"){
                 ownerList.add(allProperty.get(i));
             }
         }

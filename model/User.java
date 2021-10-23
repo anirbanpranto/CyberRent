@@ -58,14 +58,14 @@ public abstract class User {
     }
     
     public void setName(String fullname){
-        this.fullname = fullname;
+        this.fullName = fullname;
     }
     
     public void setEmail(String email){
         this.email = email;
     }
     
-    public void setPhoneNumber(int phoneNumber){
+    public void setPhoneNumber(String phoneNumber){
         this.phoneNumber = phoneNumber;
     }
     

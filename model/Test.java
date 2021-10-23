@@ -6,6 +6,11 @@ public class Test{
       List<String> row = Arrays.asList("1", "Anirban Bala", "Codeboi08", "anirbanpranto@gmail.com", "spiderman123");
       Database.writeData("User", row);
     }
+    
+    public void readUpdateTest(){
+      int id = Database.readUpdate("Owner");
+      System.out.println(id);
+    }
 
     public void databaseReadTest(){
       List<List<String>> list = Database.readData("Owner");

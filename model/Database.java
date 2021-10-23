@@ -74,6 +74,28 @@ public class Database{
         e.printStackTrace();
     }
   }
+  
+  public static int readUpdate(String tableName){
+    String fileName = tableName + "Id.csv";
+    String filePath = "./Database/"+fileName;
+    File csvFile = new File(filePath);
+    List<List<String>> table = new ArrayList<List<String>>();
+    String row = null;
+    if (csvFile.isFile()) {
+        try{
+            BufferedReader csvReader = new BufferedReader(new FileReader(filePath));
+            row = csvReader.readLine();
+            if(row == null){
+                return 100;
+            }
+            csvReader.close();
+        }
+        catch(Exception e){
+          e.printStackTrace();
+        }
+    }
+    return Integer.parseInt(row);
+  }
 
   public static List<List<String>> readData(String tableName){
     String fileName = tableName + ".csv";
