@@ -56,5 +56,18 @@ public abstract class User {
     public String getPhone(){
         return this.phoneNumber;
     }
+    
+    public void setName(String fullname){
+        this.fullname = fullname;
+    }
+    
+    public void setEmail(String email){
+        this.email = email;
+    }
+    
+    public void setPhoneNumber(int phoneNumber){
+        this.phoneNumber = phoneNumber;
+    }
+    
     //this model will have all the public data performed without login
 }
