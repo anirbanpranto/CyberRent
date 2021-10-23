@@ -11,24 +11,8 @@ public class Owner extends User{
         this.status = status;
     }
 
-    public void setUserName(String userName){
-        this.userName = userName;
-    }
-
-    public void setName(String name){
-        this.fullName = name;
-    }
-
     public void setPassword(String password){
         this.password = password;
-    }
-
-    public void setEmail(String email){
-        this.email = email;
-    }
-
-    public void setPhone(String phone){
-        this.phoneNumber = phoneNumber;
     }
 
     public static Owner createOwner(String fullName, String userName, String password, String email, String phoneNumber){
