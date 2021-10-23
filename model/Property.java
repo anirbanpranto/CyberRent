@@ -1,5 +1,4 @@
 package model;
-
 import java.util.*;
 
 public class Property {
@@ -36,13 +35,12 @@ public class Property {
                                          city("Cyberjaya").state("Selangor").propertyType("condominium").
                                          photo(photos).build("Owner",1);
     */
+
     public Property(String listerType, int listerID, Builder p){
-        idCount = getIdCount();
+        idCount = Database.readUpdate("Property")+1;
         this.id = idCount;
-        idCount++;
         this.listerType = listerType;
         this.listerID = listerID;
-        this.propertyID = idCount;
         this.projectName = p.projectName;
         this.floorSize = p.floorSize;
         this.psf = p.psf;
@@ -57,26 +55,25 @@ public class Property {
         this.state = p.state;
         this.propertyType = p.propertyType; // condo, townhouse
         this.photo = p.photo;
+
+        writeFile();
     }
 
-    private int getIdCount(){
-        List<List<String>> propertyTable = Database.readData("Property");
-        String temp;
-        try{
-            // get id from the newest data in table
-            temp = propertyTable.get(propertyTable.size()-1).get(0);
-        }catch(IndexOutOfBoundsException ex){
-            System.out.println("Index out of bound.");
-            return 100;
-        }
-        return Integer.parseInt(temp)+1;
+    public void writeFile(){
+        Database.writeData("Property", Arrays.asList(Integer.toString(id),  listerType     , Integer.toString(listerID) ,
+                                                     status, projectName, Integer.toString(floorSize), Double.toString(psf), 
+                                                     furnishStatus,numberOfBedroom, Integer.toString(numberOfBathroom), facilities.toString(), 
+                                                     keyFeatures.toString(),Integer.toString(rental_price), address,city, 
+                                                     state, propertyType, photo.toString()));
+        
+        Database.writeUpdate("Property", Arrays.asList(Integer.toString(id)));
     }
 
 
     public int getID(){return id;}
     public String getListerType(){return listerType;}
-    public int listerID(){return listerID;}
-    public int propertyID(){return propertyID;}
+    public int getListerID(){return listerID;}
+    public int getPropertyID(){return propertyID;}
     public String getStatus(){return status;}
     public void setStatus(){
         if (status.equals("active")) status = "inactive";
@@ -143,6 +140,10 @@ public class Property {
         public Builder propertyType(String p){propertyType = p; return this;}
         public Builder photo(ArrayList<String> p){photo = p; return this;}
 
-        public Property build(String listerType, int listerID){return new Property(listerType, listerID, this);}
+        public Property build(String listerType, int listerID){
+            return new Property(listerType, listerID, this);
+        }
+
+        
     }    
 }
