@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.PublicModel;
+import model.GlobalState;
 
 /**
  * Provide the slot information of board
@@ -15,7 +15,7 @@ import model.PublicModel;
  */
 public class Base2Controller {
   public void down(ActionEvent event){
-    Stage mainStage = PublicModel.getInstance().getStage();
+    Stage mainStage = GlobalState.getInstance().getStage();
     try
     {
         Parent root = FXMLLoader.load(getClass().getResource("../view/Base.fxml"));
