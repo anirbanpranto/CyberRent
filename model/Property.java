@@ -3,12 +3,14 @@ package model;
 import java.util.*;
 
 public class Property {
+    private static int idCount = 100; 
     private int id;
     private String listerType; //[Owner,Agent]
     private int listerID;
     private int propertyID;
-    private static int idCount = 100; 
     //private int areaID;
+    
+    // user modifiable data
     private String status = "active"; // [active,inactive]
     private String projectName;
     private int floorSize;
