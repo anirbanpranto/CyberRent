@@ -7,14 +7,14 @@ import java.util.*;
 // import javafx.stage.Stage;
 
 public abstract class User {
-    private int Id;
-    private String fullName;
-    private String userName;
-    private String password;
-    private String email;
-    private String status;
-    private String role;
-    private String phoneNumber;
+    protected int Id;
+    protected String fullName;
+    protected String userName;
+    protected String password;
+    protected String email;
+    protected String status;
+    protected String role;
+    protected String phoneNumber;
 
     public User(int Id, String fullName, String userName, String password, String email, String status, String role, String phoneNumber){
         this.Id = Id;

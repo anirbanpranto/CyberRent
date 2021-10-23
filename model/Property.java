@@ -48,7 +48,7 @@ public class Property {
     }
     public int getID(){return id;}
     public String getListerType(){return listerType;}
-    public int listerID(){return listerID;}
+    public int getListerID(){return listerID;}
     public int propertyID(){return propertyID;}
     public String getStatus(){return status;}
     public void setStatus(){
