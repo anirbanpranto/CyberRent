@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.PublicModel;
+import model.GlobalState;
 
 /**
  * Provide the slot information of board
@@ -19,7 +19,7 @@ public class BaseController {
     System.out.println("Base Interaction");
     //use this code when you are not sure if the stage is the same as our initial stage
     //Stage stageTheEventSourceNodeBelongs = (Stage) ((Node)event.getSource()).getScene().getWindow();
-    Stage mainStage = PublicModel.getInstance().getStage();
+    Stage mainStage = GlobalState.getInstance().getStage();
     try
     {
         Parent root = FXMLLoader.load(getClass().getResource("../view/Base2.fxml"));
