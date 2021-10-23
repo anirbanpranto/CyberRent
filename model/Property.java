@@ -1,5 +1,3 @@
-package model;
-
 import java.util.*;
 
 public class Property {
@@ -14,7 +12,7 @@ public class Property {
     private int floorSize;
     private double psf;
     private String furnishStatus; // [fully, partially, unfurnished]
-    private int numberOfBedroom; 
+    private String numberOfBedroom; // [studio,1,2,3,4,...]
     private int numberOfBathroom;
     private ArrayList<String> facilities; // swimming pool, gym room and etc
     private ArrayList<String> keyFeatures; // air conditioning, washing machine
@@ -24,13 +22,25 @@ public class Property {
     private String state;
     private String propertyType; // condo, townhouse
     private ArrayList<String> photo;
-    
-    public Property(int id, String listerType, int listerID, Builder p){
-        this.id = id;
+
+    // Sample to create a Property class object:
+    /*
+        ArrayList<String> f = new ArrayList<>();
+        ArrayList<String> k = new ArrayList<>();
+        ArrayList<String> photos = new ArrayList<>();
+        Property p = new Property.Builder().projectName("ABC").floorSize(1000).psf(0.9).furnishStatus("Fully").
+                                         numberOfBedroom("2").numberOfBathroom(1).facilities(f).
+                                         keyFeatures(k).rental_price(1000).address("address").
+                                         city("Cyberjaya").state("Selangor").propertyType("condominium").
+                                         photo(photos).build("Owner",1);
+    */
+    public Property(String listerType, int listerID, Builder p){
+        idCount = getIdCount();
+        this.id = idCount;
+        idCount++;
         this.listerType = listerType;
         this.listerID = listerID;
         this.propertyID = idCount;
-        idCount++; //property
         this.projectName = p.projectName;
         this.floorSize = p.floorSize;
         this.psf = p.psf;
@@ -46,6 +56,21 @@ public class Property {
         this.propertyType = p.propertyType; // condo, townhouse
         this.photo = p.photo;
     }
+
+    private static int getIdCount(){
+        List<List<String>> propertyTable = Database.readData("Property");
+        String temp;
+        try{
+            // get id from the newest data in table
+            temp = propertyTable.get(propertyTable.size()-1).get(0);
+        }catch(IndexOutOfBoundsException ex){
+            System.out.println("Index out of bound.");
+            return 100;
+        }
+        return Integer.parseInt(temp)+1;
+    }
+
+
     public int getID(){return id;}
     public String getListerType(){return listerType;}
     public int listerID(){return listerID;}
@@ -55,16 +80,17 @@ public class Property {
         if (status.equals("active")) status = "inactive";
         else status = "active";
     }
+
     public String getProjectName(){return projectName;}
     public void setProjectName(String p){projectName = p;}
     public int getFloorSize(){return floorSize;}
     public void setFloorSize(int f){floorSize = f;}
     public double getpsf(){return psf;}
     public void setpsf(int p){psf = p;}
-    public String furnishStatus(){return furnishStatus;}
+    public String getFurnishStatus(){return furnishStatus;}
     public void setFurnishStatus(String f){furnishStatus = f;}
-    public int getNumberOfBedroom(){return numberOfBedroom;}
-    public void setNumberOfBedroom(int n){numberOfBedroom = n;}
+    public String getNumberOfBedroom(){return numberOfBedroom;}
+    public void setNumberOfBedroom(String n){numberOfBedroom = n;}
     public int getNumberOfBathroom(){return numberOfBathroom;}
     public void setNumberOfBathroom(int n){numberOfBathroom = n;}
     public ArrayList<String> getFacilities(){return facilities;}
@@ -89,7 +115,7 @@ public class Property {
         private int floorSize;
         private double psf;
         private String furnishStatus; 
-        private int numberOfBedroom; 
+        private String numberOfBedroom; 
         private int numberOfBathroom;
         private ArrayList<String> facilities; 
         private ArrayList<String> keyFeatures; 
@@ -104,17 +130,17 @@ public class Property {
         public Builder floorSize(int f){floorSize = f; return this;}
         public Builder psf(double p){psf = p; return this;}
         public Builder furnishStatus(String f){furnishStatus = f; return this;}
-        public Builder numberOfBedroom(int n){numberOfBedroom = n; return this;}
+        public Builder numberOfBedroom(String n){numberOfBedroom = n; return this;}
         public Builder numberOfBathroom(int n){numberOfBathroom = n; return this;}
-        public Builder facilities(ArrayList<String> f){facilities.addAll(f); return this;}    
-        public Builder keyFeatures(ArrayList<String> k){keyFeatures.addAll(k); return this;}
+        public Builder facilities(ArrayList<String> f){facilities = f; return this;}    
+        public Builder keyFeatures(ArrayList<String> k){keyFeatures = k; return this;}
         public Builder rental_price(int r){rental_price = r; return this;}
         public Builder address(String a){address = a; return this;}
         public Builder city(String c){city = c; return this;}
         public Builder state(String s){state = s; return this;}
         public Builder propertyType(String p){propertyType = p; return this;}
-        public Builder photo(ArrayList<String> p){photo.addAll(p); return this;}
+        public Builder photo(ArrayList<String> p){photo = p; return this;}
 
-        public Property build(int id, String listerType, int listerID){return new Property(id, listerType, listerID, this);}
+        public Property build(String listerType, int listerID){return new Property(listerType, listerID, this);}
     }    
 }
