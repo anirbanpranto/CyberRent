@@ -49,6 +49,10 @@ public class GlobalState {
         return this.propeties;
     }
 
+    public void setPersonalProperties(ArrayList<Property> p){
+        this.personalProperty = p;
+    }
+
     public ArrayList<Property> getPersonalProperties(){
         return this.personalProperty;
     }

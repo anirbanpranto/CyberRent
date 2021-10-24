@@ -2,7 +2,7 @@ package model;
 import java.util.*;
 
 public class Owner extends User{
-    private static int globalId = 100;
+    private static int globalId = Database.readUpdate("Owner");
     public Owner(int Id, String fullName, String userName, String password, String email, String phoneNumber){
         super(Id, fullName, userName, password, email, "Active", "Owner", phoneNumber);
     }
@@ -25,6 +25,9 @@ public class Owner extends User{
     public ArrayList<Property> getOwnerProperty(){
         //this fetches all own property of this owner
         GlobalState state = GlobalState.getInstance();
+        if(state.getPersonalProperties().size() > 0){
+            return state.getFavoriteProperties();
+        }
         ArrayList<Property> allProperty = state.getProperties();
         ArrayList<Property> ownerList = new ArrayList<Property>();
     
@@ -33,6 +36,8 @@ public class Owner extends User{
                 ownerList.add(allProperty.get(i));
             }
         }
+
+        state.setPersonalProperties(ownerList);
         return ownerList;
     }
     

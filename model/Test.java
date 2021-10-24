@@ -25,6 +25,10 @@ public class Test{
         Owner temp = Owner.createOwner("Anirban Bala", "codeboi08", "spiderman_4", "anirbanpranto@gmail.com", "0189717552");
     }
 
+    public void AgentIntegration(){
+      Agent temp = Agent.createAgent("Anirban Bala", "codeboi08", "spiderman_4", "anirbanpranto@gmail.com", "0189717552", "BW0418423");
+  }
+
     public void parseTest(){
       String arrayField = "[item1 item2 item3 item4]";
       arrayField = arrayField.replace("[", "");
