@@ -106,6 +106,18 @@ public class Database{
     return temp;
   }
 
+  public static String makeString(List<String> data){
+    String out = "[";
+    for(int i = 0; i < data.size(); i++){
+      out += data.get(i);
+      if(i != (data.size() - 1)){
+        out += " ";
+      }
+    }
+    out += "]";
+    return out;
+  }
+
   public static List<List<String>> readData(String tableName){
     String fileName = tableName + ".csv";
     String filePath = "./Database/"+fileName;

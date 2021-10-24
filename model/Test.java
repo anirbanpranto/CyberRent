@@ -34,4 +34,10 @@ public class Test{
         System.out.println(data.get(i));
       }
     }
+
+    public void convertTest(){
+      List<String> array = Arrays.asList("item1", "item2", "item3");
+      String output = Database.makeString(array);
+      System.out.println(output);
+    }
 }
