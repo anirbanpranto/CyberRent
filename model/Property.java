@@ -6,7 +6,7 @@ public class Property {
     private String listerType; //[Owner,Agent]
     private int listerID;
     private int propertyID;
-    private static int idCount = 100; 
+    private static int idCount = Database.readUpdate("Property")+1; 
     //private int areaID;
     private String status = "active"; // [active,inactive]
     private String projectName;
@@ -37,7 +37,6 @@ public class Property {
     */
 
     public Property(String listerType, int listerID, Builder p){
-        idCount = Database.readUpdate("Property")+1;
         this.id = idCount;
         this.listerType = listerType;
         this.listerID = listerID;
@@ -55,11 +54,10 @@ public class Property {
         this.state = p.state;
         this.propertyType = p.propertyType; // condo, townhouse
         this.photo = p.photo;
-
-        writeFile();
     }
 
     public void writeFile(){
+        // this function will be used in Controller
         Database.writeData("Property", Arrays.asList(Integer.toString(id),  listerType     , Integer.toString(listerID) ,
                                                      status, projectName, Integer.toString(floorSize), Double.toString(psf), 
                                                      furnishStatus,numberOfBedroom, Integer.toString(numberOfBathroom), facilities.toString(), 
