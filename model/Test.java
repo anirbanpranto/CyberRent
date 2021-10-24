@@ -24,4 +24,14 @@ public class Test{
     public void OwnerIntegration(){
         Owner temp = Owner.createOwner("Anirban Bala", "codeboi08", "spiderman_4", "anirbanpranto@gmail.com", "0189717552");
     }
+
+    public void parseTest(){
+      String arrayField = "[item1 item2 item3 item4]";
+      arrayField = arrayField.replace("[", "");
+      arrayField = arrayField.replace("]", "");
+      List<String> data = Database.parseArray(arrayField);
+      for(int i = 0; i < data.size(); i++){
+        System.out.println(data.get(i));
+      }
+    }
 }

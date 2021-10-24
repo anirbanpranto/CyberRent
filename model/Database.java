@@ -100,6 +100,12 @@ public class Database{
     }
   }
 
+  public static List<String> parseArray(String list){
+    String[] data = list.split(" ");
+    List<String> temp = Arrays.asList(data);
+    return temp;
+  }
+
   public static List<List<String>> readData(String tableName){
     String fileName = tableName + ".csv";
     String filePath = "./Database/"+fileName;
