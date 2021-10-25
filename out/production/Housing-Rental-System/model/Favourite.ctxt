@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Favourite
+comment1.params=tenantID
+comment1.target=Favourite(int)
+comment2.params=p
+comment2.target=void\ addFavourite(Property)
+comment3.params=p
+comment3.target=void\ removeFavourite(Property)
+comment4.params=
+comment4.target=void\ clearFavourite()
+comment5.params=
+comment5.target=java.util.ArrayList\ getFavouriteProperty()
+numComments=6

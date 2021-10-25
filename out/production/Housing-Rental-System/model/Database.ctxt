@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Database
+comment1.params=tableName\ Entry
+comment1.target=void\ writeData(java.lang.String,\ java.util.List)
+comment2.params=tableName\ Entry
+comment2.target=void\ writeUpdate(java.lang.String,\ java.util.List)
+comment3.params=tableName
+comment3.target=int\ readUpdate(java.lang.String)
+comment4.params=list
+comment4.target=java.util.List\ parseArray(java.lang.String)
+comment5.params=data
+comment5.target=java.lang.String\ makeString(java.util.List)
+comment6.params=tableName
+comment6.target=java.util.List\ readData(java.lang.String)
+numComments=7

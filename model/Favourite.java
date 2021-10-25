@@ -3,35 +3,37 @@ import java.util.*;
 
 public class Favourite {
 
-    //private int favouriteListID;
+    private int favouriteID;
     private int tenantID;
-    private ArrayList<Property> favouriteProperty;
+    private int propertyID;
+    private static int idCount = Database.readUpdate("Favourite")+1;
 
-    public Favourite(int tenantID){
+    //add a new favourite property by a tenant
+    public Favourite(int tenantID, int propertyID){
+        this.favouriteID = idCount;
         this.tenantID = tenantID;
-        this.favouriteProperty = new ArrayList<Property>();
+        this.propertyID = propertyID;
     }
 
-    public void addFavourite(Property p){
-        for(int i = 0; i < favouriteProperty.size(); i++){
-            if(favouriteProperty.get(i).getPropertyID() == p.getPropertyID()){
-                System.out.println("Already Added to favourite.");
-            }else{
-                this.favouriteProperty.add(p);
-            }
-        }
+    public void writeFile(){
+        Database.writeData("Favourite",Arrays.asList(
+                Integer.toString(favouriteID),
+                Integer.toString(tenantID),
+                Integer.toString(propertyID)));
+
+        Database.writeUpdate("Favourite",Arrays.asList(Integer.toString(favouriteID)));
     }
 
-    public void removeFavourite(Property p){
-        this.favouriteProperty.remove(p);
+    public int getFavouriteListID(){
+        return favouriteID;
     }
 
-    public void clearFavourite(){
-        this.favouriteProperty.clear();
+    public int getTenantID(){
+        return tenantID;
     }
 
-    public ArrayList<Property> getFavouriteProperty(){
-        return favouriteProperty;
+    public int getPropertyID(){
+        return propertyID;
     }
 
 }

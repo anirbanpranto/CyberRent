@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Base2Controller
+comment0.text=\n\ Provide\ the\ slot\ information\ of\ board\n\n\ @author\ Anirban\ Bala\ Pranto\n
+comment1.params=event
+comment1.target=void\ down(javafx.event.ActionEvent)
+numComments=2
