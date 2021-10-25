@@ -10,9 +10,12 @@ public class Favourite {
 
     //add a new favourite property by a tenant
     public Favourite(int tenantID, int propertyID){
+        System.out.println("Here");
         this.favouriteID = idCount;
         this.tenantID = tenantID;
         this.propertyID = propertyID;
+        idCount++;
+        writeFile();
     }
 
     public void writeFile(){
