@@ -16,11 +16,10 @@ public abstract class User {
     protected String role;
     protected String phoneNumber;
 
-    public User(int Id, String fullName, String userName, String password, String email, String status, String role, String phoneNumber){
+    public User(int Id, String fullName, String password, String email, String role, String phoneNumber){
         this.Id = Id;
         this.fullName = fullName;
         this.password = password;
-        this.status = status;
         this.role = role;
         this.phoneNumber = phoneNumber;
     }

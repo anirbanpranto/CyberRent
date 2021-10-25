@@ -4,8 +4,8 @@ import java.util.*;
 public class Owner extends User{
     private static int globalId = Database.readUpdate("Owner");
 
-    public Owner(int Id, String fullName, String userName, String password, String email, String phoneNumber){
-        super(Id, fullName, userName, password, email, "Active", "Owner", phoneNumber);
+    public Owner(int Id, String fullName, String password, String email, String phoneNumber){
+        super(Id, fullName, password, email, "Owner", phoneNumber);
     }
 
     public void setStatus(String status){
@@ -20,7 +20,7 @@ public class Owner extends User{
         int Id = ++globalId;
         Database.writeData("Owner", Arrays.asList(Integer.toString(Id), fullName, userName, password, email, "Active", "Owner", phoneNumber));
         Database.writeUpdate("Owner", Arrays.asList(Integer.toString(Id)));
-        return new Owner(Id, fullName, userName, password, email, phoneNumber);
+        return new Owner(Id, fullName, password, email, phoneNumber);
     }
 
     public ArrayList<Property> getOwnerProperty(){

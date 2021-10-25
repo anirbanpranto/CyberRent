@@ -4,8 +4,8 @@ import java.util.*;
 public class Agent extends User{
     private static int globalId = Database.readUpdate("Agent");
     private String licenseNo;
-    public Agent(int Id, String fullName, String userName, String password, String email, String phoneNumber, String licenseNo){
-        super(Id, fullName, userName, password, email, "Active", "Owner", phoneNumber);
+    public Agent(int Id, String fullName, String password, String email, String phoneNumber, String licenseNo){
+        super(Id, password, email, "Active", "Owner", phoneNumber);
         this.licenseNo = licenseNo;
     }
 
@@ -21,7 +21,7 @@ public class Agent extends User{
         int Id = ++globalId;
         Database.writeData("Agent", Arrays.asList(Integer.toString(Id), fullName, userName, password, email, "Active", "Owner", phoneNumber, licenseNo));
         Database.writeUpdate("Agent", Arrays.asList(Integer.toString(Id)));
-        return new Agent(Id, fullName, userName, password, email, phoneNumber, licenseNo);
+        return new Agent(Id, fullName, password, email, phoneNumber, licenseNo);
     }
 
     public ArrayList<Property> getAgentProperty(){

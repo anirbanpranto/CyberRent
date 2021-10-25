@@ -13,6 +13,8 @@ public class Favourite {
         this.favouriteID = idCount;
         this.tenantID = tenantID;
         this.propertyID = propertyID;
+        idCount++;
+        writeFile();
     }
 
     public void writeFile(){

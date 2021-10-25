@@ -45,4 +45,9 @@ public class Test{
       String output = Database.makeString(array);
       System.out.println(output);
     }
+
+    public static void favouriteTest(){
+        Favourite test = new Favourite(100,1000);
+        System.out.println("Test");
+    }
 }
