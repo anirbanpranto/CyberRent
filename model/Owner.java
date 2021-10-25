@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Owner extends User{
     private static int globalId = Database.readUpdate("Owner");
+
     public Owner(int Id, String fullName, String userName, String password, String email, String phoneNumber){
         super(Id, fullName, userName, password, email, "Active", "Owner", phoneNumber);
     }
