@@ -78,12 +78,12 @@
                <image>
                   <Image url="@image/Homepage/Homepage-background.jpg" />
                </image></ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="221.0" layoutX="148.0" layoutY="181.0" opacity="0.55" stroke="BLACK" strokeType="INSIDE" width="989.0" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="143.0" />
-            <TextField fx:id="searchTextField" layoutX="240.0" layoutY="291.0" prefHeight="43.0" prefWidth="590.0" promptText="Search by location or property name" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="450.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="221.0" layoutX="155.0" layoutY="181.0" opacity="0.55" stroke="BLACK" strokeType="INSIDE" width="989.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="139.20000000000005" />
+            <TextField fx:id="searchTextField" layoutX="301.0" layoutY="291.0" prefHeight="43.0" prefWidth="590.0" promptText="Search by location or property name" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="389.0">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextField>
-            <Button fx:id="searchButton" layoutX="844.0" layoutY="293.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="74.0" style="-fx-background-color: #26619c;" text="Search" textFill="WHITE">
+            <Button fx:id="searchButton" layoutX="915.0" layoutY="293.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="74.0" style="-fx-background-color: #26619c;" text="Search" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font>
@@ -98,7 +98,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <HBox layoutX="240.0" layoutY="352.0" prefHeight="38.0" prefWidth="579.0">
+            <HBox layoutX="301.0" layoutY="349.0" prefHeight="38.0" prefWidth="579.0">
                <children>
                   <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="All Residential" textFill="WHITE">
                     <items>
