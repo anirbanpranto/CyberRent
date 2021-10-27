@@ -20,7 +20,7 @@
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/Homepage/Homepage-houseicon.png" />
+                        <Image url="@image/Homepage/Homepage-houseicon.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -79,12 +79,12 @@
                   </Button>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="136.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/Login/login-mailicon.png" />
+                        <Image url="@image/Login/login-mailicon.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="136.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/Login/login-passwordicon.png" />
+                        <Image url="@image/Login/login-passwordicon.png" />
                      </image>
                   </ImageView>
                </children>

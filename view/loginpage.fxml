@@ -20,7 +20,7 @@
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/Common/Homepage-houseicon.png" />
+                        <Image url="@image/Common/Homepage-houseicon.png"/>
                      </image>
                   </ImageView>
                </graphic>
@@ -36,7 +36,7 @@
          <children>
             <ImageView fitHeight="664.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../image/Register_Loginpage/background.jpg" />
+                  <Image url="@image/Register_Loginpage/background.jpg" />
                </image>
             </ImageView>
             <AnchorPane opacity="0.6" prefHeight="640.0" prefWidth="661.0" style="-fx-background-color: #26619c;">
@@ -79,12 +79,12 @@
                   </Button>
                   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="135.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/Register_Loginpage/login-mailicon.png" />
+                        <Image url="@image/Register_Loginpage/login-mailicon.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="135.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/Register_Loginpage/login-passwordicon.png" />
+                        <Image url="@image/Register_Loginpage/login-passwordicon.png" />
                      </image>
                   </ImageView>
                   <PasswordField layoutX="181.0" layoutY="286.0" prefHeight="33.0" prefWidth="275.0" promptText="Confirm password">

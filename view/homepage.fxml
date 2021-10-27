@@ -32,7 +32,7 @@
                <graphic>
                   <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/Common/Homepage-favouriteicon.png" />
+                        <Image url="@image/Common/Homepage-favouriteicon.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -44,7 +44,7 @@
                <graphic>
                   <ImageView fitHeight="27.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/Common/Homepage-profileicon.png" />
+                        <Image url="@image/Common/Homepage-profileicon.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -56,7 +56,7 @@
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../image/Common/Homepage-houseicon.png" />
+                        <Image url="@image/Common/Homepage-houseicon.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -72,7 +72,7 @@
          <children>
             <ImageView fitHeight="640.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../image/Homepage/Homepage-background.jpg" />
+                  <Image url="@image/Homepage/Homepage-background.jpg" />
                </image></ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" height="220.0" layoutX="387.0" layoutY="181.0" opacity="0.55" stroke="BLACK" strokeType="INSIDE" width="600.0" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="340.0" />
             <TextField fx:id="searchTextField" layoutX="429.0" layoutY="291.0" prefHeight="40.0" prefWidth="350.0" promptText="Search by location or property name" AnchorPane.leftAnchor="429.0" AnchorPane.rightAnchor="500.6">
