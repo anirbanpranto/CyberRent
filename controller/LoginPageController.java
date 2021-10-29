@@ -57,6 +57,7 @@ public class LoginPageController {
         for(int i = 0; i < list.size(); i++){
             // to check whether email and password are matched or not
             if (list.get(i).get(3).equals(userInput_Email.getText())&& (list.get(i).get(2).equals(userInput_Password.getText()))){
+                GlobalState.getInstance().setLoginStatus();
                 Stage mainStage = GlobalState.getInstance().getStage();
                 Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
                 mainStage.setScene(new Scene(root, 1280, 720));
