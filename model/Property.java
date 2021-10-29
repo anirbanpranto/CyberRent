@@ -13,7 +13,7 @@ public class Property {
     private int floorSize;
     private double psf;
     private String furnishStatus; // [fully, partially, unfurnished]
-    private String numberOfBedroom; // [studio,1,2,3,4,...]
+    private int numberOfBedroom; // [1,2,3,4,...]
     private int numberOfBathroom;
     private ArrayList<String> facilities; // swimming pool, gym room and etc
     private ArrayList<String> keyFeatures; // air conditioning, washing machine
@@ -30,7 +30,7 @@ public class Property {
         ArrayList<String> k = new ArrayList<>();
         ArrayList<String> photos = new ArrayList<>();
         Property p = new Property.Builder().projectName("ABC").floorSize(1000).psf(0.9).furnishStatus("Fully").
-                                         numberOfBedroom("2").numberOfBathroom(1).facilities(f).
+                                         numberOfBedroom(2).numberOfBathroom(1).facilities(f).
                                          keyFeatures(k).rental_price(1000).address("address").
                                          city("Cyberjaya").state("Selangor").propertyType("condominium").
                                          photo(photos).build("Owner",1);
@@ -60,7 +60,7 @@ public class Property {
         // this function will be used in Controller
         Database.writeData("Property", Arrays.asList(Integer.toString(id),  listerType     , Integer.toString(listerID) ,
                                                      status, projectName, Integer.toString(floorSize), Double.toString(psf), 
-                                                     furnishStatus,numberOfBedroom, Integer.toString(numberOfBathroom), facilities.toString(), 
+                                                     furnishStatus,Integer.toString(numberOfBedroom), Integer.toString(numberOfBathroom), facilities.toString(), 
                                                      keyFeatures.toString(),Integer.toString(rental_price), address,city, 
                                                      state, propertyType, photo.toString()));
         
@@ -87,7 +87,7 @@ public class Property {
     public String getFurnishStatus(){return furnishStatus;}
     public void setFurnishStatus(String f){furnishStatus = f;}
     public String getNumberOfBedroom(){return numberOfBedroom;}
-    public void setNumberOfBedroom(String n){numberOfBedroom = n;}
+    public void setNumberOfBedroom(int n){numberOfBedroom = n;}
     public int getNumberOfBathroom(){return numberOfBathroom;}
     public void setNumberOfBathroom(int n){numberOfBathroom = n;}
     public ArrayList<String> getFacilities(){return facilities;}
@@ -112,7 +112,7 @@ public class Property {
         private int floorSize;
         private double psf;
         private String furnishStatus; 
-        private String numberOfBedroom; 
+        private int numberOfBedroom; 
         private int numberOfBathroom;
         private ArrayList<String> facilities; 
         private ArrayList<String> keyFeatures; 
@@ -127,7 +127,7 @@ public class Property {
         public Builder floorSize(int f){floorSize = f; return this;}
         public Builder psf(double p){psf = p; return this;}
         public Builder furnishStatus(String f){furnishStatus = f; return this;}
-        public Builder numberOfBedroom(String n){numberOfBedroom = n; return this;}
+        public Builder numberOfBedroom(int n){numberOfBedroom = n; return this;}
         public Builder numberOfBathroom(int n){numberOfBathroom = n; return this;}
         public Builder facilities(ArrayList<String> f){facilities = f; return this;}    
         public Builder keyFeatures(ArrayList<String> k){keyFeatures = k; return this;}
