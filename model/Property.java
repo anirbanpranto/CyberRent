@@ -87,7 +87,7 @@ public class Property {
     public String getFurnishStatus(){return furnishStatus;}
     public void setFurnishStatus(String f){furnishStatus = f;}
     public int getNumberOfBedroom(){return numberOfBedroom;}
-    public void setNumberOfBedroom(String n){numberOfBedroom = n;}
+    public void setNumberOfBedroom(int n){numberOfBedroom = n;}
     public int getNumberOfBathroom(){return numberOfBathroom;}
     public void setNumberOfBathroom(int n){numberOfBathroom = n;}
     public ArrayList<String> getFacilities(){return facilities;}
