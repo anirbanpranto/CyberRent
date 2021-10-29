@@ -60,7 +60,20 @@ public class GlobalState {
     public ArrayList<Property> getFavoriteProperties(){
         return this.favoriteProperty;
     }
+    
+    public void setLoginStatus(){
+        if (this.isLoggedIn){
+            this.isLoggedIn = false;
+        }
+        else{
+            this.isLoggedIn = true;
+        }
+    }
 
+    public boolean getLoginStatus(){
+        return this.isLoggedIn;
+    }
+    
     private static GlobalState instance;
 
     //this model will have all the public data performed without login
