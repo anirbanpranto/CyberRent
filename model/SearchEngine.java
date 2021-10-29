@@ -1,0 +1,162 @@
+package model;
+
+import model.Property;
+import model.Test;
+import java.util.*;
+
+public class SearchEngine {
+    //private static ArrayList<Property> desiredProperties = new ArrayList<>();
+    private static ArrayList<Property> allProperties = new ArrayList<>();
+    private static ArrayList<Property> tempProperties = new ArrayList<>();
+
+    public static ArrayList<Property> search(String projectName, String propertyType, int price_Min, int price_Max, 
+                                             int floorSize_Min, int floorSize_Max, double psf_Min, double psf_Max, 
+                                             String numberOfBedRoom, ArrayList<String> facilities, ArrayList<String> keyFeatures){
+
+        allProperties.clear();
+        tempProperties = GlobalState.getInstance().getProperties();
+        
+        for(int i = 0; i < tempProperties.size(); i++){
+            allProperties.add(tempProperties.get(i));
+        }
+
+        search_Name(projectName);
+        search_propertyType(propertyType);
+        search_Price(price_Min, price_Max);
+        search_floorSize(floorSize_Min, floorSize_Max);
+        search_psf(psf_Min, psf_Max);
+        search_numberOfbedroom(numberOfBedRoom);
+        search_Facilities(facilities);
+        search_keyFeatures(keyFeatures);
+
+        return allProperties;
+        
+    }
+
+    private static void search_Name(String projectName){
+        int counter = 0;
+
+        while(allProperties.size() != counter){
+            String current = allProperties.get(counter).getProjectName();
+            if(projectName.equals(""))
+                break;
+            else if(!(current.equals(projectName))){
+                allProperties.remove(counter);
+                continue;
+            }
+            counter++;
+        }
+    }
+
+    private static void search_propertyType(String propertyType){
+        int counter = 0;
+
+        while(allProperties.size() != counter){
+            String current = allProperties.get(counter).getPropertyType();
+            if(propertyType.equals("All Residential"))
+                break;
+            else if(!(current.equals(propertyType))){
+                allProperties.remove(counter);
+                continue;
+            }
+            counter++;
+        }
+    }
+
+    private static void search_Price(int min, int max){
+        int counter = 0;
+
+        while(allProperties.size() != counter){
+            Property current = allProperties.get(counter);
+            if(current.getRental_price() < min || current.getRental_price() > max){
+                allProperties.remove(current);
+                continue;
+            }
+            counter++;
+        }
+    }
+
+    private static void search_floorSize(int min, int max){
+        int counter = 0;
+
+        while(allProperties.size() != counter){
+            Property current = allProperties.get(counter);
+            if(current.getFloorSize() < min || current.getFloorSize() > max){
+                allProperties.remove(current);
+                continue;
+            }
+            counter++;
+        }
+    }
+
+    private static void search_psf(double min, double max){
+        int counter = 0;
+
+        while(allProperties.size() != counter){
+            Property current = allProperties.get(counter);
+            if(current.getpsf() < min || current.getpsf() > max){
+                allProperties.remove(current);
+                continue;
+            }
+            counter++;
+        }
+    }
+
+    private static void search_numberOfbedroom(String numberOfBedRoom){
+        int counter = 0;
+        int numOfBedRoom = 0;
+
+        if(!(numberOfBedRoom.equals("Any")))
+            numOfBedRoom = Character.getNumericValue(numberOfBedRoom.charAt(0));
+        
+        while(allProperties.size() != counter){
+            int current = allProperties.get(counter).getNumberOfBedroom();
+            if(numberOfBedRoom.equals("Any"))
+                break;
+            else if(current < numOfBedRoom){
+                System.out.println(current + " and " + numOfBedRoom);
+                allProperties.remove(counter);
+                continue;
+            }
+            counter++;
+        }
+    }
+
+    private static void search_Facilities(ArrayList<String> facilities){
+        int counter = 0;
+        
+        while(allProperties.size() != counter){
+            ArrayList<String> current = allProperties.get(counter).getFacilities();
+            for(int i = 1; i < facilities.size(); i++){
+                if(current.contains(facilities.get(i)))
+                    continue;
+                else{
+                    allProperties.remove(counter);
+                    break;
+                }
+            }
+            counter++;
+        }
+        
+    }
+
+    private static void search_keyFeatures(ArrayList<String> keyFeatures){
+        int counter = 0;
+        
+        while(allProperties.size() != counter){
+            ArrayList<String> current = allProperties.get(counter).getKeyFeatures();
+            for(int i = 1; i < keyFeatures.size(); i++){
+                if(current.contains(keyFeatures.get(i)))
+                    continue;
+                else{
+                    allProperties.remove(counter);
+                    break;
+                }
+            }
+            counter++;
+        }
+        ;
+    }
+
+
+}
