@@ -22,12 +22,12 @@ public class Test{
     }
     
     public void OwnerIntegration(){
-        //Owner temp = Owner.createOwner("Anirban Bala", "codeboi08", "spiderman_4", "anirbanpranto@gmail.com", "0189717552");
+        Owner temp = Owner.createOwner("Anirban Bala", "spiderman_4", "anirbanpranto@gmail.com", "0189717552");
         //dummy test change
     }
 
     public void AgentIntegration(){
-      //Agent temp = Agent.createAgent("Anirban Bala", "codeboi08", "spiderman_4", "anirbanpranto@gmail.com", "0189717552", "BW0418423");
+      Agent temp = Agent.createAgent("Anirban Bala", "spiderman_4", "anirbanpranto@gmail.com", "0189717552", "BW0418423");
     }
 
     public static void FavoriteIntegration(){
