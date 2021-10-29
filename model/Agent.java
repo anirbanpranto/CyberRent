@@ -5,7 +5,7 @@ public class Agent extends User{
     private static int globalId = Database.readUpdate("Agent");
     private String licenseNo;
     public Agent(int Id, String fullName, String password, String email, String phoneNumber, String licenseNo){
-        super(Id, fullName, password, email, "Owner", phoneNumber);
+        super(Id, fullName, password, email, "Agent", phoneNumber);
         this.licenseNo = licenseNo;
     }
 
@@ -15,13 +15,13 @@ public class Agent extends User{
 
     public static Agent createAgent(String fullName, String password, String email, String phoneNumber, String licenseNo){
         int Id = ++globalId;
-        Database.writeData("Agent", Arrays.asList(Integer.toString(Id), fullName, password, email, "Owner", phoneNumber, licenseNo));
+        Database.writeData("Agent", Arrays.asList(Integer.toString(Id), fullName, password, email, "Agent", phoneNumber, licenseNo));
         Database.writeUpdate("Agent", Arrays.asList(Integer.toString(Id)));
         return new Agent(Id, fullName, password, email, phoneNumber, licenseNo);
     }
 
     public ArrayList<Property> getAgentProperty(){
-        //this fetches all own property of this owner
+        //this fetches all own property of this agent
         GlobalState state = GlobalState.getInstance();
         if(state.getPersonalProperties() != null){
             return state.getFavoriteProperties();
