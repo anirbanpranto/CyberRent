@@ -123,7 +123,7 @@ public class Database{
   }
 
   public static List<String> parseArray(String list){
-    String[] data = list.split(" ");
+    String[] data = list.split("/");
     List<String> temp = Arrays.asList(data);
     return temp;
   }
@@ -133,7 +133,7 @@ public class Database{
     for(int i = 0; i < data.size(); i++){
       out += data.get(i);
       if(i != (data.size() - 1)){
-        out += " ";
+        out += "/";
       }
     }
     out += "]";
