@@ -57,10 +57,37 @@ public class Database{
     }
   }
 
+  public static void writeAllData(String tableName, ArrayList<List<String>> All){
+    String fileName = tableName + ".csv";
+    String filePath = "./Database/"+fileName;
+    File csvFile = new File(filePath);
+    if (csvFile.isFile()) {
+        try{
+            FileWriter pw = new FileWriter(filePath);
+            System.out.println("Writing " + fileName);
+            for(int i = 0; i < All.size(); i++){
+              for(int j = 0; j < All.get(i).size(); j++){
+                pw.append(All.get(i).get(j));
+                if(i == All.get(i).size() - 1){
+                  pw.append("\n");
+                }
+                else{
+                  pw.append(",");
+                }
+              }
+            }
+            pw.flush();
+            pw.close();
+        }
+        catch(Exception e){
+          e.printStackTrace();
+        }
+    }
+  }
+
   public static void writeUpdate(String tableName, List<String> Entry){
     String fileName = tableName + "Id" + ".csv";
     String filePath = "./Database/"+fileName;
-    File csvFile = new File(filePath);
     try{
           FileWriter pw = new FileWriter(filePath);
           for(int i = 0; i < Entry.size(); i++){
@@ -84,7 +111,6 @@ public class Database{
     String fileName = tableName + "Id.csv";
     String filePath = "./Database/"+fileName;
     File csvFile = new File(filePath);
-    List<List<String>> table = new ArrayList<List<String>>();
     String row = "";
     if (csvFile.isFile()) {
         try{

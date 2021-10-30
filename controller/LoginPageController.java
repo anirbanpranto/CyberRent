@@ -38,7 +38,8 @@ public class LoginPageController {
 
     @FXML
     void switchToHomePage(ActionEvent event) throws IOException{
-        Stage mainStage = GlobalState.getInstance().getStage();
+        GlobalState state = GlobalState.getInstance();
+        Stage mainStage = state.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
         mainStage.setScene(new Scene(root, 1280, 720));
     }
@@ -53,11 +54,12 @@ public class LoginPageController {
     @FXML
     void validate(ActionEvent event) throws Exception{
         List<List<String>> list = Database.readData(roleComboBox.getValue().toString());
-
+        GlobalState state = GlobalState.getInstance();
         for(int i = 0; i < list.size(); i++){
             // to check whether email and password are matched or not
             if (list.get(i).get(3).equals(userInput_Email.getText())&& (list.get(i).get(2).equals(userInput_Password.getText()))){
-                GlobalState.getInstance().setLoginStatus();
+                state.setLoginStatus();
+                state.setSession(Integer.parseInt(list.get(i).get(0)), list.get(i).get(4));
                 Stage mainStage = GlobalState.getInstance().getStage();
                 Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
                 mainStage.setScene(new Scene(root, 1280, 720));

@@ -25,6 +25,14 @@ public class edit_profileController {
     @FXML
     public void save(ActionEvent event) {
         try {
+            GlobalState state = GlobalState.getInstance();
+            int id = state.getLoggedInId();
+            String role = state.getRole();
+            if(role=="Owner"){
+                //fetch owner
+                //edit the Owner inside the temporary Arraylist
+                //edit the Owner inside the temporary Lookuptable
+            }
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/view_profile.fxml"));
             Parent root = (Parent)loader.load();
             view_profileController test = loader.getController();
