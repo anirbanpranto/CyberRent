@@ -16,7 +16,7 @@ public class Main extends Application{
       //singleton design pattern
       GlobalState mainScreen = GlobalState.getInstance();
       mainScreen.saveStage(primaryStage);
-      Parent root = FXMLLoader.load(getClass().getResource("view/ListProperty.fxml"));
+      Parent root = FXMLLoader.load(getClass().getResource("view/homepage.fxml"));
       primaryStage.setTitle("Login");
       primaryStage.setScene(new Scene(root, 1280, 720, Color.BLACK));
       primaryStage.show();
