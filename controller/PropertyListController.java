@@ -5,6 +5,8 @@ import java.io.IOException;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -113,8 +115,24 @@ public class PropertyListController {
             });
         }
         else{
-            profileButton.setOnAction(e ->{switchToLogin(e);});
-            favouriteButton.setOnAction(e ->{switchToLogin(e);});
+            profileButton.setOnAction(e ->{switchToLogin(e);
+                try
+                {
+                    displayError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }});
+            favouriteButton.setOnAction(e ->{switchToLogin(e);
+                try
+                {
+                    displayError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }});
         }
 
         
@@ -429,6 +447,14 @@ public class PropertyListController {
         Parent root = FXMLLoader.load(getClass().getResource("/view/property.fxml"));
         mainStage.setScene(new Scene(root, 1280, 720));
         */
+    }
+
+    private void displayError() throws Exception {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Login error");
+        alert.setHeaderText("Error");
+        alert.setContentText("Login is required.");
+        alert.showAndWait(); 
     }
 
 }
