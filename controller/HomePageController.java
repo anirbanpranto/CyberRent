@@ -69,6 +69,8 @@ public class HomePageController {
     private Button manageButton;
     @FXML
     private TextField searchTextField;
+    @FXML
+    private Button myListButton;
 
     //search criteria
     private String search_projectName;
@@ -105,6 +107,15 @@ public class HomePageController {
                     exp.printStackTrace();
                 }});
             favouriteButton.setOnAction(e ->{switchToLogin(e);
+                try
+                {
+                    displayError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }});
+            myListButton.setOnAction(e ->{switchToLogin(e);
                 try
                 {
                     displayError();
@@ -330,6 +341,20 @@ public class HomePageController {
         }catch (IOException ioe){
             ioe.printStackTrace();
         }
+    }
+
+    @FXML
+    public void switchToMyList(ActionEvent event){
+        //test
+        /*
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/registerpage.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+        */
     }
 
     private void displayError() throws Exception {
