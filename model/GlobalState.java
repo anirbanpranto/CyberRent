@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart.Data;
 import javafx.stage.Stage;
 import java.util.*;
 
@@ -40,6 +41,22 @@ public class GlobalState {
         //load all properties here from database
         //read the database for properties and use those values to create an ArrayList of all properties
         //read the database and load the object
+        List<List<String>> strProperties = Database.readData("Property");
+        ArrayList<Property> tempProp = new ArrayList<>();
+        for(int i = 0; i < strProperties.size(); i++){
+            List<String> l = strProperties.get(i);
+            ArrayList<String> facilities = new ArrayList<String>(Database.parseArray(l.get(10)));
+            ArrayList<String> features = new ArrayList<String>(Database.parseArray(l.get(11)));
+            ArrayList<String> photos = new ArrayList<String>(Database.parseArray(l.get(17)));
+            Property p = new Property.Builder().projectName(l.get(4)).floorSize(Integer.parseInt(l.get(5))).psf(Double.parseDouble(l.get(6))).furnishStatus(l.get(7)).
+                                         numberOfBedroom(Integer.parseInt(l.get(8))).numberOfBathroom(Integer.parseInt(l.get(9))).facilities(facilities).
+                                         keyFeatures(features).rental_price(Integer.parseInt(l.get(12))).address(l.get(13)).
+                                         city(l.get(14)).state(l.get(15)).propertyType(l.get(16)).
+                                         photo(photos).build(l.get(1),Integer.parseInt(l.get(2)));
+            tempProp.add(p);
+        }
+        this.propeties = tempProp;
+        System.out.println(propeties.size());
     }
 
     private void EditPerformed(String tableName){ //edit the temporary data and put them in persistent data
