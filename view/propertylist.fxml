@@ -431,7 +431,6 @@
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Condominium" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Duplex" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Service Residence" />
-                        <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Studio" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Terraced House" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Townhouse" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Townhouse Condominium" />
