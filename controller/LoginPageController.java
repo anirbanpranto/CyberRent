@@ -38,17 +38,12 @@ public class LoginPageController {
 
     @FXML
     void switchToHomePage(ActionEvent event) throws IOException{
-        GlobalState state = GlobalState.getInstance();
-        Stage mainStage = state.getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
-        mainStage.setScene(new Scene(root, 1280, 720));
+        loadFXML("/view/homepage.fxml");
     }
 
     @FXML
     void switchToRegister(ActionEvent event) throws IOException{
-        Stage mainStage = GlobalState.getInstance().getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("/view/registerpage.fxml"));
-        mainStage.setScene(new Scene(root, 1280, 720));
+        loadFXML("/view/registerpage.fxml");
     }
 
     @FXML
@@ -82,9 +77,7 @@ public class LoginPageController {
                 System.out.println(state.getRole());
                 System.out.println(state.getPhoneNumber());
 
-                Stage mainStage = GlobalState.getInstance().getStage();
-                Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
-                mainStage.setScene(new Scene(root, 1280, 720));
+                loadFXML("/view/homepage.fxml");
             }
             else{
                 try
@@ -110,4 +103,10 @@ public class LoginPageController {
         alert.setContentText("Invalid email or password");
         alert.showAndWait();
     }
+
+    private void loadFXML(String fxmlPath) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+        Stage mainStage = GlobalState.getInstance().getStage();
+        mainStage.setScene(new Scene(root, 1280, 720));
+    } 
 }

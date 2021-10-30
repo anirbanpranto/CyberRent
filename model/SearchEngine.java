@@ -70,10 +70,10 @@ public class SearchEngine {
         int counter = 0;
 
         while(allProperties.size() != counter){
-            String current = allProperties.get(counter).getProjectName();
+            String current = allProperties.get(counter).getProjectName().toLowerCase();
             if(projectName.equals(""))
                 break;
-            else if(!(current.equals(projectName))){
+            else if(!(current.toLowerCase().contains(projectName))){
                 allProperties.remove(counter);
                 continue;
             }
