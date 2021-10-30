@@ -78,6 +78,13 @@ public class GlobalState {
         this.email = email;
         this.role = role;
         this.phoneNumber = phoneNumber;
+        ArrayList<Property> tempPersonaList = new ArrayList<>();
+        for(int i = 0; i < this.propeties.size(); i++){
+            if(this.propeties.get(i).getListerType() == this.role && this.propeties.get(i).getListerID() == this.loggedInId){
+                tempPersonaList.add(this.propeties.get(i));
+            }
+        }
+        this.personalProperty = tempPersonaList;
     }
     public int getLoggedInId(){
         return this.loggedInId;
