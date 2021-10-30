@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.IOException;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.CheckBox;
+import javafx.scene.layout.AnchorPane;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,6 +53,9 @@ public class PropertyListController {
     private Button page_Next;
 
     @FXML
+    private ArrayList<AnchorPane> property_pane;
+
+    @FXML
     private MenuButton priceRange;
     @FXML
     private TextField price_Max;
@@ -75,6 +79,11 @@ public class PropertyListController {
     @FXML
     private TextField searchTextField;
 
+    @FXML
+    private MenuButton sorting;
+    @FXML
+    private Label numberOfResults;
+
     //search criteria
     private String search_projectName;
     private String search_propertyType = "All Residential";
@@ -87,6 +96,7 @@ public class PropertyListController {
     private String search_numberOfBedRoom = "Any";
     private ArrayList<String> search_facilities = new ArrayList<>();
     private ArrayList<String> search_keyFeatures = new ArrayList<>();
+    private String sortType = "Default";
 
     private ArrayList<Property> properties;
     private int totalResult;
@@ -116,13 +126,20 @@ public class PropertyListController {
 
         this.properties = SearchEngine.search(search_projectName, search_propertyType, search_price_Min, search_price_Max, 
                                          search_floorSize_Min, search_floorSize_Max, search_psf_Min, search_psf_Max, 
-                                         search_numberOfBedRoom, search_facilities, search_keyFeatures);
+                                         search_numberOfBedRoom, search_facilities, search_keyFeatures, sortType);
         setProperties(this.properties);
+
+        currentPage.setText("1");
+        page_Back.setDisable(true);
+        
 
     }
     
     public void setProperties(ArrayList<Property> properties){
         totalResult = properties.size(); 
+        
+        numberOfResults.setText(totalResult + " results.");
+        
         if(totalResult <= 3)
             page_Next.setDisable(true);
         else
@@ -145,6 +162,7 @@ public class PropertyListController {
             property_list.get(i).get(6).setText(properties.get(i + (page * 3)).getFurnishStatus()); // furnish status
             property_list.get(i).get(7).setText(Integer.toString(properties.get(i + (page * 3)).getNumberOfBedroom())); // no. of bedroom
             property_list.get(i).get(8).setText(Integer.toString(properties.get(i + (page * 3)).getNumberOfBathroom())); // no. of bathroom
+            property_pane.get(i).setVisible(true);
 
             //property_image.get(i).setImage(new Image(properties.get(i).getPhoto().get(0))); // 1st picture as the thumbnail
             }catch(IndexOutOfBoundsException e){
@@ -157,6 +175,7 @@ public class PropertyListController {
                 property_list.get(i).get(6).setText(""); 
                 property_list.get(i).get(7).setText("");
                 property_list.get(i).get(8).setText("");
+                property_pane.get(i).setVisible(false);
             }
         }
     }
@@ -340,6 +359,14 @@ public class PropertyListController {
         String selection = ((MenuItem)event.getSource()).getText();
         propertyType.setText(selection);
         search_propertyType = selection;
+    }
+
+    @FXML
+    public void sort(ActionEvent event){
+        String selection = ((MenuItem)event.getSource()).getText();
+        sorting.setText(selection);
+        sortType = selection;
+
     }
 
     @FXML
