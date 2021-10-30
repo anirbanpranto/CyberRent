@@ -19,7 +19,7 @@ import javafx.scene.control.Alert.AlertType;
 
 public class LoginPageController {
 
-    ObservableList<String> roleList = FXCollections.observableArrayList("Tenant","Owner","Agent");
+    ObservableList<String> roleList = FXCollections.observableArrayList("Tenant", "Owner", "Agent");
 
     @FXML
     private TextField userInput_Email;
@@ -31,41 +31,36 @@ public class LoginPageController {
     private ComboBox roleComboBox;
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         roleComboBox.setValue("Tenant");
         roleComboBox.setItems(roleList);
     }
 
     @FXML
-    void switchToHomePage(ActionEvent event) throws IOException{
+    void switchToHomePage(ActionEvent event) throws IOException {
         loadFXML("/view/homepage.fxml");
     }
 
     @FXML
-    void switchToRegister(ActionEvent event) throws IOException{
+    void switchToRegister(ActionEvent event) throws IOException {
         loadFXML("/view/registerpage.fxml");
     }
 
     @FXML
-    void validate(ActionEvent event) throws Exception{
+    void validate(ActionEvent event) throws Exception {
         List<List<String>> list = Database.readData(roleComboBox.getValue().toString());
         GlobalState state = GlobalState.getInstance();
-
-        for(int i = 0; i < list.size(); i++){
+        boolean flag = false;
+        for (int i = 0; i < list.size(); i++) {
             // to check whether email and password are matched or not
-            if (list.get(i).get(3).equals(userInput_Email.getText())&& (list.get(i).get(2).equals(userInput_Password.getText()))){
+            if (list.get(i).get(3).equals(userInput_Email.getText())
+                    && (list.get(i).get(2).equals(userInput_Password.getText()))) {
                 GlobalState.getInstance().setLoginStatus();
+                flag = true;
+                state.setSession(Integer.parseInt(list.get(i).get(0)), list.get(i).get(1), list.get(i).get(2),
+                        list.get(i).get(3), roleComboBox.getValue().toString(), list.get(i).get(5));
 
-                state.setSession(
-                        Integer.parseInt(list.get(i).get(0)),
-                        list.get(i).get(1),
-                        list.get(i).get(2),
-                        list.get(i).get(3),
-                        roleComboBox.getValue().toString(),
-                        list.get(i).get(5)
-                );
-
-                if((roleComboBox.getValue().toString().equals("Agent"))){
+                if ((roleComboBox.getValue().toString().equals("Agent"))) {
                     state.setAgentLicense(list.get(i).get(7));
                     System.out.println(state.getAgentLicense());
                 }
@@ -79,18 +74,14 @@ public class LoginPageController {
 
                 loadFXML("/view/homepage.fxml");
             }
-            else{
-                try
-                {
-                    displayError();
-                    userInput_Email.setText(null);
-                    userInput_Password.setText(null);
-                    break;
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+        }
+        if (!flag) {
+            try {
+                displayError();
+                userInput_Email.setText(null);
+                userInput_Password.setText(null);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 
@@ -108,5 +99,5 @@ public class LoginPageController {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
         Stage mainStage = GlobalState.getInstance().getStage();
         mainStage.setScene(new Scene(root, 1280, 720));
-    } 
+    }
 }
