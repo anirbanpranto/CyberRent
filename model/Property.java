@@ -60,9 +60,9 @@ public class Property {
         // this function will be used in Controller
         Database.writeData("Property", Arrays.asList(Integer.toString(id),  listerType     , Integer.toString(listerID) ,
                                                      status, projectName, Integer.toString(floorSize), Double.toString(psf), 
-                                                     furnishStatus,Integer.toString(numberOfBedroom), Integer.toString(numberOfBathroom), facilities.toString(), 
-                                                     keyFeatures.toString(),Integer.toString(rental_price), address,city, 
-                                                     state, propertyType, photo.toString()));
+                                                     furnishStatus,Integer.toString(numberOfBedroom), Integer.toString(numberOfBathroom), Database.makeString(facilities), 
+                                                     Database.makeString(keyFeatures),Integer.toString(rental_price), address,city, 
+                                                     state, propertyType, Database.makeString(photo)));
         
         Database.writeUpdate("Property", Arrays.asList(Integer.toString(id)));
     }
@@ -144,4 +144,16 @@ public class Property {
 
         
     }    
+}
+
+class SortByRentalPrice implements Comparator<Property>{
+    @Override
+    public int compare(Property p1 , Property p2){
+        if(p1.getRental_price() > p2.getRental_price())
+            return 1;
+        else if(p1.getRental_price() == p2.getRental_price())
+            return 0;
+        else
+            return -1;
+    }
 }

@@ -15,7 +15,7 @@ public class Agent extends User{
 
     public static Agent createAgent(String fullName, String password, String email, String phoneNumber, String licenseNo){
         int Id = ++globalId;
-        Database.writeData("Agent", Arrays.asList(Integer.toString(Id), fullName, password, email, "Agent", phoneNumber, licenseNo));
+        Database.writeData("Agent", Arrays.asList(Integer.toString(Id), fullName, password, email, "Agent", phoneNumber, "Active", licenseNo));
         Database.writeUpdate("Agent", Arrays.asList(Integer.toString(Id)));
         return new Agent(Id, fullName, password, email, phoneNumber, licenseNo);
     }

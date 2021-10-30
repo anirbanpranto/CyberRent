@@ -55,11 +55,33 @@ public class LoginPageController {
     void validate(ActionEvent event) throws Exception{
         List<List<String>> list = Database.readData(roleComboBox.getValue().toString());
         GlobalState state = GlobalState.getInstance();
+
         for(int i = 0; i < list.size(); i++){
             // to check whether email and password are matched or not
             if (list.get(i).get(3).equals(userInput_Email.getText())&& (list.get(i).get(2).equals(userInput_Password.getText()))){
-                state.setLoginStatus();
-                state.setSession(Integer.parseInt(list.get(i).get(0)), list.get(i).get(4));
+                GlobalState.getInstance().setLoginStatus();
+
+                state.setSession(
+                        Integer.parseInt(list.get(i).get(0)),
+                        list.get(i).get(1),
+                        list.get(i).get(2),
+                        list.get(i).get(3),
+                        roleComboBox.getValue().toString(),
+                        list.get(i).get(5)
+                );
+
+                if((roleComboBox.getValue().toString().equals("Agent"))){
+                    state.setAgentLicense(list.get(i).get(7));
+                    System.out.println(state.getAgentLicense());
+                }
+
+                System.out.println(state.getLoggedInId());
+                System.out.println(state.getFullName());
+                System.out.println(state.getPassword());
+                System.out.println(state.getEmail());
+                System.out.println(state.getRole());
+                System.out.println(state.getPhoneNumber());
+
                 Stage mainStage = GlobalState.getInstance().getStage();
                 Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
                 mainStage.setScene(new Scene(root, 1280, 720));
@@ -75,7 +97,7 @@ public class LoginPageController {
                 catch (Exception e)
                 {
                     e.printStackTrace();
-                }    
+                }
             }
         }
 
@@ -86,6 +108,6 @@ public class LoginPageController {
         alert.setTitle("Input error");
         alert.setHeaderText("Error");
         alert.setContentText("Invalid email or password");
-        alert.showAndWait(); 
+        alert.showAndWait();
     }
 }

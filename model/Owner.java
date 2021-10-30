@@ -27,7 +27,7 @@ public class Owner extends User{
         }
         ArrayList<Property> allProperty = state.getProperties();
         ArrayList<Property> ownerList = new ArrayList<Property>();
-    
+
         for(int i = 0; i < allProperty.size(); i++){
             if(allProperty.get(i).getListerID() == this.getId() && allProperty.get(i).getListerType() == "Owner"){
                 ownerList.add(allProperty.get(i));
@@ -37,8 +37,8 @@ public class Owner extends User{
         state.setPersonalProperties(ownerList);
         return ownerList;
     }
-    
-    
+
+
 }
 
 

@@ -1,13 +1,11 @@
 #BlueJ class context
 comment0.target=Owner
-comment1.params=Id\ fullName\ userName\ password\ email\ phoneNumber
-comment1.target=Owner(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment2.params=status
-comment2.target=void\ setStatus(java.lang.String)
-comment3.params=password
-comment3.target=void\ setPassword(java.lang.String)
-comment4.params=fullName\ userName\ password\ email\ phoneNumber
-comment4.target=Owner\ createOwner(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment5.params=
-comment5.target=java.util.ArrayList\ getOwnerProperty()
-numComments=6
+comment1.params=Id\ fullName\ password\ email\ phoneNumber
+comment1.target=Owner(int,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=password
+comment2.target=void\ setPassword(java.lang.String)
+comment3.params=fullName\ password\ email\ phoneNumber
+comment3.target=Owner\ createOwner(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment4.params=
+comment4.target=java.util.ArrayList\ getOwnerProperty()
+numComments=5

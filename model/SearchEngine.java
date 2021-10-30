@@ -1,6 +1,7 @@
 package model;
 
 import model.Property;
+import model.SortByRentalPrice;
 import model.Test;
 import java.util.*;
 
@@ -9,16 +10,10 @@ public class SearchEngine {
     private static ArrayList<Property> allProperties = new ArrayList<>();
     private static ArrayList<Property> tempProperties = new ArrayList<>();
 
-    public static ArrayList<Property> search(String projectName, String propertyType, int price_Min, int price_Max, 
-                                             int floorSize_Min, int floorSize_Max, double psf_Min, double psf_Max, 
-                                             String numberOfBedRoom, ArrayList<String> facilities, ArrayList<String> keyFeatures){
-
-        allProperties.clear();
-        tempProperties = GlobalState.getInstance().getProperties();
-        
-        for(int i = 0; i < tempProperties.size(); i++){
-            allProperties.add(tempProperties.get(i));
-        }
+    public static ArrayList<Property> search(String projectName, String propertyType, int price_Min, int price_Max, int floorSize_Min, int floorSize_Max, 
+                                             double psf_Min, double psf_Max, String numberOfBedRoom, ArrayList<String> facilities, 
+                                             ArrayList<String> keyFeatures){
+        copyProperties();
 
         search_Name(projectName);
         search_propertyType(propertyType);
@@ -31,6 +26,44 @@ public class SearchEngine {
 
         return allProperties;
         
+    }
+
+    public static ArrayList<Property> search(String projectName, String propertyType, int price_Min, int price_Max, int floorSize_Min, int floorSize_Max, 
+                                             double psf_Min, double psf_Max, String numberOfBedRoom, ArrayList<String> facilities, 
+                                             ArrayList<String> keyFeatures, String sortType){
+        copyProperties();
+        
+        sortByX(sortType);
+
+        search_Name(projectName);
+        search_propertyType(propertyType);
+        search_Price(price_Min, price_Max);
+        search_floorSize(floorSize_Min, floorSize_Max);
+        search_psf(psf_Min, psf_Max);
+        search_numberOfbedroom(numberOfBedRoom);
+        search_Facilities(facilities);
+        search_keyFeatures(keyFeatures);
+
+        return allProperties;
+        
+    }
+
+    private static void copyProperties(){
+        allProperties.clear();
+        tempProperties = GlobalState.getInstance().getProperties();
+        
+        for(int i = 0; i < tempProperties.size(); i++){
+            allProperties.add(tempProperties.get(i));
+        }
+    }
+
+    private static void sortByX(String sortType){
+        if(sortType.equals("(Price) From Lowest"))
+            Collections.sort(allProperties, new SortByRentalPrice());
+        else if(sortType.equals("(Price) From Highest")){
+            Collections.sort(allProperties, new SortByRentalPrice());
+            Collections.reverse(allProperties);
+        }
     }
 
     private static void search_Name(String projectName){
@@ -127,11 +160,12 @@ public class SearchEngine {
         
         while(allProperties.size() != counter){
             ArrayList<String> current = allProperties.get(counter).getFacilities();
-            for(int i = 1; i < facilities.size(); i++){
+            for(int i = 0; i < facilities.size(); i++){
                 if(current.contains(facilities.get(i)))
                     continue;
                 else{
                     allProperties.remove(counter);
+                    counter--;
                     break;
                 }
             }
@@ -145,18 +179,16 @@ public class SearchEngine {
         
         while(allProperties.size() != counter){
             ArrayList<String> current = allProperties.get(counter).getKeyFeatures();
-            for(int i = 1; i < keyFeatures.size(); i++){
+            for(int i = 0; i < keyFeatures.size(); i++){
                 if(current.contains(keyFeatures.get(i)))
                     continue;
                 else{
                     allProperties.remove(counter);
+                    counter--;
                     break;
                 }
             }
             counter++;
         }
-        ;
     }
-
-
 }
