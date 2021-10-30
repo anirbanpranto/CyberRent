@@ -15,6 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import model.GlobalState;
 import model.SearchEngine;
@@ -63,6 +65,8 @@ public class HomePageController {
     @FXML
     private Button searchButton;
     @FXML
+    private Button manageButton;
+    @FXML
     private TextField searchTextField;
 
     //search criteria
@@ -90,8 +94,24 @@ public class HomePageController {
             });
         }
         else{
-            profileButton.setOnAction(e ->{switchToLogin(e);});
-            favouriteButton.setOnAction(e ->{switchToLogin(e);});
+            profileButton.setOnAction(e ->{switchToLogin(e);
+                try
+                {
+                    displayError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }});
+            favouriteButton.setOnAction(e ->{switchToLogin(e);
+                try
+                {
+                    displayError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }});
         }
     }
 
@@ -307,6 +327,14 @@ public class HomePageController {
         }catch (IOException ioe){
             ioe.printStackTrace();
         }
+    }
+
+    private void displayError() throws Exception {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Login error");
+        alert.setHeaderText("Error");
+        alert.setContentText("Login is required.");
+        alert.showAndWait(); 
     }
 
 }
