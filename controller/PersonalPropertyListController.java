@@ -1,7 +1,14 @@
 package controller;
 
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
+
+import javax.sound.midi.SysexMessage;
+
+import java.io.Console;
 import java.io.IOException;
+import java.net.URISyntaxException;
+
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
@@ -19,33 +26,21 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 import model.GlobalState;
 import model.Property;
-import model.SearchEngine;
 
-public class AgentPropertyListController {
+public class PersonalPropertyListController {
 
     @FXML
     private ArrayList<ArrayList<Label>> property_list;
     @FXML
     private ArrayList<ImageView> property_image;
     @FXML
-    private MenuButton facilities;
-    @FXML
     private Button favouriteButton;
     @FXML
-    private MenuButton floorSize;
-    @FXML
-    private TextField floorSize_Max;
-    @FXML
-    private TextField floorSize_Min;
-    @FXML
-    private MenuButton keyFeatures;
-    @FXML
     private Button loginButton;
-    @FXML
-    private MenuButton numberOfBedroom;
 
     @FXML
     private Button currentPage;
@@ -56,49 +51,14 @@ public class AgentPropertyListController {
 
     @FXML
     private ArrayList<AnchorPane> property_pane;
-
-    @FXML
-    private MenuButton priceRange;
-    @FXML
-    private TextField price_Max;
-    @FXML
-    private TextField price_Min;
     
     @FXML
     private Button profileButton;
     
     @FXML
-    private MenuButton propertyType;
-
-    @FXML
-    private MenuButton psf;
-    @FXML
-    private TextField psf_Max;
-    @FXML
-    private TextField psf_Min;
-    @FXML
     private Button registerButton;
     @FXML
-    private TextField searchTextField;
-
-    @FXML
-    private MenuButton sorting;
-    @FXML
     private Label numberOfResults;
-
-    //search criteria
-    private String search_projectName;
-    private String search_propertyType = "All Residential";
-    private int search_price_Min = 0;
-    private int search_price_Max = 99999;
-    private int search_floorSize_Min = 0;
-    private int search_floorSize_Max = 99999;
-    private double search_psf_Min = 0;
-    private double search_psf_Max = 10;
-    private String search_numberOfBedRoom = "Any";
-    private ArrayList<String> search_facilities = new ArrayList<>();
-    private ArrayList<String> search_keyFeatures = new ArrayList<>();
-    private String sortType = "Default";
 
     private ArrayList<Property> properties;
     private int totalResult;
@@ -114,7 +74,10 @@ public class AgentPropertyListController {
                 switchToHomePage(e);
             });
             GlobalState state = GlobalState.getInstance();
-            state.getPersonalProperties();
+            ArrayList<Property> tempPersonal = state.getPersonalProperties();
+            this.numberOfResults.setText(Integer.toString(tempPersonal.size()));
+            System.out.println(tempPersonal.size());
+            this.setProperties(tempPersonal);
         }
         else{
             profileButton.setOnAction(e ->{switchToLogin(e);
@@ -165,6 +128,11 @@ public class AgentPropertyListController {
             property_list.get(i).get(6).setText(properties.get(i + (page * 3)).getFurnishStatus()); // furnish status
             property_list.get(i).get(7).setText(Integer.toString(properties.get(i + (page * 3)).getNumberOfBedroom())); // no. of bedroom
             property_list.get(i).get(8).setText(Integer.toString(properties.get(i + (page * 3)).getNumberOfBathroom())); // no. of bathroom
+            String imgPath = properties.get(i + (page * 3)).getPhoto().get(0);
+            imgPath = "../view/" + imgPath;
+            System.out.println(imgPath);
+            Image img1 = new Image(getClass().getResource(imgPath).toURI().toString());
+            property_image.get(i).setImage(img1);
             property_pane.get(i).setVisible(true);
 
             //property_image.get(i).setImage(new Image(properties.get(i).getPhoto().get(0))); // 1st picture as the thumbnail
@@ -179,6 +147,9 @@ public class AgentPropertyListController {
                 property_list.get(i).get(7).setText("");
                 property_list.get(i).get(8).setText("");
                 property_pane.get(i).setVisible(false);
+            } catch (URISyntaxException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
     }
@@ -221,155 +192,6 @@ public class AgentPropertyListController {
             return totalResult/3;
         else
             return totalResult/3 + 1;
-    }
-
-    @FXML
-    public void price_applyFilter(ActionEvent event){
-        calculateMinMax("Price (RM)", priceRange, price_Min, price_Max, search_price_Min, search_price_Max);
-        try{
-            search_price_Min = Integer.parseInt(price_Min.getText());
-        }catch(NumberFormatException e){
-            search_price_Min = 0;
-        }
-        try{
-            search_price_Max = Integer.parseInt(price_Max.getText());
-        }catch(NumberFormatException e){
-            search_price_Max = 99999;
-        }
-    }
-
-    @FXML
-    public void floorSize_applyFilter(ActionEvent event){
-        calculateMinMax("Built up Size (sq ft)",floorSize, floorSize_Min, floorSize_Max, search_floorSize_Min, search_floorSize_Max);
-        try{
-            search_floorSize_Min = Integer.parseInt(floorSize_Min.getText());
-        }catch(NumberFormatException e){
-            search_floorSize_Min = 0;
-        }
-        try{
-            search_floorSize_Max = Integer.parseInt(floorSize_Max.getText());
-        }catch(NumberFormatException e){
-            search_floorSize_Max = 99999;
-        }
-    }
-
-    @FXML
-    public void psf_applyFilter(ActionEvent event){
-        calculateMinMax("PSF (RM)", psf, psf_Min, psf_Max, search_psf_Min, search_psf_Max);
-        try{
-            search_psf_Min = Double.parseDouble(psf_Min.getText());
-        }catch(NumberFormatException e){
-            search_psf_Min = 0;
-        }
-        try{
-            search_psf_Max = Double.parseDouble(psf_Max.getText());
-        }catch(NumberFormatException e){
-            search_psf_Max = 99999;
-        }
-    }
-    
-    private void calculateMinMax(String title, MenuButton menuBtn, TextField minTxt, TextField maxTxt, int min, int max){ // for floorSize(int) and price(int)
-        String min_String = minTxt.getText();
-        String max_String = maxTxt.getText();
-
-        if((min_String.equals("")) && (max_String.equals(""))){ // Both are not filled up
-            menuBtn.setText(title);
-        }
-        else if((min_String.equals("")) && !(max_String.equals(""))){ // Only max is filled up
-            max = Integer.parseInt(max_String);
-            menuBtn.setText("Below " + max_String); 
-        }
-        else if(!(min_String.equals("")) && (max_String.equals(""))){ // Only min is filled up
-            min = Integer.parseInt(min_String);
-            menuBtn.setText("Above " + min_String);
-        }
-        else{ //Both are not filled up
-            min = Integer.parseInt(min_String);
-            max = Integer.parseInt(max_String);
-            if(min > max){
-                min = Integer.parseInt(max_String);
-                minTxt.setText(max_String);
-                max = Integer.parseInt(min_String);
-                maxTxt.setText(min_String);
-            }
-            menuBtn.setText(Integer.toString(min) + " - " + Integer.toString(max));
-        }
-    }
-
-    private void calculateMinMax(String title, MenuButton menuBtn, TextField minTxt, TextField maxTxt, double min, double max){ // for psf(double)
-        String min_String = minTxt.getText();
-        String max_String = maxTxt.getText();
-
-        if((min_String.equals("")) && (max_String.equals(""))){ // Both are not filled up
-            menuBtn.setText(title);
-        }
-        else if((min_String.equals("")) && !(max_String.equals(""))){ // Only max is filled up
-            max = Double.parseDouble(max_String);
-            menuBtn.setText("Below " + max_String); 
-        }
-        else if(!(min_String.equals("")) && (max_String.equals(""))){ // Only min is filled up
-            min = Double.parseDouble(min_String);
-            menuBtn.setText("Above " + min_String);
-        }
-        else{ //Both are not filled up
-            min = Double.parseDouble(min_String);
-            max = Double.parseDouble(max_String);
-            if(min > max){
-                min = Double.parseDouble(max_String);
-                minTxt.setText(max_String);
-                max = Double.parseDouble(min_String);
-                maxTxt.setText(min_String);
-            }
-            menuBtn.setText(Double.toString(min) + " - " + Double.toString(max));
-        }
-    }
-
-    @FXML
-    public void selectBedroom(ActionEvent event) {
-        String selection = ((MenuItem)event.getSource()).getText();
-        
-        if(selection.charAt(1) == '+'){
-            numberOfBedroom.setText(selection);
-            search_numberOfBedRoom = Character.toString(selection.charAt(0));
-        }
-        else{
-            numberOfBedroom.setText("Bedroom");
-        }
-    }
-
-
-    @FXML
-    public void selectFacilities(ActionEvent event) {
-        CheckBox current = (CheckBox)event.getSource();
-
-        if(current.isSelected())
-            search_facilities.add(current.getText());
-        else
-            search_facilities.remove(current.getText());
-    }
-    @FXML
-    public void selectKeyFeatures(ActionEvent event) {
-        CheckBox current = (CheckBox)event.getSource();
-
-        if(current.isSelected())
-            search_keyFeatures.add(current.getText());
-        else
-            search_keyFeatures.remove(current.getText());
-    }
-
-    @FXML
-    public void selectPropertyType(ActionEvent event) {
-        String selection = ((MenuItem)event.getSource()).getText();
-        propertyType.setText(selection);
-        search_propertyType = selection;
-    }
-
-    @FXML
-    public void sort(ActionEvent event){
-        String selection = ((MenuItem)event.getSource()).getText();
-        sorting.setText(selection);
-        sortType = selection;
-
     }
 
     @FXML

@@ -1,6 +1,9 @@
 package model;
 
 import java.util.*;
+
+import javax.sound.midi.SysexMessage;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -149,6 +152,8 @@ public class Database{
   }
 
   public static List<String> parseArray(String list){
+    list = list.replace("[", "");
+    list = list.replace("]", "");
     String[] data = list.split("~");
     List<String> temp = Arrays.asList(data);
     return temp;

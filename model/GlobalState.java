@@ -31,8 +31,8 @@ public class GlobalState {
 
     private Map<Integer, String> session; //this will store the email and the role after login
     private ArrayList<Property> propeties; //to be loaded in the globalstate constructor
-    private ArrayList<Property> personalProperty = null; //null at the begining, but its loaded when the login method is called
-    private ArrayList<Property> favoriteProperty = null; //null at the begining, but its loaded when the login method is called
+    private ArrayList<Property> personalProperty; //null at the begining, but its loaded when the login method is called
+    private ArrayList<Property> favoriteProperty; //null at the begining, but its loaded when the login method is called
     private ArrayList<Owner> owner = null;
     private ArrayList<Tenant> tenant = null;
     private ArrayList<Agent> agent = null;
@@ -80,8 +80,9 @@ public class GlobalState {
         this.phoneNumber = phoneNumber;
         ArrayList<Property> tempPersonaList = new ArrayList<>();
         for(int i = 0; i < this.propeties.size(); i++){
-            if(this.propeties.get(i).getListerType() == this.role && this.propeties.get(i).getListerID() == this.loggedInId){
+            if(this.propeties.get(i).getListerID() == this.loggedInId && this.propeties.get(i).getListerType().equals(this.role)){
                 tempPersonaList.add(this.propeties.get(i));
+                System.out.println("Inserting" + " " + tempPersonaList.size());
             }
         }
         this.personalProperty = tempPersonaList;

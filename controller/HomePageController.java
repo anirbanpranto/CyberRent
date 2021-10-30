@@ -346,15 +346,13 @@ public class HomePageController {
     @FXML
     public void switchToMyList(ActionEvent event){
         //test
-        /*
         try{
             Stage mainStage = GlobalState.getInstance().getStage();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/registerpage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/personalpropertyList.fxml"));
             mainStage.setScene(new Scene(root, 1280, 720));
         }catch (IOException ioe){
             ioe.printStackTrace();
         }
-        */
     }
 
     private void displayError() throws Exception {

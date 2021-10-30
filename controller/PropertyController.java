@@ -56,8 +56,8 @@ public class PropertyController {
         List<File> f = fc.showOpenMultipleDialog(null);
         for(File i:f){
             File source = new File(i.getAbsolutePath());
-            File dest = new File("./StoredImages/" + i.getName());
-            this.photos.add("./StoredImages/" + i.getName());
+            File dest = new File("./view/image/StoredImages/" + i.getName());
+            this.photos.add("image/StoredImages/" + i.getName());
             try
             {
                 System.out.println("Uploading Files into StoredImages Directory");
