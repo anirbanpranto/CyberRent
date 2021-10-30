@@ -1,0 +1,14 @@
+/*
+.menu-item:focused {
+     -fx-background-color: transparent;
+}
+*/
+
+.menu-item{
+-fx-opacity:1;
+}
+
+.menu-item:focused{
+-fx-background-color: white;
+-fx-text-fill: black;
+}

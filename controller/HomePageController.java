@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.CheckBox;
 
+import model.Database;
 import model.GlobalState;
 import model.SearchEngine;
 import model.Property;
@@ -101,16 +102,16 @@ public class HomePageController {
         // TextFields
         search_projectName = searchTextField.getText();
 
-        ArrayList<Property> p = SearchEngine.search(search_projectName, search_propertyType, search_price_Min, search_price_Max, 
-                                                    search_floorSize_Min, search_floorSize_Max, search_psf_Min, search_psf_Max, 
-                                                    search_numberOfBedRoom, search_facilities, search_keyFeatures);
-        
+        ArrayList<Property> p = SearchEngine.search(search_projectName, search_propertyType, search_price_Min, search_price_Max,
+                search_floorSize_Min, search_floorSize_Max, search_psf_Min, search_psf_Max,
+                search_numberOfBedRoom, search_facilities, search_keyFeatures);
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/propertylist.fxml"));
         Parent root = loader.load();
 
         PropertyListController propertyListController = loader.getController();
         propertyListController.setProperties(p);
-        
+
         Stage mainStage = GlobalState.getInstance().getStage();
         mainStage.setScene(new Scene(root, 1280, 720));
     }
@@ -159,7 +160,7 @@ public class HomePageController {
             search_psf_Max = 99999;
         }
     }
-    
+
     private void calculateMinMax(String title, MenuButton menuBtn, TextField minTxt, TextField maxTxt, int min, int max){ // for floorSize(int) and price(int)
         String min_String = minTxt.getText();
         String max_String = maxTxt.getText();
@@ -169,7 +170,7 @@ public class HomePageController {
         }
         else if((min_String.equals("")) && !(max_String.equals(""))){ // Only max is filled up
             max = Integer.parseInt(max_String);
-            menuBtn.setText("Below " + max_String); 
+            menuBtn.setText("Below " + max_String);
         }
         else if(!(min_String.equals("")) && (max_String.equals(""))){ // Only min is filled up
             min = Integer.parseInt(min_String);
@@ -197,7 +198,7 @@ public class HomePageController {
         }
         else if((min_String.equals("")) && !(max_String.equals(""))){ // Only max is filled up
             max = Double.parseDouble(max_String);
-            menuBtn.setText("Below " + max_String); 
+            menuBtn.setText("Below " + max_String);
         }
         else if(!(min_String.equals("")) && (max_String.equals(""))){ // Only min is filled up
             min = Double.parseDouble(min_String);
@@ -219,7 +220,7 @@ public class HomePageController {
     @FXML
     public void selectBedroom(ActionEvent event) {
         String selection = ((MenuItem)event.getSource()).getText();
-        
+
         if(selection.charAt(1) == '+'){
             numberOfBedroom.setText(selection);
             search_numberOfBedRoom = Character.toString(selection.charAt(0));
@@ -289,6 +290,8 @@ public class HomePageController {
 
     @FXML
     public void switchToProfile(ActionEvent event){
+        GlobalState state = GlobalState.getInstance();
+
         try{
             Stage mainStage = GlobalState.getInstance().getStage();
             Parent root = FXMLLoader.load(getClass().getResource("/view/view_profile.fxml"));

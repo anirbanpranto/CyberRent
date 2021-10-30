@@ -14,7 +14,7 @@ public class Owner extends User{
 
     public static Owner createOwner(String fullName, String password, String email, String phoneNumber){
         int Id = ++globalId;
-        Database.writeData("Owner", Arrays.asList(Integer.toString(Id), fullName, password, email, "Owner", phoneNumber, "Active"));
+        Database.writeData("Owner", Arrays.asList(Integer.toString(Id), fullName, password, email, "Active", "Owner", phoneNumber));
         Database.writeUpdate("Owner", Arrays.asList(Integer.toString(Id)));
         return new Owner(Id, fullName, password, email, phoneNumber);
     }
@@ -27,7 +27,7 @@ public class Owner extends User{
         }
         ArrayList<Property> allProperty = state.getProperties();
         ArrayList<Property> ownerList = new ArrayList<Property>();
-    
+
         for(int i = 0; i < allProperty.size(); i++){
             if(allProperty.get(i).getListerID() == this.getId() && allProperty.get(i).getListerType() == "Owner"){
                 ownerList.add(allProperty.get(i));
@@ -37,8 +37,8 @@ public class Owner extends User{
         state.setPersonalProperties(ownerList);
         return ownerList;
     }
-    
-    
+
+
 }
 
 

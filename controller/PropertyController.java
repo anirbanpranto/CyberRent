@@ -85,7 +85,7 @@ public class PropertyController {
                                          photo(photos).build("Owner",1);
     */
         Property p = new Property.Builder().projectName(this.projectName.getText()).floorSize(Integer.parseInt(this.floorSize.getText())).psf(Double.parseDouble(this.psq.getText())).furnishStatus(this.furnishStatus).
-                                         numberOfBedroom(this.bedroom.getText()).numberOfBathroom(Integer.parseInt(this.bathroom.getText())).facilities(this.keyFacilities).
+                                         numberOfBedroom(Integer.parseInt(this.bedroom.getText())).numberOfBathroom(Integer.parseInt(this.bathroom.getText())).facilities(this.keyFacilities).
                                          keyFeatures(this.keyFeatures).rental_price(Integer.parseInt(this.rentalPrice.getText())).address(this.address.getText()).
                                          city(this.city.getText()).state(this.state.getText()).propertyType(this.propertyType.getText()).
                                          photo(this.photos).build("Owner",1);
