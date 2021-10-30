@@ -145,3 +145,15 @@ public class Property {
         
     }    
 }
+
+class SortByRentalPrice implements Comparator<Property>{
+    @Override
+    public int compare(Property p1 , Property p2){
+        if(p1.getRental_price() > p2.getRental_price())
+            return 1;
+        else if(p1.getRental_price() == p2.getRental_price())
+            return 0;
+        else
+            return -1;
+    }
+}
