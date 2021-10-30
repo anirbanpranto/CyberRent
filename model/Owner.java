@@ -14,7 +14,7 @@ public class Owner extends User{
 
     public static Owner createOwner(String fullName, String password, String email, String phoneNumber){
         int Id = ++globalId;
-        Database.writeData("Owner", Arrays.asList(Integer.toString(Id), fullName, password, email, "Active", "Owner", phoneNumber));
+        Database.writeData("Owner", Arrays.asList(Integer.toString(Id), fullName, password, email, "Owner", phoneNumber, "Active"));
         Database.writeUpdate("Owner", Arrays.asList(Integer.toString(Id)));
         return new Owner(Id, fullName, password, email, phoneNumber);
     }
