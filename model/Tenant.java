@@ -12,6 +12,7 @@ public class Tenant extends User {
         int id = ++idCount;
         Database.writeData("Tenant", Arrays.asList(Integer.toString(idCount), fullname, password, email, "Tenant", phoneNumber));
         Database.writeUpdate("Tenant", Arrays.asList(Integer.toString(idCount)));
+        Database.writeData("email", Arrays.asList(email));
         return new Tenant(id, fullname, password, email, role ,phoneNumber);
     }
 
