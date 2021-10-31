@@ -12,6 +12,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import java.util.ArrayList?>
+
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PropertyController">
    <top>
@@ -75,7 +77,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button alignment="CENTER" layoutX="439.0" layoutY="35.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="403.0" style="-fx-background-color: TRANSPARENT;" text="NEW LISTING" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="439.0" AnchorPane.rightAnchor="438.0">
+            <Button alignment="CENTER" layoutX="439.0" layoutY="35.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="403.0" style="-fx-background-color: TRANSPARENT;" text="Edit Property" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="439.0" AnchorPane.rightAnchor="438.0">
                <font>
                   <Font name="Arial Black" size="30.0" />
                </font>

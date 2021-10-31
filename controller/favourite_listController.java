@@ -427,12 +427,36 @@ public class favourite_listController {
     }
 
     @FXML
-    void viewProperty(ActionEvent event) {
-        /*
-        Stage mainStage = GlobalState.getInstance().getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("/view/property.fxml"));
-        mainStage.setScene(new Scene(root, 1280, 720));
-        */
+    void viewProperty_1(ActionEvent event) {
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/view_property.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    @FXML
+    void viewProperty_2(ActionEvent event) {
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/view_property.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    @FXML
+    void viewProperty_3(ActionEvent event) {
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/view_property.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
     private void displayError() throws Exception {

@@ -28,7 +28,7 @@
                <children>
                   <AnchorPane fx:id="property1_pane" layoutX="10.0" layoutY="165.0" prefHeight="155.0" prefWidth="760.0">
                      <children>
-                        <Button layoutX="205.0" mnemonicParsing="false" onAction="#viewProperty" prefHeight="154.0" prefWidth="457.0" style="-fx-background-color: transparent;">
+                        <Button layoutX="205.0" mnemonicParsing="false" onAction="#viewProperty_1" prefHeight="154.0" prefWidth="457.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <VBox prefHeight="146.0" prefWidth="450.0" spacing="2.0">
                                  <children>
@@ -138,7 +138,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="property2_pane" layoutX="10.0" layoutY="10.0" prefHeight="155.0" prefWidth="760.0">
                      <children>
-                        <Button layoutX="205.0" mnemonicParsing="false" onAction="#viewProperty" prefHeight="154.0" prefWidth="457.0" style="-fx-background-color: transparent;">
+                        <Button layoutX="205.0" mnemonicParsing="false" onAction="#viewProperty_2" prefHeight="154.0" prefWidth="457.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <VBox prefHeight="146.0" prefWidth="450.0" spacing="2.0">
                                  <children>
@@ -248,7 +248,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="property3_pane" prefHeight="155.0" prefWidth="760.0">
                      <children>
-                        <Button layoutX="205.0" mnemonicParsing="false" onAction="#viewProperty" prefHeight="154.0" prefWidth="457.0" style="-fx-background-color: transparent;">
+                        <Button layoutX="205.0" mnemonicParsing="false" onAction="#viewProperty_3" prefHeight="154.0" prefWidth="457.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <VBox prefHeight="146.0" prefWidth="450.0" spacing="2.0">
                                  <children>

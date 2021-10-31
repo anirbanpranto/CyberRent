@@ -250,10 +250,33 @@ public class PersonalPropertyListController {
     }
 
     @FXML
-    void viewProperty(ActionEvent event) {
+    void viewProperty_1(ActionEvent event) {
+
         try{
             Stage mainStage = GlobalState.getInstance().getStage();
-            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/view_property.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+    @FXML
+    void viewProperty_2(ActionEvent event) {
+
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/view_property.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+    @FXML
+    void viewProperty_3(ActionEvent event) {
+
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/view_property.fxml"));
             mainStage.setScene(new Scene(root, 1280, 720));
         }catch (IOException ioe){
             ioe.printStackTrace();
