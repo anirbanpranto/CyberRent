@@ -12,6 +12,7 @@ public class Owner extends Tenant{
         int Id = ++globalId;
         Database.writeData("Owner", Arrays.asList(Integer.toString(Id), fullName, password, email, "Owner", phoneNumber));
         Database.writeUpdate("Owner", Arrays.asList(Integer.toString(Id)));
+        Database.writeData("email", Arrays.asList(email));
         return new Owner(Id, fullName, password, email, phoneNumber);
     }
 
