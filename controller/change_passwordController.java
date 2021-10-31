@@ -67,6 +67,7 @@ public class change_passwordController {
                 if ((newPassword.getText()).equals(confirmNewPassword.getText())) {
                     changeValid = true;
                     state.setNewPassword(newPassword.getText());
+                    state.EditProfilePerformed(state.getRole());
                 } else {
                     textNewPassword.setText("New Password *Incorrect*");
                     textConfirmNewPassword.setText("Confirm New Password *Incorrect*");
