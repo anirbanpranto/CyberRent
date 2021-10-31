@@ -88,7 +88,7 @@ public class Database{
     return temp;
   }
 
-  public static void writeAllData(String tableName, ArrayList<List<String>> All){
+  public static void writeAllData(String tableName, List<List<String>> All){
     String fileName = tableName + ".csv";
     String filePath = "./Database/"+fileName;
     File csvFile = new File(filePath);
