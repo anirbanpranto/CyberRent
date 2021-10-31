@@ -1,20 +1,16 @@
 package model;
 import java.util.*;
 
-public class Owner extends User{
-    private static int globalId = Database.readUpdate("Owner");
+public class Owner extends Tenant{
+    private static int globalId = Database.readUpdate("Owner") + 1;
 
     public Owner(int Id, String fullName, String password, String email, String phoneNumber){
-        super(Id, fullName, password, email,"Owner", phoneNumber);
-    }
-
-    public void setPassword(String password){
-        this.password = password;
+        super(Id, fullName, password, email, "Owner", phoneNumber);
     }
 
     public static Owner createOwner(String fullName, String password, String email, String phoneNumber){
         int Id = ++globalId;
-        Database.writeData("Owner", Arrays.asList(Integer.toString(Id), fullName, password, email, "Owner", phoneNumber, "Active"));
+        Database.writeData("Owner", Arrays.asList(Integer.toString(Id), fullName, password, email, "Owner", phoneNumber));
         Database.writeUpdate("Owner", Arrays.asList(Integer.toString(Id)));
         return new Owner(Id, fullName, password, email, phoneNumber);
     }
