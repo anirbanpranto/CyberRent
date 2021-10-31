@@ -20,14 +20,14 @@
    <top>
       <AnchorPane prefHeight="80.0" prefWidth="1280.0" style="-fx-background-color: #26619c;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="loginButton" layoutX="1048.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: TRANSPARENT;" text="Login" textFill="WHITE">
+            <Button fx:id="loginButton" layoutX="963.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: TRANSPARENT;" text="Login" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="16.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="registerButton" layoutX="938.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToRegister" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: TRANSPARENT;" text="Register" textFill="WHITE">
+            <Button fx:id="registerButton" layoutX="866.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToRegister" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: TRANSPARENT;" text="Register" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="16.0" />
                </font>
@@ -70,6 +70,22 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="myListButton" layoutX="1054.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToMyList" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: TRANSPARENT;" text="My List" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="manageButton" layoutX="98.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: TRANSPARENT;" text="Manage" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
    </top>
@@ -100,19 +116,18 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <HBox layoutX="161.0" layoutY="351.0" prefHeight="38.0" prefWidth="964.0">
+            <HBox layoutX="161.0" layoutY="350.0" prefHeight="38.0" prefWidth="964.0">
                <children>
                   <MenuButton fx:id="propertyType" mnemonicParsing="false" prefHeight="31.0" prefWidth="176.0" style="-fx-background-color: transparent;" text="All Residential" textFill="WHITE">
-                    <items>
-                    <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="All Residential" />
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="All Residential" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Condominium" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Duplex" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Service Residence" />
-                        <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Studio" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Terraced House" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Townhouse" />
                         <MenuItem mnemonicParsing="false" onAction="#selectPropertyType" text="Townhouse Condominium" />
-                    </items>
+                     </items>
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -156,7 +171,8 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                           </graphic></MenuItem>
+                           </graphic>
+                        </MenuItem>
                      </items>
                      <font>
                         <Font name="System Bold" size="15.0" />
@@ -201,7 +217,8 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                           </graphic></MenuItem>
+                           </graphic>
+                        </MenuItem>
                      </items>
                      <font>
                         <Font name="System Bold" size="15.0" />
@@ -282,64 +299,37 @@
                      <items>
                         <MenuItem disable="true" mnemonicParsing="false" styleClass="css\homepage.css">
                            <graphic>
-                              <HBox prefHeight="108.0" prefWidth="301.0">
+                              <VBox prefHeight="108.0" prefWidth="150.0" spacing="2.0">
                                  <children>
-                                    <VBox prefHeight="108.0" prefWidth="150.0">
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="24 Hours Security" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Badminton Hall" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Basketball Court" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Car Park" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Gym Room" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                       </children>
-                                    </VBox>
-                                    <VBox prefHeight="108.0" prefWidth="151.0">
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Library" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Multipurpose Hall" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Surau" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Swimming Pool" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                       </children>
-                                    </VBox>
+                                    <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="24 Hours Security" textFill="#26619c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Badminton Hall" textFill="#26619c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Swimming Pool" textFill="#26619c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Car Park" textFill="#26619c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Gym Room" textFill="#26619c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
                                  </children>
-                              </HBox>
-                           </graphic></MenuItem>
+                              </VBox>
+                           </graphic>
+                        </MenuItem>
                      </items>
                   </MenuButton>
                   <MenuButton fx:id="keyFeatures" mnemonicParsing="false" prefHeight="31.0" prefWidth="135.0" style="-fx-background-color: transparent;" stylesheets="@css/homepage.css" text="Key Features" textFill="WHITE">
@@ -352,49 +342,35 @@
                      <items>
                         <MenuItem disable="true" mnemonicParsing="false" styleClass="css\homepage.css">
                            <graphic>
-                              <HBox prefHeight="151.0" prefWidth="157.0">
+                              <VBox prefHeight="107.0" prefWidth="150.0" spacing="2.0">
                                  <children>
-                                    <VBox prefHeight="108.0" prefWidth="150.0">
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="Air Conditioning" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="Cooker" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="Water Heater" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="Fridge" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="Washing Machine" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="TV" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="Oven/Microwave" textFill="#26619c">
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                       </children>
-                                    </VBox>
+                                    <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="Air Conditioning" textFill="#26619c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="Washing Machine" textFill="#26619c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="Water Heater" textFill="#26619c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="Fridge" textFill="#26619c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox mnemonicParsing="false" onAction="#selectKeyFeatures" text="TV" textFill="#26619c">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
                                  </children>
-                              </HBox>
+                              </VBox>
                            </graphic>
                         </MenuItem>
                      </items>

@@ -115,6 +115,7 @@ public class HomePageController {
                 {
                     exp.printStackTrace();
                 }});
+            /*
             myListButton.setOnAction(e ->{switchToLogin(e);
                 try
                 {
@@ -124,6 +125,7 @@ public class HomePageController {
                 {
                     exp.printStackTrace();
                 }});
+             */
         }
     }
 
@@ -290,11 +292,13 @@ public class HomePageController {
 
     @FXML
     public void switchToFavourite(ActionEvent event) {
-        /*
-        Stage mainStage = GlobalState.getInstance().getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("/view/favourite.fxml"));
-        mainStage.setScene(new Scene(root, 1280, 720));
-        */
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
     @FXML

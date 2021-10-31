@@ -31,7 +31,7 @@ public class Test{
     }
 
     public static void FavoriteIntegration(){
-      Favourite temp = new Favourite(108, 1345);
+      //Favourite temp = new Favourite(108, 1345);
     }
 
     public void parseTest(){
