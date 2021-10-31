@@ -256,6 +256,15 @@ public class PropertyListController {
                 System.out.println("Already in favourite list");
                 i = state.getFavoriteProperties().size()-1;
                 validate = false;
+                try
+                {
+                    displayFavouriteError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }
+                break;
             }
         }
         if(validate){
@@ -275,6 +284,14 @@ public class PropertyListController {
                 System.out.println("Already in favourite list");
                 i = state.getFavoriteProperties().size()-1;
                 validate = false;
+                try
+                {
+                    displayFavouriteError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }
             }
         }
         if(validate){
@@ -294,6 +311,14 @@ public class PropertyListController {
                 System.out.println("Already in favourite list");
                 i = state.getFavoriteProperties().size()-1;
                 validate = false;
+                try
+                {
+                    displayFavouriteError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }
             }
         }
         if(validate){
