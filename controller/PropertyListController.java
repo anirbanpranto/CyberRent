@@ -2,6 +2,8 @@ package controller;
 
 import java.util.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
+
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 import model.GlobalState;
 import model.Property;
@@ -180,6 +183,12 @@ public class PropertyListController {
             property_list.get(i).get(6).setText(properties.get(i + (page * 3)).getFurnishStatus()); // furnish status
             property_list.get(i).get(7).setText(Integer.toString(properties.get(i + (page * 3)).getNumberOfBedroom())); // no. of bedroom
             property_list.get(i).get(8).setText(Integer.toString(properties.get(i + (page * 3)).getNumberOfBathroom())); // no. of bathroom
+            
+            String imgPath = properties.get(i + (page * 3)).getPhoto().get(0);
+            imgPath = "../view/" + imgPath;
+            System.out.println(imgPath);
+            Image img1 = new Image(getClass().getResource(imgPath).toURI().toString());
+            property_image.get(i).setImage(img1);
             property_pane.get(i).setVisible(true);
 
             //property_image.get(i).setImage(new Image(properties.get(i).getPhoto().get(0))); // 1st picture as the thumbnail
@@ -194,6 +203,9 @@ public class PropertyListController {
                 property_list.get(i).get(7).setText("");
                 property_list.get(i).get(8).setText("");
                 property_pane.get(i).setVisible(false);
+            } catch (URISyntaxException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
             }
         }
     }
