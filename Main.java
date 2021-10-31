@@ -15,6 +15,7 @@ public class Main extends Application{
       mainScreen.saveStage(primaryStage);
       Parent root = FXMLLoader.load(getClass().getResource("view/homepage.fxml"));
       primaryStage.setTitle("Login");
+      primaryStage.setResizable(false);
       primaryStage.setScene(new Scene(root, 1280, 720, Color.BLACK));
       primaryStage.show();
   }
