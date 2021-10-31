@@ -98,6 +98,7 @@ public class GlobalState {
                     agent.get(i).setName(this.fullName);
                     agent.get(i).setPhoneNumber(this.phoneNumber);
                     agent.get(i).setLicenseNo(this.agentLicense);
+                    agent.get(i).setPassword(this.password);
                     Database.writeAllData("Agent", Database.AgentToList(agent));
                     break;
                 }
@@ -109,6 +110,7 @@ public class GlobalState {
                     owner.get(i).setEmail(this.email);
                     owner.get(i).setName(this.fullName);
                     owner.get(i).setPhoneNumber(this.phoneNumber);
+                    owner.get(i).setPassword(this.password);
                     Database.writeAllData("Owner", Database.OwnerToList(owner));
                     break;
                 }
@@ -120,6 +122,7 @@ public class GlobalState {
                     tenant.get(i).setEmail(this.email);
                     tenant.get(i).setName(this.fullName);
                     tenant.get(i).setPhoneNumber(this.phoneNumber);
+                    tenant.get(i).setPassword(this.password);
                     Database.writeAllData("Tenant", Database.TenantToList(tenant));
                     break;
                 }
