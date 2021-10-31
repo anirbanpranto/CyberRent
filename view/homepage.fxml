@@ -78,7 +78,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="manageButton" layoutX="98.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: TRANSPARENT;" text="Manage" textFill="WHITE">
+            <Button fx:id="manageButton" layoutX="98.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToManage" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: TRANSPARENT;" text="Manage" textFill="WHITE" visible="false">
                <font>
                   <Font name="Arial Black" size="16.0" />
                </font>
