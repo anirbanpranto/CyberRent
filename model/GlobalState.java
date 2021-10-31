@@ -31,6 +31,7 @@ public class GlobalState {
 
     private Map<Integer, String> session; //this will store the email and the role after login
     private ArrayList<Property> propeties; //to be loaded in the globalstate constructor
+    //private ArrayList<Property> favourites;
     private ArrayList<Property> personalProperty; //null at the begining, but its loaded when the login method is called
     private ArrayList<Property> favoriteProperty; //null at the begining, but its loaded when the login method is called
     private ArrayList<Owner> owner = null;
@@ -56,14 +57,15 @@ public class GlobalState {
             tempProp.add(p);
         }
         this.propeties = tempProp;
-        System.out.println(propeties.size());
+        System.out.println("System total properties: " + propeties.size());
+
     }
 
     private void EditPerformed(String tableName){ //edit the temporary data and put them in persistent data
         //make an ArrayList of the Table values = []
         //flush values inside our database
         ArrayList<List<String>> All = null;
-        Database.writeAllData(tableName, All);
+        //Database.writeAllData(tableName, All);
     }
 
     public void saveStage(Stage s){
@@ -78,14 +80,33 @@ public class GlobalState {
         this.email = email;
         this.role = role;
         this.phoneNumber = phoneNumber;
+
         ArrayList<Property> tempPersonaList = new ArrayList<>();
         for(int i = 0; i < this.propeties.size(); i++){
             if(this.propeties.get(i).getListerID() == this.loggedInId && this.propeties.get(i).getListerType().equals(this.role)){
                 tempPersonaList.add(this.propeties.get(i));
-                System.out.println("Inserting" + " " + tempPersonaList.size());
+                //System.out.println("Inserting" + " " + tempPersonaList.size());
             }
         }
         this.personalProperty = tempPersonaList;
+        System.out.println("Personal property: " + personalProperty.size());
+
+        //Favourite
+        List<List<String>> strFavourite = Database.readData("Favourite");
+        List<List<String>> strProperty = Database.readData("Property");
+        ArrayList<Property> tempFavouriteList = new ArrayList<>();
+
+        for(int i = 0; i < strFavourite.size(); i++){
+            if(this.loggedInId == Integer.parseInt(strFavourite.get(i).get(1)) && this.role.equals(strFavourite.get(i).get(2))){
+                for(int k = 0; k < this.propeties.size(); k++){
+                    if(strFavourite.get(i).get(3).equals(strProperty.get(k).get(0))){
+                        tempFavouriteList.add(this.propeties.get(k));
+                    }
+                }
+            }
+        }
+        this.favoriteProperty = tempFavouriteList;
+        System.out.println("Favourite property: " + favoriteProperty.size());
     }
     public int getLoggedInId(){
         return this.loggedInId;

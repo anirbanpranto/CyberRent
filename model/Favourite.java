@@ -4,15 +4,17 @@ import java.util.*;
 public class Favourite {
 
     private int favouriteID;
-    private int tenantID;
+    private int userID;
+    private String role;
     private int propertyID;
     private static int idCount = Database.readUpdate("Favourite")+1;
 
     //add a new favourite property by a tenant
-    public Favourite(int tenantID, int propertyID){
+    public Favourite(int userID, String role, int propertyID){
         System.out.println("Here");
         this.favouriteID = idCount;
-        this.tenantID = tenantID;
+        this.userID = userID;
+        this.role = role;
         this.propertyID = propertyID;
         idCount++;
         writeFile();
@@ -21,7 +23,8 @@ public class Favourite {
     public void writeFile(){
         Database.writeData("Favourite",Arrays.asList(
                 Integer.toString(favouriteID),
-                Integer.toString(tenantID),
+                Integer.toString(userID),
+                role,
                 Integer.toString(propertyID)));
 
         Database.writeUpdate("Favourite",Arrays.asList(Integer.toString(favouriteID)));
@@ -31,12 +34,16 @@ public class Favourite {
         return favouriteID;
     }
 
-    public int getTenantID(){
-        return tenantID;
+    public int getUserID(){
+        return userID;
     }
 
     public int getPropertyID(){
         return propertyID;
+    }
+
+    public String getRole(){
+        return role;
     }
 
 }

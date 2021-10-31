@@ -62,15 +62,18 @@ public class LoginPageController {
 
                 if ((roleComboBox.getValue().toString().equals("Agent"))) {
                     state.setAgentLicense(list.get(i).get(7));
-                    System.out.println(state.getAgentLicense());
+                    //System.out.println(state.getAgentLicense());
                 }
 
+                /*
                 System.out.println(state.getLoggedInId());
                 System.out.println(state.getFullName());
                 System.out.println(state.getPassword());
                 System.out.println(state.getEmail());
                 System.out.println(state.getRole());
                 System.out.println(state.getPhoneNumber());
+
+                 */
 
                 loadFXML("/view/homepage.fxml");
             }
