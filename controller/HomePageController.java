@@ -88,12 +88,12 @@ public class HomePageController {
     public void initialize(){
         GlobalState state = GlobalState.getInstance();
         boolean loginStatus = state.getLoginStatus();
-        if(loginStatus){ // logged in
-            if(state.getRole().equals("Admin"))
+        String role = state.getRole();
+        if(loginStatus){
+            if(role.equals("Admin"))
                 manageButton.setVisible(true);
-            if(state.getRole().equals("Owner") || state.getRole().equals("Agent"))
+            if(role.equals("Agent") || role.equals("Owner"))
                 myListButton.setVisible(true);
-
             registerButton.setVisible(false);
             registerButton.setDisable(true);
             loginButton.setText("Logout");
@@ -102,9 +102,7 @@ public class HomePageController {
                 switchToHomePage(e);
             });
         }
-        else{ // not logged in
-            myListButton.setVisible(false);
-            manageButton.setVisible(false);
+        else{
             profileButton.setOnAction(e ->{switchToLogin(e);
                 try
                 {
