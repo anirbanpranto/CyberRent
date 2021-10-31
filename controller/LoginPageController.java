@@ -48,23 +48,22 @@ public class LoginPageController {
 
     @FXML
     void validate(ActionEvent event) throws Exception {
+        boolean flag = false;
+        flag = adminLogin();
         List<List<String>> list = Database.readData(roleComboBox.getValue().toString());
         GlobalState state = GlobalState.getInstance();
-        boolean flag = false;
         for (int i = 0; i < list.size(); i++) {
             // to check whether email and password are matched or not
-            if (list.get(i).get(3).equals(userInput_Email.getText())
-                    && (list.get(i).get(2).equals(userInput_Password.getText()))) {
+            if (list.get(i).get(3).equals(userInput_Email.getText()) && (list.get(i).get(2).equals(userInput_Password.getText()))) {
                 GlobalState.getInstance().setLoginStatus();
                 flag = true;
                 state.setSession(Integer.parseInt(list.get(i).get(0)), list.get(i).get(1), list.get(i).get(2),
                         list.get(i).get(3), roleComboBox.getValue().toString(), list.get(i).get(5));
-
+                
                 if ((roleComboBox.getValue().toString().equals("Agent"))) {
                     state.setAgentLicense(list.get(i).get(7));
                     //System.out.println(state.getAgentLicense());
                 }
-
                 /*
                 System.out.println(state.getLoggedInId());
                 System.out.println(state.getFullName());
@@ -72,9 +71,7 @@ public class LoginPageController {
                 System.out.println(state.getEmail());
                 System.out.println(state.getRole());
                 System.out.println(state.getPhoneNumber());
-
-                 */
-
+                */
                 loadFXML("/view/homepage.fxml");
             }
         }
@@ -102,5 +99,16 @@ public class LoginPageController {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
         Stage mainStage = GlobalState.getInstance().getStage();
         mainStage.setScene(new Scene(root, 1280, 720));
+    }
+
+    private boolean adminLogin() throws IOException {
+        if (userInput_Email.getText().equals("admin") && userInput_Password.getText().equals("admin123")){
+            GlobalState state = GlobalState.getInstance();
+            state.setSession(-1, null, "admin123", "admin", "Admin", null);
+            state.getInstance().setLoginStatus();
+            loadFXML("/view/homepage.fxml");
+            return true;
+        }
+        return false;
     }
 }
