@@ -6,7 +6,6 @@ public class Property {
     private String listerType; //[Owner,Agent]
     private int listerID;
     private int propertyID;
-    private static int idCount = Database.readUpdate("Property")+1; 
     //private int areaID;
     private String status = "active"; // [active,inactive]
     private String projectName;
@@ -33,11 +32,17 @@ public class Property {
                                          numberOfBedroom(2).numberOfBathroom(1).facilities(f).
                                          keyFeatures(k).rental_price(1000).address("address").
                                          city("Cyberjaya").state("Selangor").propertyType("condominium").
-                                         photo(photos).build("Owner",1);
+                                         photo(photos).build(1,"Owner",1);         // to read existing property
+
+        Property p = new Property.Builder().projectName("ABC").floorSize(1000).psf(0.9).furnishStatus("Fully").
+                                         numberOfBedroom(2).numberOfBathroom(1).facilities(f).
+                                         keyFeatures(k).rental_price(1000).address("address").
+                                         city("Cyberjaya").state("Selangor").propertyType("condominium").
+                                         photo(photos).createProperty("Owner",1);   // to create new property
     */
 
-    public Property(String listerType, int listerID, Builder p){
-        this.id = idCount;
+    public Property(int id, String listerType, int listerID, Builder p){
+        this.id = id;
         this.listerType = listerType;
         this.listerID = listerID;
         this.projectName = p.projectName;
@@ -138,8 +143,14 @@ public class Property {
         public Builder propertyType(String p){propertyType = p; return this;}
         public Builder photo(ArrayList<String> p){photo = p; return this;}
 
-        public Property build(String listerType, int listerID){
-            return new Property(listerType, listerID, this);
+        public Property build(int id, String listerType, int listerID){ // read in exisiting property
+            return new Property(id, listerType, listerID, this);
+        }
+
+        public Property createProperty(String listerType, int listerID){ // create new property
+            int id = Database.readUpdate("Property")+1;
+
+            return new Property(id, listerType, listerID, this);
         }
 
         
