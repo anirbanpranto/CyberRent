@@ -12,8 +12,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Favourite;
 import model.GlobalState;
 import model.Property;
+import model.Database;
+import java.util.List;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -251,6 +254,17 @@ public class favourite_listController {
     void removeFavourite_1(ActionEvent event) {
         int page = Integer.parseInt(currentPage.getText());
         page = page -1;
+        ArrayList<Property> favProperties = state.getFavoriteProperties();
+
+        List<List<String>> favList = Database.readData("Favourite");
+        for(int i = 0; i < favList.size(); i++){
+            if(Integer.parseInt(favList.get(i).get(1)) == state.getLoggedInId())
+                if(favList.get(i).get(2).equals(state.getRole()))
+                    if(Integer.parseInt(favList.get(i).get(3)) == favProperties.get(0 + (page * 3)).getID()){
+                        favList.remove(i);
+                        Database.writeAllData("Favourite", favList);
+                    }
+        }
         state.getFavoriteProperties().remove(0 + (page * 3));
         System.out.println("Deleted favourite");
         //state.updateTempFavouriteList();
@@ -268,6 +282,18 @@ public class favourite_listController {
     void removeFavourite_2(ActionEvent event) {
         int page = Integer.parseInt(currentPage.getText());
         page = page -1;
+
+        ArrayList<Property> favProperties = state.getFavoriteProperties();
+
+        List<List<String>> favList = Database.readData("Favourite");
+        for(int i = 0; i < favList.size(); i++){
+            if(Integer.parseInt(favList.get(i).get(1)) == state.getLoggedInId())
+                if(favList.get(i).get(2).equals(state.getRole()))
+                    if(Integer.parseInt(favList.get(i).get(3)) == favProperties.get(0 + (page * 3)).getID()){
+                        favList.remove(i);
+                        Database.writeAllData("Favourite", favList);
+                    }
+        }
         state.getFavoriteProperties().remove(1 + (page * 3));
         System.out.println("Deleted favourite");
         //state.updateTempFavouriteList();
@@ -285,6 +311,18 @@ public class favourite_listController {
     void removeFavourite_3(ActionEvent event) {
         int page = Integer.parseInt(currentPage.getText());
         page = page -1;
+
+        ArrayList<Property> favProperties = state.getFavoriteProperties();
+
+        List<List<String>> favList = Database.readData("Favourite");
+        for(int i = 0; i < favList.size(); i++){
+            if(Integer.parseInt(favList.get(i).get(1)) == state.getLoggedInId())
+                if(favList.get(i).get(2).equals(state.getRole()))
+                    if(Integer.parseInt(favList.get(i).get(3)) == favProperties.get(0 + (page * 3)).getID()){
+                        favList.remove(i);
+                        Database.writeAllData("Favourite", favList);
+                    }
+        }
         state.getFavoriteProperties().remove(2 + (page * 3));
         System.out.println("Deleted favourite");
         //state.updateTempFavouriteList();
