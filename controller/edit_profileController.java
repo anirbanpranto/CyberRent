@@ -72,6 +72,8 @@ public class edit_profileController {
         state.setNewFullName(newName);
         state.setNewPhoneNumber(newPhone);
 
+        state.EditProfilePerformed(state.getRole());
+
         if(state.getRole().equals("Agent")){
             state.setAgentLicense(newAgentLicense);
         }

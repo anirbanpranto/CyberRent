@@ -34,9 +34,9 @@ public class GlobalState {
     //private ArrayList<Property> favourites;
     private ArrayList<Property> personalProperty; //null at the begining, but its loaded when the login method is called
     private ArrayList<Property> favoriteProperty; //null at the begining, but its loaded when the login method is called
-    private ArrayList<Owner> owner = null;
-    private ArrayList<Tenant> tenant = null;
-    private ArrayList<Agent> agent = null;
+    private ArrayList<Owner> owner;
+    private ArrayList<Tenant> tenant;
+    private ArrayList<Agent> agent;
 
     private GlobalState(){
         //load all properties here from database
@@ -57,14 +57,73 @@ public class GlobalState {
             tempProp.add(p);
         }
         this.propeties = tempProp;
-        System.out.println("System total properties: " + propeties.size());
+        System.out.println("System total agents: " + propeties.size());
+
+        List<List<String>> strAgent = Database.readData("Agent");
+        ArrayList<Agent> tempAgent = new ArrayList<>();
+        for(int i = 0; i < strAgent.size(); i++){
+            System.out.println(Integer.parseInt(strAgent.get(i).get(0)) + " " + strAgent.get(i).get(1)+ " " +strAgent.get(i).get(2)+ " " + strAgent.get(i).get(3)+ " " + strAgent.get(i).get(5)+ " " + strAgent.get(i).get(7));
+            Agent t = new Agent(Integer.parseInt(strAgent.get(i).get(0)), strAgent.get(i).get(1), strAgent.get(i).get(2), strAgent.get(i).get(3), strAgent.get(i).get(5), strAgent.get(i).get(7));
+            tempAgent.add(t);
+        }
+        this.agent = tempAgent;
+        System.out.println("System total agents: " + agent.size());
+
+        List<List<String>> strOwner = Database.readData("Owner");
+        ArrayList<Owner> tempOwner = new ArrayList<>();
+        for(int i = 0; i < strOwner.size(); i++){
+            Owner t = new Owner(Integer.parseInt(strOwner.get(i).get(0)), strOwner.get(i).get(1), strOwner.get(i).get(2), strOwner.get(i).get(3), strOwner.get(i).get(5));
+            tempOwner.add(t);
+        }
+        this.owner = tempOwner;
+        System.out.println("System total owners: " + owner.size());
+
+        List<List<String>> strTenant = Database.readData("Tenant");
+        ArrayList<Tenant> tempTenant = new ArrayList<>();
+        for(int i = 0; i < strTenant.size(); i++){
+            Tenant t = new Tenant(Integer.parseInt(strTenant.get(i).get(0)), strTenant.get(i).get(1), strTenant.get(i).get(2), strTenant.get(i).get(3), "Tenant", strTenant.get(i).get(5));
+            tempTenant.add(t);
+        }
+        this.tenant = tempTenant;
+        System.out.println("System total tenants: " + tenant.size());
 
     }
 
-    private void EditPerformed(String tableName){ //edit the temporary data and put them in persistent data
+    public void EditProfilePerformed(String tableName){ //edit the temporary data and put them in persistent data
         //make an ArrayList of the Table values = []
+        if(tableName.equals("Agent")){
+            for(int i = 0; i < this.agent.size(); i++){
+                if(agent.get(i).getId() == this.loggedInId){
+                    agent.get(i).setName(this.fullName);
+                    agent.get(i).setPhoneNumber(this.phoneNumber);
+                    agent.get(i).setLicenseNo(this.agentLicense);
+                    Database.writeAllData("Agent", Database.AgentToList(agent));
+                    break;
+                }
+            }
+        }
+        if(tableName.equals("Owner")){
+            for(int i = 0; i < this.owner.size(); i++){
+                if(owner.get(i).getId() == this.loggedInId){
+                    owner.get(i).setName(this.fullName);
+                    owner.get(i).setPhoneNumber(this.phoneNumber);
+                    Database.writeAllData("Owner", Database.OwnerToList(owner));
+                    break;
+                }
+            }
+        }
+        if(tableName.equals("Tenant")){
+            for(int i = 0; i < this.tenant.size(); i++){
+                if(tenant.get(i).getId() == this.loggedInId){
+                    tenant.get(i).setName(this.fullName);
+                    tenant.get(i).setPhoneNumber(this.phoneNumber);
+                    Database.writeAllData("Tenant", Database.TenantToList(tenant));
+                    break;
+                }
+            }
+        }
         //flush values inside our database
-        ArrayList<List<String>> All = null;
+        
         //Database.writeAllData(tableName, All);
     }
 

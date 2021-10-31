@@ -5,7 +5,7 @@ public class Tenant extends User {
     private ArrayList<Property> favourite = new ArrayList<>(); // to store favourite property
     private static int idCount = Database.readUpdate("Tenant") + 1; 
     public Tenant(int id, String fullname, String password, String email, String role, String phoneNumber){
-        super(idCount,fullname,password,email,role,phoneNumber);
+        super(id,fullname,password,email,role,phoneNumber);
     }
 
     public static Tenant createTenant(String fullname, String password, String email, String role, String phoneNumber){

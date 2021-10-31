@@ -60,6 +60,33 @@ public class Database{
     }
   }
 
+  public static ArrayList<List<String>> AgentToList(ArrayList<Agent> a){
+    ArrayList<List<String>> temp = new ArrayList<>();
+    for(int i = 0; i < a.size(); i++){
+      Agent tt = a.get(i);
+      temp.add(Arrays.asList(Integer.toString(tt.getId()), tt.getName(), tt.getPassword(), tt.getEmail(), "Agent", tt.getPhone(), "Active", tt.getLicenseNo()));
+    }
+    return temp;
+  }
+
+  public static ArrayList<List<String>> OwnerToList(ArrayList<Owner> a){
+    ArrayList<List<String>> temp = new ArrayList<>();
+    for(int i = 0; i < a.size(); i++){
+      Owner tt = a.get(i);
+      temp.add(Arrays.asList(Integer.toString(tt.getId()), tt.getName(), tt.getPassword(), tt.getEmail(), "Owner", tt.getPhone(), "Active"));
+    }
+    return temp;
+  }
+
+  public static ArrayList<List<String>> TenantToList(ArrayList<Tenant> a){
+    ArrayList<List<String>> temp = new ArrayList<>();
+    for(int i = 0; i < a.size(); i++){
+      Tenant tt = a.get(i);
+      temp.add(Arrays.asList(Integer.toString(tt.getId()), tt.getName(), tt.getPassword(), tt.getEmail(), "Tenant", tt.getPhone(), "Active"));
+    }
+    return temp;
+  }
+
   public static void writeAllData(String tableName, ArrayList<List<String>> All){
     String fileName = tableName + ".csv";
     String filePath = "./Database/"+fileName;

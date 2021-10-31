@@ -9,6 +9,14 @@ public class Agent extends Tenant{
         this.licenseNo = licenseNo;
     }
 
+    public String getLicenseNo(){
+        return this.licenseNo;
+    }
+
+    public void setLicenseNo(String l){
+        this.licenseNo = l;
+    }
+
     public static Agent createAgent(String fullName, String password, String email, String phoneNumber, String licenseNo){
         int Id = ++globalId;
         Database.writeData("Agent", Arrays.asList(Integer.toString(Id), fullName, password, email, "Agent", phoneNumber, licenseNo));

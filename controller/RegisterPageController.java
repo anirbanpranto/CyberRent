@@ -121,15 +121,12 @@ public class RegisterPageController {
     
     private void createAccount(String role){
         if (role.equals("Tenant")){
-            Tenant tenants = new Tenant(0, null, userInput_Password.getText(), userInput_Email.getText(), null);
-            Tenant.createTenant(null, userInput_Password.getText(), userInput_Email.getText(), null);
+            Tenant.createTenant(null, userInput_Password.getText(), userInput_Email.getText(), "Tenant", null);
         }
         else if (role.equals("Owner")){
-            Owner owners = new Owner(0, null, userInput_Password.getText(), userInput_Email.getText(), null);
             Owner.createOwner(null, userInput_Password.getText(), userInput_Email.getText(), null);
         }
         else{
-            Agent agents = new Agent(0, null, userInput_Password.getText(), userInput_Email.getText(), null, null);
             Agent.createAgent(null, userInput_Password.getText(), userInput_Email.getText(), null, null);
         }
     }
