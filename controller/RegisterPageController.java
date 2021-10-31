@@ -55,56 +55,68 @@ public class RegisterPageController {
 
     @FXML
     public void validate(ActionEvent event) throws IOException {
-        List<List<String>> list = Database.readData(roleComboBox.getValue().toString());
+        List<List<String>> emailList = Database.readData("email");
+        List<List<String>> tempEmailList = Database.readData("temp_email");
         if (userInput_Password.getText().equals(userInput_ConfirmPassword.getText())){
-            if (list.size() != 0){
-                for(int i = 0; i < list.size(); i++){
-                    // check if email exists in database
-                    if (!(list.get(i).get(3).equals(userInput_Email.getText()))){
-                        if (roleComboBox.getValue().equals("Tenant")){
-                            createAccount("Tenant");
-                        }
-                        else if (roleComboBox.getValue().equals("Owner")){
-                            createAccount("Owner");
-                        }
-                        else{
-                            createAccount("Agent");
-                        }
-                        Stage mainStage = GlobalState.getInstance().getStage();
-                        Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
-                        mainStage.setScene(new Scene(root, 1280, 720));
-                    }
-                    else{
-                        try
+            if (emailList.size() != 0){
+                boolean flag = true;
+                for(int i = 0; i < emailList.size(); i++){
+                    // check if email exists in email file database (active users)
+                    if (emailList.get(i).get(0).equals(userInput_Email.getText())){
+                        flag = false;
+                    }                 
+                }
+                if (flag == false){
+                    try
                         {
                             displayError("emailError");
                             userInput_Email.setText(null);
                             userInput_Password.setText(null);
                             userInput_ConfirmPassword.setText(null);
                         }
-                        catch (Exception e)
-                        {
-                            e.printStackTrace();
-                        }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
                     }
                 }
-            }
-            else{
-                if (roleComboBox.getValue().equals("Tenant")){
-                    createAccount("Tenant");
+                else{
+                    writeTempFile();
+                    Database.writeData("temp_email",Arrays.asList(userInput_Email.getText()));
                 }
-                else if (roleComboBox.getValue().equals("Owner")){
-                    createAccount("Owner");
+            }
+            // temp_email (pending registration)
+            else if (tempEmailList.size() != 0){
+                boolean flag = true;
+                for(int i = 0; i < tempEmailList.size(); i++){
+                    // check if email exists in temp file database
+                    if (tempEmailList.get(i).get(0).equals(userInput_Email.getText())){
+                        flag = false;
+                    }                 
+                }
+                if (flag == false){
+                    try
+                        {
+                            displayError("emailError");
+                            userInput_Email.setText(null);
+                            userInput_Password.setText(null);
+                            userInput_ConfirmPassword.setText(null);
+                        }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
                 }
                 else{
-                    createAccount("Agent");
+                    writeTempFile();
+                    Database.writeData("temp_email",Arrays.asList(userInput_Email.getText()));
                 }
-                Stage mainStage = GlobalState.getInstance().getStage();
-                Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
-                mainStage.setScene(new Scene(root, 1280, 720));
-                
-            }   
-        }
+            }
+            // email is never used
+            else{
+                writeTempFile();
+                Database.writeData("temp_email",Arrays.asList(userInput_Email.getText()));
+            }
+        }   
             else{
                 try
                 {
@@ -118,17 +130,20 @@ public class RegisterPageController {
                 }            
             }
 }
-    
-    private void createAccount(String role){
-        if (role.equals("Tenant")){
-            Tenant.createTenant(null, userInput_Password.getText(), userInput_Email.getText(), "Tenant", null);
+
+    private void writeTempFile() throws IOException {
+        if (roleComboBox.getValue().equals("Tenant")){
+            Database.writeData("Tenant_temp", Arrays.asList(null, null, userInput_Password.getText(), userInput_Email.getText(),"Tenant", null));
         }
-        else if (role.equals("Owner")){
-            Owner.createOwner(null, userInput_Password.getText(), userInput_Email.getText(), null);
+        else if (roleComboBox.getValue().equals("Owner")){
+            Database.writeData("Owner_temp", Arrays.asList(null, null, userInput_Password.getText(), userInput_Email.getText(),"Agent", null));
         }
         else{
-            Agent.createAgent(null, userInput_Password.getText(), userInput_Email.getText(), null, null);
+            Database.writeData("Agent_temp", Arrays.asList(null, null, userInput_Password.getText(), userInput_Email.getText(),"Tenant", null, null));
         }
+        Stage mainStage = GlobalState.getInstance().getStage();
+        Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
+        mainStage.setScene(new Scene(root, 1280, 720));
     }
 
     private void displayError(String error) throws Exception {
