@@ -18,6 +18,7 @@ public abstract class User {
         this.fullName = fullName;
         this.password = password;
         this.role = role;
+        this.email = email;
         this.phoneNumber = phoneNumber;
     }
 

@@ -64,8 +64,6 @@ public class GlobalState {
         for(int i = 0; i < strAgent.size(); i++){
             System.out.println(Integer.parseInt(strAgent.get(i).get(0)) + " " + strAgent.get(i).get(1)+ " " +strAgent.get(i).get(2)+ " " + strAgent.get(i).get(3)+ " " + strAgent.get(i).get(5)+ " " + strAgent.get(i).get(7));
             Agent t = new Agent(Integer.parseInt(strAgent.get(i).get(0)), strAgent.get(i).get(1), strAgent.get(i).get(2), strAgent.get(i).get(3), strAgent.get(i).get(5), strAgent.get(i).get(7));
-            t.setEmail(strAgent.get(i).get(3));
-            t.setName(strAgent.get(i).get(1));
             tempAgent.add(t);
         }
         this.agent = tempAgent;
@@ -75,10 +73,8 @@ public class GlobalState {
         ArrayList<Owner> tempOwner = new ArrayList<>();
         for(int i = 0; i < strOwner.size(); i++){
             Owner t = new Owner(Integer.parseInt(strOwner.get(i).get(0)), strOwner.get(i).get(1), strOwner.get(i).get(2), strOwner.get(i).get(3), strOwner.get(i).get(5));
-            t.setEmail(strOwner.get(i).get(3));
             tempOwner.add(t);
         }
-        
         this.owner = tempOwner;
         System.out.println("System total owners: " + owner.size());
 
@@ -86,7 +82,6 @@ public class GlobalState {
         ArrayList<Tenant> tempTenant = new ArrayList<>();
         for(int i = 0; i < strTenant.size(); i++){
             Tenant t = new Tenant(Integer.parseInt(strTenant.get(i).get(0)), strTenant.get(i).get(1), strTenant.get(i).get(2), strTenant.get(i).get(3), "Tenant", strTenant.get(i).get(5));
-            t.setEmail(strTenant.get(i).get(3));
             tempTenant.add(t);
         }
         this.tenant = tempTenant;
