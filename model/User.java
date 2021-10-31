@@ -14,7 +14,6 @@ public abstract class User {
     protected String phoneNumber;
 
     public User(int Id, String fullName, String password, String email, String role, String phoneNumber){
-        System.out.println("This called , id : " + Id);
         this.Id = Id;
         this.fullName = fullName;
         this.password = password;
