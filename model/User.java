@@ -12,7 +12,6 @@ public abstract class User {
     protected String email;
     protected String role;
     protected String phoneNumber;
-    protected String status = "Active";
 
     public User(int Id, String fullName, String password, String email, String role, String phoneNumber){
         this.Id = Id;
@@ -46,12 +45,12 @@ public abstract class User {
         return this.phoneNumber;
     }
     
-    public String getStatus(){
-        return this.status;
-    }
-    
     public void setName(String fullname){
         this.fullName = fullname;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
     }
     
     public void setEmail(String email){
@@ -61,10 +60,5 @@ public abstract class User {
     public void setPhoneNumber(String phoneNumber){
         this.phoneNumber = phoneNumber;
     }
-    
-    public void setStatus(String status){
-        this.status = status;
-    }
-  
     //this model will have all the public data performed without login
 }

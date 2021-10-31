@@ -1,21 +1,17 @@
 package model;
 import java.util.*;
 
-public class Agent extends User{
-    private static int globalId = Database.readUpdate("Agent");
+public class Agent extends Tenant{
+    private static int globalId = Database.readUpdate("Agent") + 1;
     private String licenseNo;
     public Agent(int Id, String fullName, String password, String email, String phoneNumber, String licenseNo){
         super(Id, fullName, password, email, "Agent", phoneNumber);
         this.licenseNo = licenseNo;
     }
 
-    public void setPassword(String password){
-        this.password = password;
-    }
-
     public static Agent createAgent(String fullName, String password, String email, String phoneNumber, String licenseNo){
         int Id = ++globalId;
-        Database.writeData("Agent", Arrays.asList(Integer.toString(Id), fullName, password, email, "Agent", phoneNumber, "Active", licenseNo));
+        Database.writeData("Agent", Arrays.asList(Integer.toString(Id), fullName, password, email, "Agent", phoneNumber, licenseNo));
         Database.writeUpdate("Agent", Arrays.asList(Integer.toString(Id)));
         return new Agent(Id, fullName, password, email, phoneNumber, licenseNo);
     }
