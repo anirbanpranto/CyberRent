@@ -86,8 +86,14 @@ public class HomePageController {
     private ArrayList<String> search_keyFeatures = new ArrayList<>();
 
     public void initialize(){
-        boolean loginStatus = GlobalState.getInstance().getLoginStatus();
-        if(loginStatus){
+        GlobalState state = GlobalState.getInstance();
+        boolean loginStatus = state.getLoginStatus();
+        if(loginStatus){ // logged in
+            if(state.getRole().equals("Admin"))
+                manageButton.setVisible(true);
+            if(state.getRole().equals("Owner") || state.getRole().equals("Agent"))
+                myListButton.setVisible(true);
+
             registerButton.setVisible(false);
             registerButton.setDisable(true);
             loginButton.setText("Logout");
@@ -96,7 +102,9 @@ public class HomePageController {
                 switchToHomePage(e);
             });
         }
-        else{
+        else{ // not logged in
+            myListButton.setVisible(false);
+            manageButton.setVisible(false);
             profileButton.setOnAction(e ->{switchToLogin(e);
                 try
                 {
@@ -352,6 +360,17 @@ public class HomePageController {
         try{
             Stage mainStage = GlobalState.getInstance().getStage();
             Parent root = FXMLLoader.load(getClass().getResource("/view/personalpropertyList.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void switchToManage(ActionEvent event){
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/managepage.fxml"));
             mainStage.setScene(new Scene(root, 1280, 720));
         }catch (IOException ioe){
             ioe.printStackTrace();
