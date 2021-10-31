@@ -99,7 +99,7 @@ public class Database{
             for(int i = 0; i < All.size(); i++){
               for(int j = 0; j < All.get(i).size(); j++){
                 pw.append(All.get(i).get(j));
-                if(i == All.get(i).size() - 1){
+                if(j == All.get(i).size() - 1){
                   pw.append("\n");
                 }
                 else{
