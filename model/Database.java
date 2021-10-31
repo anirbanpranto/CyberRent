@@ -64,6 +64,7 @@ public class Database{
     ArrayList<List<String>> temp = new ArrayList<>();
     for(int i = 0; i < a.size(); i++){
       Agent tt = a.get(i);
+      System.out.println(tt.getEmail() + " " + tt.getLicenseNo());
       temp.add(Arrays.asList(Integer.toString(tt.getId()), tt.getName(), tt.getPassword(), tt.getEmail(), "Agent", tt.getPhone(), "Active", tt.getLicenseNo()));
     }
     return temp;

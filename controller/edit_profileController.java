@@ -69,14 +69,18 @@ public class edit_profileController {
         String newName = FullName_EditProfile.getText();
         String newPhone = PhoneButton_EditProfile.getText();
         String newAgentLicense = AgentLicense_EditProfile.getText();
-        state.setNewFullName(newName);
-        state.setNewPhoneNumber(newPhone);
-
-        state.EditProfilePerformed(state.getRole());
-
-        if(state.getRole().equals("Agent")){
+        
+        if(!newName.equals("")){
+            state.setNewFullName(newName);
+        }
+        if(!newPhone.equals("")){
+            state.setNewPhoneNumber(newPhone);
+        }
+        if(state.getRole().equals("Agent") && !newAgentLicense.equals("")){
             state.setAgentLicense(newAgentLicense);
         }
+
+        state.EditProfilePerformed(state.getRole());
     }
 
     public void save(ActionEvent event) {

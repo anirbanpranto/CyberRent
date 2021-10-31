@@ -62,7 +62,7 @@ public class GlobalState {
         List<List<String>> strAgent = Database.readData("Agent");
         ArrayList<Agent> tempAgent = new ArrayList<>();
         for(int i = 0; i < strAgent.size(); i++){
-            //System.out.println(Integer.parseInt(strAgent.get(i).get(0)) + " " + strAgent.get(i).get(1)+ " " +strAgent.get(i).get(2)+ " " + strAgent.get(i).get(3)+ " " + strAgent.get(i).get(5)+ " " + strAgent.get(i).get(7));
+            System.out.println(Integer.parseInt(strAgent.get(i).get(0)) + " " + strAgent.get(i).get(1)+ " " +strAgent.get(i).get(2)+ " " + strAgent.get(i).get(3)+ " " + strAgent.get(i).get(5)+ " " + strAgent.get(i).get(7));
             Agent t = new Agent(Integer.parseInt(strAgent.get(i).get(0)), strAgent.get(i).get(1), strAgent.get(i).get(2), strAgent.get(i).get(3), strAgent.get(i).get(5), strAgent.get(i).get(7));
             tempAgent.add(t);
         }
@@ -94,6 +94,7 @@ public class GlobalState {
         if(tableName.equals("Agent")){
             for(int i = 0; i < this.agent.size(); i++){
                 if(agent.get(i).getId() == this.loggedInId){
+                    agent.get(i).setEmail(this.email);
                     agent.get(i).setName(this.fullName);
                     agent.get(i).setPhoneNumber(this.phoneNumber);
                     agent.get(i).setLicenseNo(this.agentLicense);
@@ -105,6 +106,7 @@ public class GlobalState {
         if(tableName.equals("Owner")){
             for(int i = 0; i < this.owner.size(); i++){
                 if(owner.get(i).getId() == this.loggedInId){
+                    owner.get(i).setEmail(this.email);
                     owner.get(i).setName(this.fullName);
                     owner.get(i).setPhoneNumber(this.phoneNumber);
                     Database.writeAllData("Owner", Database.OwnerToList(owner));
@@ -115,6 +117,7 @@ public class GlobalState {
         if(tableName.equals("Tenant")){
             for(int i = 0; i < this.tenant.size(); i++){
                 if(tenant.get(i).getId() == this.loggedInId){
+                    tenant.get(i).setEmail(this.email);
                     tenant.get(i).setName(this.fullName);
                     tenant.get(i).setPhoneNumber(this.phoneNumber);
                     Database.writeAllData("Tenant", Database.TenantToList(tenant));
@@ -181,7 +184,7 @@ public class GlobalState {
     public void setNewFullName(String newFullName){ this.fullName = newFullName; }
     public void setNewPhoneNumber(String newPhoneNumber){ this.phoneNumber = newPhoneNumber; }
     public void setNewPassword(String newPassword){ this.password = newPassword; }
-    public void setAgentLicense(String newAgentLicense){ this.agentLicense = newAgentLicense; }
+    public void setAgentLicense(String newAgentLicense){ System.out.println(newAgentLicense); this.agentLicense = newAgentLicense; }
     public void flushSession(){
         this.loggedInId = -1;
         this.email = null;
