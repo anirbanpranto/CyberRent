@@ -21,6 +21,7 @@ public class Agent extends Tenant{
         int Id = ++globalId;
         Database.writeData("Agent", Arrays.asList(Integer.toString(Id), fullName, password, email, "Agent", phoneNumber, licenseNo));
         Database.writeUpdate("Agent", Arrays.asList(Integer.toString(Id)));
+        Database.writeData("email",Arrays.asList(email));
         return new Agent(Id, fullName, password, email, phoneNumber, licenseNo);
     }
 
