@@ -16,7 +16,7 @@ import java.io.IOException;
 import model.Database;
 import java.util.ArrayList;
 import javafx.scene.control.Label;
-import controller.DeletePageController;
+//import controller.DeletePageController;
 
 public class ManagePageController {
 
@@ -52,8 +52,8 @@ public class ManagePageController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/deletepage.fxml"));
         Parent root = loader.load();
 
-        DeletePageController deletepageController = loader.getController();
-        deletepageController.selectListType(role, listType);
+        //DeletePageController deletepageController = loader.getController();
+        //deletepageController.selectListType(role, listType);
 
         Stage mainStage = GlobalState.getInstance().getStage();
         mainStage.setScene(new Scene(root, 1280, 720));

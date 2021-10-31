@@ -23,11 +23,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 
+import model.Favourite;
 import model.GlobalState;
 import model.Property;
 import model.SearchEngine;
 
 public class PropertyListController {
+
+    GlobalState state = GlobalState.getInstance();
 
     @FXML
     private ArrayList<ArrayList<Label>> property_list;
@@ -37,6 +40,12 @@ public class PropertyListController {
     private MenuButton facilities;
     @FXML
     private Button favouriteButton;
+    @FXML
+    private Button addFavourite_1;
+    @FXML
+    private Button addFavourite_2;
+    @FXML
+    private Button addFavourite_3;
     @FXML
     private MenuButton floorSize;
     @FXML
@@ -136,6 +145,33 @@ public class PropertyListController {
                 {
                     exp.printStackTrace();
                 }});
+            addFavourite_1.setOnAction(e ->{switchToLogin(e);
+                try
+                {
+                    displayError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }});
+            addFavourite_2.setOnAction(e ->{switchToLogin(e);
+                try
+                {
+                    displayError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }});
+            addFavourite_3.setOnAction(e ->{switchToLogin(e);
+                try
+                {
+                    displayError();
+                }
+                catch (Exception exp)
+                {
+                    exp.printStackTrace();
+                }});
         }
 
         
@@ -211,8 +247,87 @@ public class PropertyListController {
     }
 
     @FXML
-    void addFavourite(ActionEvent event) {
+    void addFavourite_1(ActionEvent event) {
+        int page = Integer.parseInt(currentPage.getText());
+        page = page -1;
+        boolean validate = true;
+        for(int i = 0; i < state.getFavoriteProperties().size(); i++){
+            if(state.getFavoriteProperties().get(i).getID() == properties.get(0 + (page * 3)).getID()){
+                System.out.println("Already in favourite list");
+                i = state.getFavoriteProperties().size()-1;
+                validate = false;
+                addFavourite_1.setOnAction(e ->{
+                    try
+                    {
+                        displayFavouriteError();
+                    }
+                    catch (Exception exp)
+                    {
+                        exp.printStackTrace();
+                    }});
+            }
+        }
+        if(validate){
+            Favourite.createFavourite(state.getLoggedInId(),state.getRole(),properties.get(0 + (page * 3)).getID());
+            System.out.println("Added Successfully");
+            state.updateTempFavouriteList();
+        }
+    }
 
+    @FXML
+    void addFavourite_2(ActionEvent event) {
+        int page = Integer.parseInt(currentPage.getText());
+        page = page -1;
+        boolean validate = true;
+        for(int i = 0; i < state.getFavoriteProperties().size(); i++){
+            if(state.getFavoriteProperties().get(i).getID() == properties.get(1 + (page * 3)).getID()){
+                System.out.println("Already in favourite list");
+                i = state.getFavoriteProperties().size()-1;
+                validate = false;
+                addFavourite_2.setOnAction(e ->{
+                    try
+                    {
+                        displayFavouriteError();
+                    }
+                    catch (Exception exp)
+                    {
+                        exp.printStackTrace();
+                    }});
+            }
+        }
+        if(validate){
+            Favourite.createFavourite(state.getLoggedInId(),state.getRole(),properties.get(1 + (page * 3)).getID());
+            System.out.println("Added Successfully");
+            state.updateTempFavouriteList();
+        }
+    }
+
+    @FXML
+    void addFavourite_3(ActionEvent event) {
+        int page = Integer.parseInt(currentPage.getText());
+        page = page -1;
+        boolean validate = true;
+        for(int i = 0; i < state.getFavoriteProperties().size(); i++){
+            if(state.getFavoriteProperties().get(i).getID() == properties.get(2 + (page * 3)).getID()){
+                System.out.println("Already in favourite list");
+                i = state.getFavoriteProperties().size()-1;
+                validate = false;
+                addFavourite_3.setOnAction(e ->{
+                    try
+                    {
+                        displayFavouriteError();
+                    }
+                    catch (Exception exp)
+                    {
+                        exp.printStackTrace();
+                    }});
+            }
+        }
+        if(validate){
+            Favourite.createFavourite(state.getLoggedInId(),state.getRole(),properties.get(2 + (page * 3)).getID());
+            System.out.println("Added Successfully");
+            state.updateTempFavouriteList();
+        }
     }
 
     @FXML
@@ -400,12 +515,14 @@ public class PropertyListController {
     }
 
     @FXML
-    public void switchToFavourite(ActionEvent event) {
-        /*
-        Stage mainStage = GlobalState.getInstance().getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("/view/favourite.fxml"));
-        mainStage.setScene(new Scene(root, 1280, 720));
-        */
+    void switchToFavourite(ActionEvent event) {
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
     @FXML
@@ -467,6 +584,22 @@ public class PropertyListController {
         alert.setHeaderText("Error");
         alert.setContentText("Login is required.");
         alert.showAndWait(); 
+    }
+
+    private void displayFavouriteError() throws Exception {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Already in favourite list");
+        alert.setHeaderText("Already in favourite list");
+        alert.setContentText("Already in favourite list");
+        alert.showAndWait();
+    }
+
+    private void displayAddedFavouriteMessage() throws Exception {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Successful");
+        alert.setHeaderText("Added Successfully");
+        alert.setContentText("Added into favourite list");
+        alert.showAndWait();
     }
 
 }

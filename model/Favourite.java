@@ -7,17 +7,21 @@ public class Favourite {
     private int userID;
     private String role;
     private int propertyID;
-    private static int idCount = Database.readUpdate("Favourite")+1;
+    private static int globalId = Database.readUpdate("Favourite")+1;
 
     //add a new favourite property by a tenant
-    public Favourite(int userID, String role, int propertyID){
-        System.out.println("Here");
-        this.favouriteID = idCount;
+    public Favourite(int id, int userID, String role, int propertyID){
+        this.favouriteID = id;
         this.userID = userID;
         this.role = role;
         this.propertyID = propertyID;
-        idCount++;
-        writeFile();
+    }
+
+    public static Favourite createFavourite(int userID, String role, int propertyID){
+        int Id = ++globalId;
+        Database.writeData("Favourite",Arrays.asList(Integer.toString(Id),Integer.toString(userID),role,Integer.toString(propertyID)));
+        Database.writeUpdate("Favourite",Arrays.asList(Integer.toString(Id)));
+        return new Favourite(Id,userID,role,propertyID);
     }
 
     public void writeFile(){

@@ -2,6 +2,7 @@ package controller;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -88,7 +89,7 @@ public class PropertyController {
                                          numberOfBedroom(Integer.parseInt(this.bedroom.getText())).numberOfBathroom(Integer.parseInt(this.bathroom.getText())).facilities(this.keyFacilities).
                                          keyFeatures(this.keyFeatures).rental_price(Integer.parseInt(this.rentalPrice.getText())).address(this.address.getText()).
                                          city(this.city.getText()).state(this.state.getText()).propertyType(this.propertyType.getText()).
-                                         photo(this.photos).build("Owner",1);
+                                         photo(this.photos).createProperty("Owner",1);
                                          //Note need to put actual Role and ID that is stored in the login session later
         p.writeFile(); //save this entry
         //save this object into the global list of objects in GlobalState
@@ -187,5 +188,48 @@ public class PropertyController {
 
     public void non(ActionEvent event){
         this.furnishStatus = "Non Furnished";
+    }
+
+    @FXML
+    public void switchToProfile(ActionEvent event){
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/view_profile.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    @FXML
+    void switchToFavourite(ActionEvent event) {
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void switchToHomePage(ActionEvent event){
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    public void cancel(ActionEvent event){
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/personalpropertyList.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 }

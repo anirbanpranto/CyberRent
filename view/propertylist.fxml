@@ -137,7 +137,7 @@
                            </graphic>
                         </Button>
                         <ImageView fx:id="property1_image" fitHeight="147.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFavourite" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
+                        <Button fx:id="addFavourite_1" layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFavourite_1" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -247,7 +247,7 @@
                            </graphic>
                         </Button>
                         <ImageView fx:id="property2_image" fitHeight="147.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFavourite" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
+                        <Button fx:id="addFavourite_2" layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFavourite_2" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -357,7 +357,7 @@
                            </graphic>
                         </Button>
                         <ImageView fx:id="property3_image" fitHeight="147.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFavourite" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
+                        <Button fx:id="addFavourite_3" layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFavourite_3" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

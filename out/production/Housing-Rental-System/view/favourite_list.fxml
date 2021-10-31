@@ -22,6 +22,7 @@
                   <Image url="@image/Homepage/Homepage-background.jpg" />
                </image>
             </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="616.0" layoutX="177.0" layoutY="24.0" opacity="0.55" stroke="BLACK" strokeType="INSIDE" width="911.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="484.0" layoutX="261.0" layoutY="121.0" stroke="WHITE" strokeType="INSIDE" width="735.0" />
             <VBox layoutX="274.0" layoutY="127.0" prefHeight="478.0" prefWidth="714.0" spacing="6.0">
                <children>
@@ -121,7 +122,7 @@
                            </graphic>
                         </Button>
                         <ImageView fx:id="property1_image" fitHeight="147.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFavourite" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
+                        <Button layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#removeFavourite_1" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -231,7 +232,7 @@
                            </graphic>
                         </Button>
                         <ImageView fx:id="property2_image" fitHeight="147.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFavourite" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
+                        <Button layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#removeFavourite_2" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -341,7 +342,7 @@
                            </graphic>
                         </Button>
                         <ImageView fx:id="property3_image" fitHeight="147.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFavourite" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
+                        <Button layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#removeFavourite_3" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
                            <graphic>
                               <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -414,6 +415,11 @@
             <Label fx:id="numberOfResults" layoutX="1006.0" layoutY="121.0" prefHeight="31.0" prefWidth="77.0" text="99 results." textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="465.0" layoutY="54.0" prefHeight="42.0" prefWidth="328.0" text="Favourite Property" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="36.0" />
                </font>
             </Label>
          </children>
