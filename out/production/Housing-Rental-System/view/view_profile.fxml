@@ -109,7 +109,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="favouriteButton" layoutX="1158.0" layoutY="20.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: TRANSPARENT;">
+                  <Button fx:id="favouriteButton" layoutX="1158.0" layoutY="20.0" mnemonicParsing="false" onAction="#switchToFavourite" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: TRANSPARENT;">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>

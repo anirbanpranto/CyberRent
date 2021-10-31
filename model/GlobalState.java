@@ -50,10 +50,10 @@ public class GlobalState {
             ArrayList<String> features = new ArrayList<String>(Database.parseArray(l.get(11)));
             ArrayList<String> photos = new ArrayList<String>(Database.parseArray(l.get(17)));
             Property p = new Property.Builder().projectName(l.get(4)).floorSize(Integer.parseInt(l.get(5))).psf(Double.parseDouble(l.get(6))).furnishStatus(l.get(7)).
-                                         numberOfBedroom(Integer.parseInt(l.get(8))).numberOfBathroom(Integer.parseInt(l.get(9))).facilities(facilities).
-                                         keyFeatures(features).rental_price(Integer.parseInt(l.get(12))).address(l.get(13)).
-                                         city(l.get(14)).state(l.get(15)).propertyType(l.get(16)).
-                                         photo(photos).build(l.get(1),Integer.parseInt(l.get(2)));
+                    numberOfBedroom(Integer.parseInt(l.get(8))).numberOfBathroom(Integer.parseInt(l.get(9))).facilities(facilities).
+                    keyFeatures(features).rental_price(Integer.parseInt(l.get(12))).address(l.get(13)).
+                    city(l.get(14)).state(l.get(15)).propertyType(l.get(16)).
+                    photo(photos).build(Integer.parseInt(l.get(0)), l.get(1),Integer.parseInt(l.get(2)));
             tempProp.add(p);
         }
         this.propeties = tempProp;
@@ -157,7 +157,6 @@ public class GlobalState {
         List<List<String>> strFavourite = Database.readData("Favourite");
         List<List<String>> strProperty = Database.readData("Property");
         ArrayList<Property> tempFavouriteList = new ArrayList<>();
-
         for(int i = 0; i < strFavourite.size(); i++){
             if(this.loggedInId == Integer.parseInt(strFavourite.get(i).get(1)) && this.role.equals(strFavourite.get(i).get(2))){
                 for(int k = 0; k < this.propeties.size(); k++){
@@ -170,6 +169,26 @@ public class GlobalState {
         this.favoriteProperty = tempFavouriteList;
         System.out.println("Favourite property: " + favoriteProperty.size());
     }
+
+    //read latest favourite csv in system, cuz user will add new favourite to csv during system run.
+    public void updateTempFavouriteList(){
+        //Favourite
+        List<List<String>> strFavourite = Database.readData("Favourite");
+        List<List<String>> strProperty = Database.readData("Property");
+        ArrayList<Property> tempFavouriteList = new ArrayList<>();
+        for(int i = 0; i < strFavourite.size(); i++){
+            if(this.loggedInId == Integer.parseInt(strFavourite.get(i).get(1)) && this.role.equals(strFavourite.get(i).get(2))){
+                for(int k = 0; k < this.propeties.size(); k++){
+                    if(strFavourite.get(i).get(3).equals(strProperty.get(k).get(0))){
+                        tempFavouriteList.add(this.propeties.get(k));
+                    }
+                }
+            }
+        }
+        this.favoriteProperty = tempFavouriteList;
+        System.out.println("Favourite property: " + favoriteProperty.size());
+    }
+
     public int getLoggedInId(){
         return this.loggedInId;
     }

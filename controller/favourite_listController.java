@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class favourite_listController {
 
-
+    GlobalState state = GlobalState.getInstance();
 
     @FXML
     private Button currentPage;
@@ -169,7 +169,7 @@ public class favourite_listController {
             GlobalState state = GlobalState.getInstance();
             ArrayList<Property> tempFavourite = state.getFavoriteProperties();
             this.numberOfResults.setText(Integer.toString(tempFavourite.size()));
-            System.out.println(tempFavourite.size());
+            System.out.println("Current favourite: " + tempFavourite.size());
             this.setProperties(tempFavourite);
         }
         else{
@@ -248,8 +248,54 @@ public class favourite_listController {
     }
 
     @FXML
-    void addFavourite(ActionEvent event) {
+    void removeFavourite_1(ActionEvent event) {
+        int page = Integer.parseInt(currentPage.getText());
+        page = page -1;
+        state.getFavoriteProperties().remove(0 + (page * 3));
+        System.out.println("Deleted favourite");
+        //state.updateTempFavouriteList();
 
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    @FXML
+    void removeFavourite_2(ActionEvent event) {
+        int page = Integer.parseInt(currentPage.getText());
+        page = page -1;
+        state.getFavoriteProperties().remove(1 + (page * 3));
+        System.out.println("Deleted favourite");
+        //state.updateTempFavouriteList();
+
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    @FXML
+    void removeFavourite_3(ActionEvent event) {
+        int page = Integer.parseInt(currentPage.getText());
+        page = page -1;
+        state.getFavoriteProperties().remove(2 + (page * 3));
+        System.out.println("Deleted favourite");
+        //state.updateTempFavouriteList();
+
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
     @FXML
@@ -289,11 +335,13 @@ public class favourite_listController {
 
     @FXML
     void switchToFavourite(ActionEvent event) {
-        /*
-        Stage mainStage = GlobalState.getInstance().getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("/view/favourite.fxml"));
-        mainStage.setScene(new Scene(root, 1280, 720));
-        */
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
     @FXML

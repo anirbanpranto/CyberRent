@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import java.util.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeletePageController">
+   <top>
+      <AnchorPane prefHeight="80.0" prefWidth="1280.0" style="-fx-background-color: #26619c;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="25.0" layoutY="13.0" mnemonicParsing="false" onAction="#switchToHomePage" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: TRANSPARENT;" textFill="#131313">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/Common/Homepage-houseicon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="manageButton" layoutX="98.0" layoutY="20.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: TRANSPARENT;" text="Manage" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="640.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="640.0" fitWidth="1291.0" layoutX="14.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@image/Homepage/Homepage-background.jpg" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="563.0" layoutX="415.0" layoutY="21.0" opacity="0.73" stroke="WHITE" strokeType="INSIDE" width="541.0" />
+            <GridPane fx:id="userGridPane" layoutX="457.0" layoutY="61.0" prefHeight="505.0" prefWidth="472.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="428.8000244140625" minWidth="10.0" prefWidth="370.400048828125" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.19998168945312" minWidth="10.0" prefWidth="54.39995117187499" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.19998168945312" minWidth="0.0" prefWidth="47.99997558593748" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="delete9" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: transparent;" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="info1" text="Label" />
+                  <Label fx:id="info2" text="Label" GridPane.rowIndex="1" />
+                  <Label fx:id="info3" text="Label" GridPane.rowIndex="2" />
+                  <Label fx:id="info4" text="Label" GridPane.rowIndex="3" />
+                  <Label fx:id="info5" text="Label" GridPane.rowIndex="4" />
+                  <Label fx:id="info6" text="Label" GridPane.rowIndex="5" />
+                  <Label fx:id="info7" text="Label" GridPane.rowIndex="6" />
+                  <Label fx:id="info8" text="Label" GridPane.rowIndex="7" />
+                  <Label fx:id="info9" text="Label" GridPane.rowIndex="8" />
+                  <fx:define>
+                  <ArrayList fx:id="info_list">
+                        <fx:reference source="info1" />
+                        <fx:reference source="info2" />
+                        <fx:reference source="info3" />
+                        <fx:reference source="info4" />
+                        <fx:reference source="info5" />
+                        <fx:reference source="info6" />
+                        <fx:reference source="info7" />
+                        <fx:reference source="info8" />
+                        <fx:reference source="info9" />
+                  </ArrayList>
+               </fx:define>
+                  <Button fx:id="delete1" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: transparent;" GridPane.columnIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/deleteicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="delete2" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: transparent;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/deleteicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="delete3" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: transparent;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/deleteicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="delete4" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: transparent;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/deleteicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="delete5" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: transparent;" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/deleteicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="delete6" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: transparent;" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/deleteicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="delete7" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: transparent;" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/deleteicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="delete8" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: transparent;" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/deleteicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="delete9" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: transparent;" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/deleteicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <fx:define>
+                  <ArrayList fx:id="delete_list">
+                        <fx:reference source="delete1" />
+                        <fx:reference source="delete2" />
+                        <fx:reference source="delete3" />
+                        <fx:reference source="delete4" />
+                        <fx:reference source="delete5" />
+                        <fx:reference source="delete6" />
+                        <fx:reference source="delete7" />
+                        <fx:reference source="delete8" />
+                        <fx:reference source="delete9" />
+                  </ArrayList>
+               </fx:define>
+                  <Button fx:id="accept3" mnemonicParsing="false" onAction="#accept" prefHeight="45.0" prefWidth="36.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/accepticon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="accept2" mnemonicParsing="false" onAction="#accept" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/accepticon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="accept1" mnemonicParsing="false" onAction="#accept" prefHeight="38.0" prefWidth="18.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/accepticon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="accept6" mnemonicParsing="false" onAction="#accept" prefWidth="39.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/accepticon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="accept4" mnemonicParsing="false" onAction="#accept" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/accepticon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="accept9" mnemonicParsing="false" onAction="#accept" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/accepticon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="accept7" mnemonicParsing="false" onAction="#accept" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/accepticon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="accept8" mnemonicParsing="false" onAction="#accept" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/accepticon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="accept5" mnemonicParsing="false" onAction="#accept" prefHeight="45.0" prefWidth="36.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/deletePage/accepticon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <fx:define>
+                  <ArrayList fx:id="accept_list">
+                        <fx:reference source="accept1" />
+                        <fx:reference source="accept2" />
+                        <fx:reference source="accept3" />
+                        <fx:reference source="accept4" />
+                        <fx:reference source="accept5" />
+                        <fx:reference source="accept6" />
+                        <fx:reference source="accept7" />
+                        <fx:reference source="accept8" />
+                        <fx:reference source="accept9" />
+                  </ArrayList>
+               </fx:define>
+            </GridPane>
+            <HBox layoutX="633.0" layoutY="598.0" prefHeight="28.0" prefWidth="119.0">
+               <children>
+                  <Button fx:id="page_Back" disable="true" mnemonicParsing="false" onAction="#previousPage" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: white;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/PropertyList/leftarrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="currentPage" mnemonicParsing="false" prefHeight="28.0" prefWidth="47.0" style="-fx-background-color: white;" text="1">
+                     <font>
+                        <Font name="Calibri Bold" size="15.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="page_Next" mnemonicParsing="false" onAction="#nextPage" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: white;">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/PropertyList/rightarrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="415.0" layoutY="21.0" prefHeight="38.0" prefWidth="460.0" spacing="5.0">
+               <children>
+                  <Label prefHeight="32.0" text="List Type:" />
+                  <ComboBox fx:id="listType_ComboBox" prefHeight="26.0" prefWidth="166.0" promptText="Active User" style="-fx-background-color: white;" />
+                  <Label prefHeight="32.0" text="User Type:" />
+                  <ComboBox fx:id="userType_ComboBox" prefHeight="26.0" prefWidth="166.0" promptText="Tenant" style="-fx-background-color: white;" />
+               </children>
+            </HBox>
+            <Button layoutX="908.0" layoutY="21.0" mnemonicParsing="false" onAction="#selectListType" prefHeight="26.0" style="-fx-background-color: WHITE;" text="Apply" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

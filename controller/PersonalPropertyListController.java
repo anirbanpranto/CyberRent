@@ -196,11 +196,13 @@ public class PersonalPropertyListController {
 
     @FXML
     public void switchToFavourite(ActionEvent event) {
-        /*
-        Stage mainStage = GlobalState.getInstance().getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("/view/favourite.fxml"));
-        mainStage.setScene(new Scene(root, 1280, 720));
-        */
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
     @FXML
@@ -249,11 +251,13 @@ public class PersonalPropertyListController {
 
     @FXML
     void viewProperty(ActionEvent event) {
-        /*
-        Stage mainStage = GlobalState.getInstance().getStage();
-        Parent root = FXMLLoader.load(getClass().getResource("/view/property.fxml"));
-        mainStage.setScene(new Scene(root, 1280, 720));
-        */
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
     private void displayError() throws Exception {
@@ -262,6 +266,17 @@ public class PersonalPropertyListController {
         alert.setHeaderText("Error");
         alert.setContentText("Login is required.");
         alert.showAndWait(); 
+    }
+
+    @FXML
+    public void switchToCreatePost(ActionEvent event){
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/ListProperty.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
 
 }

@@ -124,4 +124,15 @@ public class edit_profileController {
         }
     }
 
+    @FXML
+    void switchToFavourite(ActionEvent event) {
+        try{
+            Stage mainStage = GlobalState.getInstance().getStage();
+            Parent root = FXMLLoader.load(getClass().getResource("/view/favourite_list.fxml"));
+            mainStage.setScene(new Scene(root, 1280, 720));
+        }catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
 }
