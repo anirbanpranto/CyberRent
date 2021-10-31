@@ -115,7 +115,7 @@ public class HomePageController {
                 {
                     exp.printStackTrace();
                 }});
-            /*
+            
             myListButton.setOnAction(e ->{switchToLogin(e);
                 try
                 {
@@ -125,7 +125,6 @@ public class HomePageController {
                 {
                     exp.printStackTrace();
                 }});
-             */
         }
     }
 
