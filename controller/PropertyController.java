@@ -72,8 +72,7 @@ public class PropertyController {
     }
 
     public void save(ActionEvent event){
-        System.out.println("Here");
-        String projectName = this.projectName.getText();
+        System.out.println("Property is being created");
         //create a property
         /*
         ArrayList<String> f = new ArrayList<>();
@@ -85,11 +84,12 @@ public class PropertyController {
                                          city("Cyberjaya").state("Selangor").propertyType("condominium").
                                          photo(photos).build("Owner",1);
     */
+        GlobalState state = GlobalState.getInstance();
         Property p = new Property.Builder().projectName(this.projectName.getText()).floorSize(Integer.parseInt(this.floorSize.getText())).psf(Double.parseDouble(this.psq.getText())).furnishStatus(this.furnishStatus).
                                          numberOfBedroom(Integer.parseInt(this.bedroom.getText())).numberOfBathroom(Integer.parseInt(this.bathroom.getText())).facilities(this.keyFacilities).
                                          keyFeatures(this.keyFeatures).rental_price(Integer.parseInt(this.rentalPrice.getText())).address(this.address.getText()).
                                          city(this.city.getText()).state(this.state.getText()).propertyType(this.propertyType.getText()).
-                                         photo(this.photos).createProperty("Owner",1);
+                                         photo(this.photos).createProperty(state.getRole(),state.getLoggedInId());
                                          //Note need to put actual Role and ID that is stored in the login session later
         p.writeFile(); //save this entry
         //save this object into the global list of objects in GlobalState
