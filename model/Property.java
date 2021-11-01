@@ -45,6 +45,7 @@ public class Property {
         this.id = id;
         this.listerType = listerType;
         this.listerID = listerID;
+        this.status = status;
         this.projectName = p.projectName;
         this.floorSize = p.floorSize;
         this.psf = p.psf;
