@@ -55,7 +55,7 @@ public class GlobalState {
                     numberOfBedroom(Integer.parseInt(l.get(8))).numberOfBathroom(Integer.parseInt(l.get(9))).facilities(facilities).
                     keyFeatures(features).rental_price(Integer.parseInt(l.get(12))).address(l.get(13)).
                     city(l.get(14)).state(l.get(15)).propertyType(l.get(16)).
-                    photo(photos).build(Integer.parseInt(l.get(0)), l.get(1),Integer.parseInt(l.get(2)));
+                    photo(photos).build(Integer.parseInt(l.get(0)), l.get(1),Integer.parseInt(l.get(2)), l.get(3));
             tempProp.add(p);
         }
         this.propeties = tempProp;
