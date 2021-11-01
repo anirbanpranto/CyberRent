@@ -23,6 +23,7 @@ public class SearchEngine {
         search_numberOfbedroom(numberOfBedRoom);
         search_Facilities(facilities);
         search_keyFeatures(keyFeatures);
+        search_status("active");
 
         return allProperties;
         
