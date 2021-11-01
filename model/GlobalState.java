@@ -11,10 +11,7 @@ import java.util.*;
 public class GlobalState {
     private Stage publicStage;
     private boolean isLoggedIn = false; //this becomes true when someone logs in
-    private Map<Integer, Owner> ownerLookup; //loaded when constructor is called
-    private Map<Integer, Agent> agentLookup; //loaded when constructor is called
-    private Map<Integer, Tenant> tenantLookup; //loaded when constructor is called
-    private Map<Integer, Admin> adminLookup; //loaded when constructor is called
+    private boolean isPersonal = false;
     //private Map<Integer, Area> areaLookup; //load when constructor is called
     /*
       the point of having these lookup tables are related to the data that we're gonna display. For propeties, we need to show the data of affiliated Owners, Agents. This is also useful for logging in.
@@ -37,6 +34,7 @@ public class GlobalState {
     private ArrayList<Owner> owner;
     private ArrayList<Tenant> tenant;
     private ArrayList<Agent> agent;
+    private Property selected;
 
     private GlobalState(){
         //load all properties here from database
@@ -89,6 +87,14 @@ public class GlobalState {
 
     }
 
+    public void setIsPersonal(boolean flag){
+        this.isPersonal = flag;
+    }
+
+    public boolean getIsPersonal(){
+        return this.isPersonal;
+    }
+
     public void EditProfilePerformed(String tableName){ //edit the temporary data and put them in persistent data
         //make an ArrayList of the Table values = []
         if(tableName.equals("Agent")){
@@ -131,6 +137,32 @@ public class GlobalState {
         //flush values inside our database
         
         //Database.writeAllData(tableName, All);
+    }
+
+    public void setSelected(Property p){
+        this.selected = p;
+    }
+
+    public Agent getAgent(int id){
+        for(Agent a:this.agent){
+            if(a.getId() == id){
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public Owner getOwner(int id){
+        for(Owner a:this.owner){
+            if(a.getId() == id){
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public Property getSelected(){
+        return this.selected;
     }
 
     public void saveStage(Stage s){

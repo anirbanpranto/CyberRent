@@ -110,6 +110,7 @@ public class PropertyListController {
     private String search_numberOfBedRoom = "Any";
     private ArrayList<String> search_facilities = new ArrayList<>();
     private ArrayList<String> search_keyFeatures = new ArrayList<>();
+    private ArrayList<Property> currentProperties;
     private String sortType = "Default";
 
     private ArrayList<Property> properties;
@@ -188,8 +189,6 @@ public class PropertyListController {
 
         currentPage.setText("1");
         page_Back.setDisable(true);
-        
-
     }
     
     public void setProperties(ArrayList<Property> properties){
@@ -208,6 +207,7 @@ public class PropertyListController {
     }
 
     public void displayProperties(ArrayList<Property> properties, int page){
+        ArrayList<Property> temp = new ArrayList<>();
         for(int i = 0; i < 3; i++){
             try{
             property_list.get(i).get(0).setText(Integer.toString(properties.get(i + (page * 3)).getRental_price())); // monthly price
@@ -226,6 +226,7 @@ public class PropertyListController {
             Image img1 = new Image(getClass().getResource(imgPath).toURI().toString());
             property_image.get(i).setImage(img1);
             property_pane.get(i).setVisible(true);
+            temp.add(properties.get(i + (page * 3)));
 
             //property_image.get(i).setImage(new Image(properties.get(i).getPhoto().get(0))); // 1st picture as the thumbnail
             }catch(IndexOutOfBoundsException e){
@@ -243,6 +244,7 @@ public class PropertyListController {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            currentProperties = temp;
         }
     }
 
@@ -570,6 +572,9 @@ public class PropertyListController {
     @FXML
     void viewProperty_1(ActionEvent event) {
         try{
+            Property p = this.currentProperties.get(0);
+            GlobalState.getInstance().setSelected(p);
+            GlobalState.getInstance().setIsPersonal(false);
             Stage mainStage = GlobalState.getInstance().getStage();
             Parent root = FXMLLoader.load(getClass().getResource("/view/view_property.fxml"));
             mainStage.setScene(new Scene(root, 1280, 720));
@@ -581,6 +586,9 @@ public class PropertyListController {
     @FXML
     void viewProperty_2(ActionEvent event) {
         try{
+            Property p = this.currentProperties.get(0);
+            GlobalState.getInstance().setSelected(p);
+            GlobalState.getInstance().setIsPersonal(false);
             Stage mainStage = GlobalState.getInstance().getStage();
             Parent root = FXMLLoader.load(getClass().getResource("/view/view_property.fxml"));
             mainStage.setScene(new Scene(root, 1280, 720));
@@ -591,6 +599,9 @@ public class PropertyListController {
     @FXML
     void viewProperty_3(ActionEvent event) {
         try{
+            Property p = this.currentProperties.get(0);
+            GlobalState.getInstance().setSelected(p);
+            GlobalState.getInstance().setIsPersonal(false);
             Stage mainStage = GlobalState.getInstance().getStage();
             Parent root = FXMLLoader.load(getClass().getResource("/view/view_property.fxml"));
             mainStage.setScene(new Scene(root, 1280, 720));
