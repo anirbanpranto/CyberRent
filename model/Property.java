@@ -158,6 +158,7 @@ public class Property {
     }    
 }
 
+// For sorting properties according to rental price
 class SortByRentalPrice implements Comparator<Property>{
     @Override
     public int compare(Property p1 , Property p2){
