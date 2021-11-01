@@ -40,6 +40,10 @@ public class GlobalState {
         //load all properties here from database
         //read the database for properties and use those values to create an ArrayList of all properties
         //read the database and load the object
+        Init();
+    }
+
+    public void Init(){
         List<List<String>> strProperties = Database.readData("Property");
         ArrayList<Property> tempProp = new ArrayList<>();
         for(int i = 0; i < strProperties.size(); i++){
@@ -84,7 +88,6 @@ public class GlobalState {
         }
         this.tenant = tempTenant;
         System.out.println("System total tenants: " + tenant.size());
-
     }
 
     public void setIsPersonal(boolean flag){
@@ -93,6 +96,14 @@ public class GlobalState {
 
     public boolean getIsPersonal(){
         return this.isPersonal;
+    }
+
+    public void EditPropertyPerformed(){
+        for(int i = 0; i < this.propeties.size(); i++){
+            Database.writeAllData("Property", Database.PropertyToList(propeties));
+        }
+        Init();
+        LoadAttributes();
     }
 
     public void EditProfilePerformed(String tableName){ //edit the temporary data and put them in persistent data
@@ -134,6 +145,8 @@ public class GlobalState {
                 }
             }
         }
+        Init();
+        LoadAttributes();
         //flush values inside our database
         
         //Database.writeAllData(tableName, All);
@@ -177,7 +190,10 @@ public class GlobalState {
         this.email = email;
         this.role = role;
         this.phoneNumber = phoneNumber;
+        LoadAttributes();
+    }
 
+    public void LoadAttributes(){
         ArrayList<Property> tempPersonaList = new ArrayList<>();
         for(int i = 0; i < this.propeties.size(); i++){
             if(this.propeties.get(i).getListerID() == this.loggedInId && this.propeties.get(i).getListerType().equals(this.role)){

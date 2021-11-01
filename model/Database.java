@@ -70,6 +70,16 @@ public class Database{
     return temp;
   }
 
+  public static ArrayList<List<String>> PropertyToList(ArrayList<Property> a){
+    ArrayList<List<String>> temp = new ArrayList<>();
+    for(int i = 0; i < a.size(); i++){
+      Property tt = a.get(i);
+      System.out.println(tt.getID() + " " + tt.getListerID() + " " + tt.getProjectName());
+      temp.add(Arrays.asList(Integer.toString(tt.getID()), tt.getListerType(), Integer.toString(tt.getListerID()), tt.getStatus(), tt.getProjectName(), Integer.toString(tt.getFloorSize()), Double.toString(tt.getpsf()), tt.getFurnishStatus(), Integer.toString(tt.getNumberOfBedroom()), Integer.toString(tt.getNumberOfBathroom()), Database.makeString(tt.getFacilities()), Database.makeString(tt.getKeyFeatures()), Integer.toString(tt.getRental_price()), tt.getAddress(), tt.getCity(), tt.getState(), tt.getPropertyType(), Database.makeString(tt.getPhoto())));
+    }
+    return temp;
+  }
+
   public static ArrayList<List<String>> OwnerToList(ArrayList<Owner> a){
     ArrayList<List<String>> temp = new ArrayList<>();
     for(int i = 0; i < a.size(); i++){
