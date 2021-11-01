@@ -1,1 +1,0 @@
-# Rent A Room JavaFX Application
