@@ -1,5 +1,0 @@
-#BlueJ class context
-comment0.target=Admin
-comment1.params=id\ password
-comment1.target=Admin(int,\ java.lang.String)
-numComments=2
