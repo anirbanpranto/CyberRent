@@ -88,7 +88,7 @@ public class Property {
     public int getFloorSize(){return floorSize;}
     public void setFloorSize(int f){floorSize = f;}
     public double getpsf(){return psf;}
-    public void setpsf(int p){psf = p;}
+    public void setpsf(double p){psf = p;}
     public String getFurnishStatus(){return furnishStatus;}
     public void setFurnishStatus(String f){furnishStatus = f;}
     public int getNumberOfBedroom(){return numberOfBedroom;}
