@@ -87,7 +87,7 @@ public class SearchEngine {
 
         while(allProperties.size() != counter){
             String current = allProperties.get(counter).getPropertyType().toLowerCase();
-            if(propertyType.toLowerCase().equals("All Residential"))
+            if(propertyType.toLowerCase().equals("all residential"))
                 break;
             else if(!(current.equals(propertyType.toLowerCase()))){
                 allProperties.remove(counter);
