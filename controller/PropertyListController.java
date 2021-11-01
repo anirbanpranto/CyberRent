@@ -3,6 +3,7 @@ package controller;
 import java.util.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import javafx.scene.layout.HBox;
 
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.CheckBox;
@@ -33,11 +34,15 @@ public class PropertyListController {
     GlobalState state = GlobalState.getInstance();
 
     @FXML
+    private HBox statusBox;
+    @FXML
     private ArrayList<ArrayList<Label>> property_list;
     @FXML
     private ArrayList<ImageView> property_image;
     @FXML
     private MenuButton facilities;
+    @FXML
+    private MenuButton status;
     @FXML
     private Button favouriteButton;
     @FXML
@@ -111,13 +116,17 @@ public class PropertyListController {
     private ArrayList<String> search_facilities = new ArrayList<>();
     private ArrayList<String> search_keyFeatures = new ArrayList<>();
     private String sortType = "Default";
+    private String search_status = "Active";
 
     private ArrayList<Property> properties;
     private int totalResult;
 
     public void initialize(){
-        boolean loginStatus = GlobalState.getInstance().getLoginStatus();
+        boolean loginStatus = state.getLoginStatus();
+        String role = state.getRole();
         if(loginStatus){
+            if(role.equals("Admin"))
+                statusBox.setVisible(true);
             registerButton.setVisible(false);
             registerButton.setDisable(true);
             loginButton.setText("Logout");
@@ -183,7 +192,7 @@ public class PropertyListController {
 
         this.properties = SearchEngine.search(search_projectName, search_propertyType, search_price_Min, search_price_Max, 
                                          search_floorSize_Min, search_floorSize_Max, search_psf_Min, search_psf_Max, 
-                                         search_numberOfBedRoom, search_facilities, search_keyFeatures, sortType);
+                                         search_numberOfBedRoom, search_facilities, search_keyFeatures, sortType, search_status);
         setProperties(this.properties);
 
         currentPage.setText("1");
@@ -510,6 +519,13 @@ public class PropertyListController {
         sorting.setText(selection);
         sortType = selection;
 
+    }
+
+    @FXML
+    public void selectStatus(ActionEvent event){
+        String selection = ((MenuItem)event.getSource()).getText();
+        status.setText(selection);
+        search_status = selection;
     }
 
     @FXML
