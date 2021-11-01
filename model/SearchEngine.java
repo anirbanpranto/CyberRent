@@ -30,7 +30,7 @@ public class SearchEngine {
 
     public static ArrayList<Property> search(String projectName, String propertyType, int price_Min, int price_Max, int floorSize_Min, int floorSize_Max, 
                                              double psf_Min, double psf_Max, String numberOfBedRoom, ArrayList<String> facilities, 
-                                             ArrayList<String> keyFeatures, String sortType){
+                                             ArrayList<String> keyFeatures, String sortType, String status){
         copyProperties();
         
         sortByX(sortType);
@@ -43,6 +43,7 @@ public class SearchEngine {
         search_numberOfbedroom(numberOfBedRoom);
         search_Facilities(facilities);
         search_keyFeatures(keyFeatures);
+        search_status(status);
 
         return allProperties;
         
@@ -73,7 +74,7 @@ public class SearchEngine {
             String current = allProperties.get(counter).getProjectName().toLowerCase();
             if(projectName.equals(""))
                 break;
-            else if(!(current.toLowerCase().contains(projectName))){
+            else if(!(current.toLowerCase().contains(projectName.toLowerCase()))){
                 allProperties.remove(counter);
                 continue;
             }
@@ -85,10 +86,10 @@ public class SearchEngine {
         int counter = 0;
 
         while(allProperties.size() != counter){
-            String current = allProperties.get(counter).getPropertyType();
-            if(propertyType.equals("All Residential"))
+            String current = allProperties.get(counter).getPropertyType().toLowerCase();
+            if(propertyType.toLowerCase().equals("all residential"))
                 break;
-            else if(!(current.equals(propertyType))){
+            else if(!(current.equals(propertyType.toLowerCase()))){
                 allProperties.remove(counter);
                 continue;
             }
@@ -187,6 +188,19 @@ public class SearchEngine {
                     counter--;
                     break;
                 }
+            }
+            counter++;
+        }
+    }
+
+    private static void search_status(String status){
+        int counter = 0;
+
+        while(allProperties.size() != counter){
+            String current = allProperties.get(counter).getStatus().toLowerCase();
+            if(!(current.equals(status.toLowerCase()))){
+                allProperties.remove(counter);
+                continue;
             }
             counter++;
         }

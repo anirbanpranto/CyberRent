@@ -59,6 +59,12 @@ public class PersonalPropertyListController {
     private Button registerButton;
     @FXML
     private Label numberOfResults;
+    @FXML
+    private Button addFavourite_1;
+    @FXML
+    private Button addFavourite_2;
+    @FXML
+    private Button addFavourite_3;
 
     private ArrayList<Property> properties;
     private ArrayList<Property> currentProperties;
@@ -67,6 +73,12 @@ public class PersonalPropertyListController {
     public void initialize(){
         boolean loginStatus = GlobalState.getInstance().getLoginStatus();
         if(loginStatus){
+            addFavourite_1.setVisible(false);
+            addFavourite_1.setDisable(true);
+            addFavourite_2.setVisible(false);
+            addFavourite_2.setDisable(true);
+            addFavourite_3.setVisible(false);
+            addFavourite_3.setDisable(true);
             registerButton.setVisible(false);
             registerButton.setDisable(true);
             loginButton.setText("Logout");

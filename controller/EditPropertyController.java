@@ -160,6 +160,8 @@ public class EditPropertyController {
         }
         //Note need to put actual Role and ID that is stored in the login session later
         state.EditPropertyPerformed(); //save this entry
+        state.LoadAttributes();
+        switchToHomePage(event);
         //save this object into the global list of objects in GlobalState
         //save this object into list of user properties in GlobalState as well
         System.out.println("Done creating");
