@@ -215,6 +215,7 @@ public class PropertyListController {
         
     }
 
+    // replace the information of 3 properties on screen
     public void displayProperties(ArrayList<Property> properties, int page){
         ArrayList<Property> temp = new ArrayList<>();
         for(int i = 0; i < 3; i++){
@@ -651,68 +652,3 @@ public class PropertyListController {
     }
 
 }
-
-
-/*
-    @FXML
-    private Label property1_PSF;
-    @FXML
-    private Label property1_address;
-    @FXML
-    private Label property1_bed;
-    @FXML
-    private Label property1_floorSize;
-    @FXML
-    private Label property1_furnishStatus;
-    @FXML
-    private Label property1_name;
-    @FXML
-    private Label property1_price;
-    @FXML
-    private Label property1_toilet;
-    @FXML
-    private Label property1_type;
-    @FXML
-    private Label property2_PSF;
-    @FXML
-    private Label property2_address;
-    @FXML
-    private Label property2_bed;
-    @FXML
-    private Label property2_floorSize;
-    @FXML
-    private Label property2_furnishStatus;
-    @FXML
-    private Label property2_name;
-    @FXML
-    private Label property2_price;
-    @FXML
-    private Label property2_toilet;
-    @FXML
-    private Label property2_type;
-    @FXML
-    private Label property3_PSF;
-    @FXML
-    private Label property3_address;
-    @FXML
-    private Label property3_bed;
-    @FXML
-    private Label property3_floorSize;
-    @FXML
-    private Label property3_furnishStatus;
-    @FXML
-    private Label property3_name;
-    @FXML
-    private Label property3_price;
-    @FXML
-    private Label property3_toilet;
-    @FXML
-    private Label property3_type;
-
-    @FXML
-    private ImageView property1_image;
-    @FXML
-    private ImageView property2_image;
-    @FXML
-    private ImageView property3_image;
-    */
