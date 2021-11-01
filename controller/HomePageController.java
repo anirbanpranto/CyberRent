@@ -89,10 +89,10 @@ public class HomePageController {
         GlobalState state = GlobalState.getInstance();
         boolean loginStatus = state.getLoginStatus();
         String role = state.getRole();
-        if(loginStatus){
-            if(role.equals("Admin"))
+        if(loginStatus){ // if the user is logged in
+            if(role.equals("Admin")) // if the user type is Admin
                 manageButton.setVisible(true);
-            if(role.equals("Agent") || role.equals("Owner"))
+            if(role.equals("Agent") || role.equals("Owner")) // if the user type is Agent or Owner
                 myListButton.setVisible(true);
             registerButton.setVisible(false);
             registerButton.setDisable(true);
@@ -102,7 +102,7 @@ public class HomePageController {
                 switchToHomePage(e);
             });
         }
-        else{
+        else{ // user has to log in to access functions below, while the button below will lead them to login
             profileButton.setOnAction(e ->{switchToLogin(e);
                 try
                 {
@@ -148,7 +148,7 @@ public class HomePageController {
         Parent root = loader.load();
 
         PropertyListController propertyListController = loader.getController();
-        propertyListController.setProperties(p);
+        propertyListController.setProperties(p); // pass the search criterias to another controller
 
         Stage mainStage = GlobalState.getInstance().getStage();
         mainStage.setScene(new Scene(root, 1280, 720));
