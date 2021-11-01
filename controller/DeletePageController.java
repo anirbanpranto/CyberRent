@@ -66,7 +66,8 @@ public class DeletePageController {
         listType_ComboBox.setItems(listType_tempCombo);
         userType_ComboBox.setItems(userType_tempCombo);
     }
-
+    
+    // move to next page after clicking this button
     @FXML
     public void nextPage(ActionEvent event) {
         int maxPage = findTotalPageNumber();
@@ -80,7 +81,8 @@ public class DeletePageController {
 
         displayList(Integer.parseInt(currentPage.getText()) - 1);
     }
-
+    
+    //move to previous page after clicking this button
     @FXML
     public void previousPage(ActionEvent event) { 
         int pageNumber = Integer.parseInt(currentPage.getText());
@@ -93,7 +95,7 @@ public class DeletePageController {
             
         displayList(Integer.parseInt(currentPage.getText()) - 1);
     }
-
+    
     private int findTotalPageNumber(){
         double max = Double.valueOf(totalResult) / 9;
         if((max - (totalResult/9)) == 0)
@@ -168,7 +170,8 @@ public class DeletePageController {
                     userList.remove(i + (page * 9));
                     break;
                 }
-
+            
+            //list type = Active user
             if (listType_ComboBox.getValue().equals("Active User")){
                 String role = userType_ComboBox.getValue().toString();
                 Database.writeAllData(role, userList);
@@ -183,7 +186,7 @@ public class DeletePageController {
                     }
                 }
             }
-            else{ //Pending Registration
+            else{ //list type = Pending Registration
                 String role = userType_ComboBox.getValue().toString();
                 Database.writeAllData(role + "_temp", userList);
                 System.out.println(userList);
@@ -270,7 +273,8 @@ public class DeletePageController {
         
         displayList(0);
     }
-
+    
+    // display a list of the user emails base on the list type
     public void displayList(int page){
         if(listType_ComboBox.getValue().toString().equals("Active User")) // Active users page doesn't need to accept
             for(int i = 0; i < accept_list.size(); i++)
@@ -293,7 +297,8 @@ public class DeletePageController {
             }
         }
     }
-
+    
+    // display confirmation alert box [ok or cancel]
     private String confirmationAlert(String type) throws Exception {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle(type + " user confirmation");
