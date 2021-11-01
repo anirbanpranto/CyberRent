@@ -61,7 +61,7 @@ public class LoginPageController {
                         list.get(i).get(3), roleComboBox.getValue().toString(), list.get(i).get(5));
                 
                 if ((roleComboBox.getValue().toString().equals("Agent"))) {
-                    state.setAgentLicense(list.get(i).get(7));
+                    state.setAgentLicense(list.get(i).get(6));
                     //System.out.println(state.getAgentLicense());
                 }
                 /*

@@ -64,8 +64,8 @@ public class GlobalState {
         List<List<String>> strAgent = Database.readData("Agent");
         ArrayList<Agent> tempAgent = new ArrayList<>();
         for(int i = 0; i < strAgent.size(); i++){
-            System.out.println(Integer.parseInt(strAgent.get(i).get(0)) + " " + strAgent.get(i).get(1)+ " " +strAgent.get(i).get(2)+ " " + strAgent.get(i).get(3)+ " " + strAgent.get(i).get(5)+ " " + strAgent.get(i).get(7));
-            Agent t = new Agent(Integer.parseInt(strAgent.get(i).get(0)), strAgent.get(i).get(1), strAgent.get(i).get(2), strAgent.get(i).get(3), strAgent.get(i).get(5), strAgent.get(i).get(7));
+            //System.out.println(Integer.parseInt(strAgent.get(i).get(0)) + " " + strAgent.get(i).get(1)+ " " +strAgent.get(i).get(2)+ " " + strAgent.get(i).get(3)+ " " + strAgent.get(i).get(5)+ " " + strAgent.get(i).get(7));
+            Agent t = new Agent(Integer.parseInt(strAgent.get(i).get(0)), strAgent.get(i).get(1), strAgent.get(i).get(2), strAgent.get(i).get(3), strAgent.get(i).get(5), strAgent.get(i).get(6));
             tempAgent.add(t);
         }
         this.agent = tempAgent;
