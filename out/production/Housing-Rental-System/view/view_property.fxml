@@ -110,18 +110,6 @@
                                     </graphic>
                                 </Button>
                                 <ImageView fx:id="property1_image_1" fitHeight="147.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true" />
-                                <Button layoutX="663.0" layoutY="8.0" mnemonicParsing="false" onAction="#addFavourite" prefHeight="37.0" prefWidth="38.0" style="-fx-background-color: #26619c;">
-                                    <graphic>
-                                        <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@image/Common/Homepage-favouriteicon.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                    <cursor>
-                                        <Cursor fx:constant="HAND" />
-                                    </cursor>
-                                </Button>
                         <Label layoutX="211.0" layoutY="145.0" text="- ">
                            <font>
                               <Font name="Calibri" size="15.0" />
