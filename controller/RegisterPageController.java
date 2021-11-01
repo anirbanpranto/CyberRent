@@ -129,8 +129,9 @@ public class RegisterPageController {
                     e.printStackTrace();
                 }            
             }
-}
-
+    }
+    
+    // write temporary file for admin use purpose
     private void writeTempFile() throws IOException {
         if (roleComboBox.getValue().equals("Tenant")){
             Database.writeData("Tenant_temp", Arrays.asList(null, null, userInput_Password.getText(), userInput_Email.getText(),"Tenant", null));
@@ -145,7 +146,8 @@ public class RegisterPageController {
         Parent root = FXMLLoader.load(getClass().getResource("/view/homepage.fxml"));
         mainStage.setScene(new Scene(root, 1280, 720));
     }
-
+    
+    // display error alert box
     private void displayError(String error) throws Exception {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Input error");
