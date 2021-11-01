@@ -711,6 +711,27 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
+            <HBox fx:id="statusBox" layoutX="1045.0" layoutY="39.0" prefHeight="35.0" prefWidth="226.0" visible="false">
+               <children>
+                  <Label prefHeight="31.0" text="Status:" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <MenuButton fx:id="status" layoutY="35.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="169.0" style="-fx-background-color: transparent;" text="Active" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#selectStatus" text="Active" />
+                        <MenuItem mnemonicParsing="false" onAction="#selectStatus" text="Inactive" />
+                     </items>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </MenuButton>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </center>
