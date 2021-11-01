@@ -10,3 +10,4 @@ VERSION or DATE:
 HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
+1. In order to log in as admin. First, head in the "Log in" page, enter credentials(username: admin, password: admin123).
