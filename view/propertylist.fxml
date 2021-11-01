@@ -403,7 +403,7 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="currentPage" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: white;" text="1">
+                  <Button fx:id="currentPage" mnemonicParsing="false" prefHeight="28.0" prefWidth="42.0" style="-fx-background-color: white;" text="1">
                      <font>
                         <Font name="Calibri Bold" size="15.0" />
                      </font>
@@ -613,7 +613,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Badminton Hall" textFill="#26619c">
+                                    <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Badminton Court" textFill="#26619c">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
@@ -628,7 +628,7 @@
                                           <Font size="15.0" />
                                        </font>
                                     </CheckBox>
-                                    <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Gym Room" textFill="#26619c">
+                                    <CheckBox mnemonicParsing="false" onAction="#selectFacilities" text="Gym" textFill="#26619c">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
