@@ -1,4 +1,4 @@
-package controller;
+ 
 
 import java.util.*;
 import javafx.event.ActionEvent;
@@ -29,6 +29,9 @@ public class DeletePageController {
 
     ObservableList<String> listType_tempCombo = FXCollections.observableArrayList("Pending Registration", "Active User");
     ObservableList<String> userType_tempCombo = FXCollections.observableArrayList("Tenant", "Owner", "Agent");
+
+    @FXML
+    private Button manageButton;
 
     @FXML
     private ComboBox listType_ComboBox;
@@ -62,8 +65,6 @@ public class DeletePageController {
     public void initialize(){
         listType_ComboBox.setItems(listType_tempCombo);
         userType_ComboBox.setItems(userType_tempCombo);
-
-        selectListType("Tenant", "Pending Registration");
     }
 
     @FXML
@@ -102,8 +103,13 @@ public class DeletePageController {
     }
 
     @FXML
-    void switchToHomePage(ActionEvent event) throws IOException {
+    public void switchToHomePage(ActionEvent event) throws IOException {
         loadFXML("/view/homepage.fxml");
+    }
+
+    @FXML
+    public void switchToManage(ActionEvent event) throws IOException{
+        loadFXML("/view/deletepage.fxml");
     }
 
     @FXML
