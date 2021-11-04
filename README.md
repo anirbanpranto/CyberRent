@@ -15,6 +15,13 @@ Built as a part of Object Oriented Analysis and Design class at Multimedia Unive
 * The project can be opened in intellij by modifying you folder name and path
 * The project can be compiled and run in BlueJ without any modification
 
+## High Level Design of the System
+* GlobalState model is a singleton that binds the entire system together. The singleton object maintains consistency of data across all controllers.
+* The view folder contains .fxml views that bind with controllers in controller folder.
+* The controllers can process data received from the view and can update the view, they can also create new objects from model and mutate the global data.
+* Everytime there is a mutation in globalstate, we rewrite our database which is stored as .csv files.
+* Models are the entities that exist in the system (including the GlobalState itself)
+
 ## Preview
 * Home Page
 <br/>
