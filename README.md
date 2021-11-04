@@ -17,13 +17,17 @@ Built as a part of Object Oriented Analysis and Design class at Multimedia Unive
 
 ## Preview
 * Home Page -
+<br/>
 ![Homepage](/assets/homepage.gif)
 
 * Login
+<br/>
 ![Login](/assets/login.gif)
 
 * Favorites
+<br/>
 ![Favorites](/assets/favorites.gif)
 
 * My List
+<br/>
 ![My List](/assets/mylist.gif)
