@@ -16,7 +16,7 @@ Built as a part of Object Oriented Analysis and Design class at Multimedia Unive
 * The project can be compiled and run in BlueJ without any modification
 
 ## Preview
-* Home Page -
+* Home Page
 <br/>
 
 ![Homepage](/assets/homepage.gif)
